@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="reveal/css/reveal.min.css">
+	<link rel="stylesheet" href="reveal/css/theme/default.css" id="theme">
+	<link rel="stylesheet" href="talk.css">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<h1>
+					<br>
+				</h1>
+				<div>
+					<br>
+				</div>
+				<div>
+					<span style="font-size: 64px;">Front-end&nbsp;project assets&nbsp;</span>
+				</div>
+				<div>
+					<span style="font-size: 64px;">management</span>
+				</div>
+			</section>
+
+			<section>
+				<h2>SCALE OF MODERN FRONT-END APPS</h2>
+				<div>
+					<br>
+				</div>
+				<p style="text-align: left; ">
+				</p>
+				<ul>
+					<li>Client Web Applications are not as they used to be</li>
+					<li>...they are more complicated</li>
+					<li>...harder to develop, debug and maintain</li>
+					<li>...freaking huge and cumbersome when built</li>
+					<li>...and get out of control easiliy</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Can we do anything about it?</h2>
+				<div>
+					<br>
+				</div>
+				<div>
+					<img src="images/121204_barack_obama_ap_605.jpg">
+					<br>
+				</div>
+				<h2>YES, WE CAN</h2>
+			</section>
+
+			<section>
+				<h2>The Solution lays here</h2>
+				<ul>
+					<li>use a tool for dependency tracking and resolving</li>
+					<li>use preprocessors, templates and compilers for them</li>
+					<li>analyze code quality and calculate code metrics</il>
+					<li>concatenate and minify resources for production builds</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>stuff people use</h2>
+				<div>(they claim it helps)</div>
+				<div>
+					<span>
+						<br>
+					</span>
+				</div>
+				<div>
+					<table width="100%" align="center">
+						<tbody>
+							<tr>
+								<td style="text-align:center;">RequireJS<br>
+									<br>
+								</td>
+								<td style="text-align:center;">LMD</td>
+							</tr>
+							<tr>
+								<td style="text-align:center;">Grunt<br>
+									<br>
+								</td>
+								<td style="text-align:center;">Steal.js</td>
+							</tr>
+							<tr>
+								<td style="text-align:center;" colspan="2">Brunch</td>
+							</tr>
+						</tbody>
+					</table>
+					<br>
+				</div>
+			</section>
+
+			<section>
+				<h2>stEAL &amp; GRUNT</h2>
+				<div>(apples and oranges)</div>
+				<div>
+					<span>
+						<br>
+					</span>
+				</div>
+				<div>
+					<table width="100%" align="center">
+						<tbody>
+							<tr>
+								<td style="text-align:center;">
+									<font color="#666666">RequireJS</font>
+									<br>
+									<br>
+								</td>
+								<td style="text-align:center;">
+									<font color="#666666">LMD</font>
+								</td>
+							</tr>
+							<tr>
+								<td style="text-align:center;">Grunt<br>
+									<br>
+								</td>
+								<td style="text-align:center;">Steal.js</td>
+							</tr>
+							<tr>
+								<td style="text-align:center;" colspan="2">
+									<font color="#666666">Brunch</font>
+								</td>
+
+
+							</tr>
+						</tbody>
+					</table>
+					<br>
+				</div>
+			</section>
+
+			<section>
+				<h2>GRUNT &amp; STEAL</h2>
+				<br>
+				<div style="text-align:left;">Grunt is system of Node.js applications that run multi-purpose tasks that can be configured with a flexible syntax and API</div>
+				<br>
+				<div style="text-align:left;">Steal.js is a rich JavaScript library that allows loading resources of different kinds; it also facilitates production project building</div>
+			</section>
+
+			<section>
+				<h2>GRUNT &amp; STEAL: ABILITIES</h2>
+				<div>
+					<table width="100%" align="center">
+						<tbody>
+							<tr>
+								<td style="text-align:center; vertical-align:top;">
+									<img src="images/grunt-logo.png" style="height: 169px;">
+									<br>
+									<ul class="abilities-list">
+										<li>
+											<img src="images/ability1.jpg">
+											<font style="font-size: 32px;">Extendable plugin-based ecosystem</font>
+										</li>
+										<li>
+											<img src="images/ability2.jpg">
+											<font style="font-size: 32px;">Tons of various plugins available</font>
+										</li>
+										<li>
+											<img src="images/ability3.jpg">
+											<font style="font-size: 32px;">Process assets and enhance workflow</font>
+										</li>
+										<li>
+											<img src="images/ability4.jpg">
+											<font style="font-size: 32px;">High customizability</font>
+										</li>
+									</ul>
+								</td>
+								<td style="text-align:center;">
+									<br>
+									<br><div class="steal-logo-wr">
+					                	Steal
+					                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+					                </div>
+									<br>
+									<br>
+									<br>
+									<ul class="abilities-list">
+										<li>
+											<img src="images/luna_moon_glaive_hp1.png">
+											<font style="font-size: 32px;">Client-side library</font>
+										</li>
+										<li>
+											<img src="images/luna_lucent_beam_hp1.png">
+											<font style="font-size: 32px;">Dependency tracking</font>
+										</li>
+										<li>
+											<img src="images/luna_lunar_blessing_hp1.png">
+											<font style="font-size: 32px;">LESS, EJS, CoffeeScript, Moustache processing</font>
+										</li>
+										<li>
+											<img src="images/luna_eclipse_hp1.png">
+											<font style="font-size: 32px;">Production-ready packaging</font>
+										</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section>
+                <section>
+                    <h2>PROJECT: A new beginning&nbsp;</h2>
+                    <img src="images\barack-obama-stari_1111370c.jpg">
+                </section>
+				<section>
+					<div class="steal-logo-wr">
+	                	Steal
+	                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+	                </div>
+	                <h2 class="steal-h2">
+	                	A new beginning&nbsp;
+	                </h2>
+	                <br>
+					<div style="text-align: left;">Project structure</div>
+					<pre><code class="javascript">project
+	jquery
+	steal
+	app
+	index.html</code></pre>
+					<div style="text-align: left;">index.html</div>
+					<pre><code class="html">&lt;script src="steal/steal.js"&gt;&lt;/script&gt;
+
+<!-- now we can steal something-->
+&lt;script&gt;steal('jquery/jquery.js')&lt;/script&gt;</code></pre>
+				</section>
+				<section>
+					<h2><img src="images/grunt-logo.png" class="grunt-slide-logo">A NEW BEGINNING</h2>
+					<div style="text-align: left;">
+						Recruit a grunt:
+						<span style="font-size:18px"><img src="images/gold-sm.gif" class="grunt-resource-icon">200 <img src="images/supply-sm.gif" class="grunt-resource-icon">3</span>
+					</div>
+
+<pre><code class="javascript">$ npm i grunt-cli -g
+$ npm init
+$ npm i grunt --save
+</code></pre>
+
+					<div style="text-align: left;">Project structure</div>
+<pre><code class="javascript">project
+    node_modules
+    package.json
+    Gruntfile.js
+    index.html
+</code></pre>
+					<div style="text-align: left;">package.json</div>
+<pre><code class="json">{
+  "name": "frontend-project",
+  "version": "0.0.0",
+  "description": "My amazing front-end project",
+  "dependencies": {
+    "grunt": "~0.4.1",
+  },
+  "devDependencies": {}
+}
+</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="steal-logo-wr">
+	                	Steal
+	                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+	                </div>
+	                <h2 class="steal-h2">
+	                	First Steps
+	                </h2>
+	                <br>
+					<div style="text-align: left;">app.js</div>
+					<pre><code class="javascript">steal('jquery/jquery.js')
+.then(function($) {
+    //run you application here
+});</code></pre>
+					<div style="text-align: left;">index.html</div>
+					<pre><code class="html">&lt;script src="steal/steal.js?app/app.js"&gt;&lt;/script&gt;
+<!-- or -->
+&lt;script src="steal/steal.js?app"&gt;&lt;/script&gt;</code></pre>
+				</section>
+				<section>
+                    <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">First Steps</h2>
+<pre><code class="javascript">$ npm i grunt-contrib-uglify --save-dev
+</code></pre>
+						<div style="text-align: left;">Gruntfile.js</div>
+<pre><code class="javascript">module.exports = function(grunt) {
+  grunt.initConfig({
+    uglify: {
+      options: {
+        banner: '/* <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      myapp: {
+        src: 'app/app.js',
+        dest: 'build/app.min.js'
+      }
+    }
+  });
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.registerTask('default', ['uglify']);
+};
+</code></pre>
+				</section>
+				<section>
+					<h2><img src="images/grunt-logo.png" class="grunt-slide-logo">First Steps</h2>
+					<div style="text-align: left;">index.html</div>
+					<pre><code class="html">&lt;script src="build/app.min.js"&gt;&lt;/script&gt;</code></pre>
+					<pre><code class="javascript">$ grunt
+$ grunt uglify
+$ grunt uglify:build</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="steal-logo-wr">
+	                	Steal
+	                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+	                </div>
+	                <h2 class="steal-h2">
+	                	Relations
+	                </h2>
+	                <br>
+					<div style="text-align: left;">Project structure</div>
+					<pre><code class="javascript">project
+    jquery
+    steal
+    app
+        app.js
+        table
+            table.js
+            resources
+                less
+                views
+                scripts
+    index.html
+
+					</code></pre>
+				</section>
+				<section>
+					<div class="steal-logo-wr">
+	                	Steal
+	                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+	                </div>
+	                <h2 class="steal-h2">
+	                	Relations
+	                </h2>
+	                <br>
+					<div style="text-align: left;">table.js</div>
+					<pre><code class="javascript">steal(
+    'jquery/view/ejs',
+    {src: "steal/less", ignore: true}
+).then(
+    //styles
+    'resources/less/table.less',
+    //templates
+    'resources/views/table.ejs',
+    'resources/views/cell.ejs',
+    //scripts
+    'resources/scripts/date.js'
+).then(function($) {
+    window.Table = function() {...};
+});</code></pre>
+					<div style="text-align: left;">app.js</div>
+					<pre><code class="javascript">stea('jquery')
+.then('app/table/table.js')
+.then(function($) {
+	new window.Table(...);
+});</code></pre>
+			</section>
+			<section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Relations</h2>
+					<div style="text-align: left;">grunt-contrib-watch</div>
+<pre><code class="javascript">watch: {
+  mysrc: {
+    files: ['**/*.js'],
+    tasks: ['uglify:dev'],
+    options: {
+      nospawn: true,
+    }
+  }
+}</code></pre>
+					<div style="text-align: left;">grunt-hub</div>
+<pre><code class="javascript">hub: {
+    all: {
+      src: ['app/table/Gruntfile.js'],
+      tasks: ['jshint', 'uglify'],
+    }
+}</code></pre>
+
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="steal-logo-wr">
+                	Steal
+                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+                </div>
+                <h2 class="steal-h2">
+                	Templating
+                </h2>
+                <br>
+                <div>ejs, jaml, micro, tmpl, mustache</div>
+					<pre><code class="javascript">steal(
+    'jquery/view/ejs',
+    {src: "steal/less", ignore: true}
+).then(
+    //styles
+    'resources/less/table.less',
+    //templates
+    'resources/views/table.ejs',
+    'resources/views/cell.ejs',
+    //scripts
+    'resources/scripts/date.js'
+).then(function($) {
+    window.Table = function() {...
+        $(el).html($.View('resources/views/table.ejs'));
+    ...};
+});</code></pre>
+			</section>
+			<section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Templating</h2>
+				<div style="text-align: center;">All-you-can-eat buffet</div><br>
+				<ul style="text-align: left; font-size:30px">
+					<li>jade</li>
+					<li>handlebars</li>
+					<li>doT</li>
+					<li>Dust.js</li>
+					<li>AngularJS</li>
+					<li>...</li>
+				</ul>
+
+			</section>
+            <section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Templating</h2>
+                <div style="text-align: left;">grunt-contrib-jade</div>
+<pre><code class="javascript">jade: {
+    compile: {
+        options: {
+            compileDebug: false,
+            client: true,
+            namespace: 'App.Templates',
+            processName: function(filename) {
+                var basename = path.basename(filename, '.jade');
+                // table.jade --> App.Templates.Table
+                return basename.charAt(0).toUpperCase()
+                       + basename.slice(1);
+            }
+        },
+        files: { 'build/templates.js': 'app/table/views/*.jade' }
+    }
+}</code></pre>
+            </section>
+		</section>
+		<section>
+            <section>
+                    <h2>Getting stylish</h2>
+                    <img src="images\images (1).jpg">
+                </section>
+			<section>
+				<div class="steal-logo-wr">
+                	Steal
+                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+                </div>
+                <h2 class="steal-h2">
+                	Getting stylish
+                </h2>
+                <br>
+				<div>CSS, LESS</div>
+				<br>
+				<pre><code class="javascript">steal(
+    'jquery/view/ejs',
+    {src: "steal/less", ignore: true}
+).then(
+    //styles
+    'resources/less/table.less',
+    //templates
+    'resources/views/table.ejs',
+    'resources/views/cell.ejs',
+    //scripts
+    'resources/scripts/date.js'
+).then(function($) {
+    window.Table = function() {...};
+});</code></pre>
+			</section>
+			<section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Getting Stylish</h2>
+                <br>
+                <ul>
+                    <li>LESS, SCSS, Stylus</li>
+                    <li>rework</li>
+                    <li>generate sprites, lint, compress, prettiffy</li>
+                    <li>...and more!</li>
+                </ul>
+			</section>
+		</section>
+		<section>
+			<h2>DITCH JAVASCRIPT</h2>
+             <img src="images\obama-is-in-serious-trouble-in-new-hampshire.jpg">
+            <br>
+            <ul>
+                <li>CoffeeScript</li>
+                <li>TypeScript</li>
+                <li>ClojureScript</li>
+            </ul>
+		</section>
+
+        <section>
+            <section>
+                <h2>Bonus Features</h2>
+                <img src="images\129947861_6a00d8341c630a53ef0162fe99e729970d_640wi_xlarge.jpeg">
+            </section>
+            <section>
+                <div class="steal-logo-wr">
+                	Steal
+                	<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+                </div>
+                <h2 class="steal-h2">
+                	Bonus Features
+                </h2>
+                <br>
+                <ul>
+                    <li>lazy loading</li>
+                    <li>conditional building</li>
+                </ul>
+				<pre><code class="javascript">//!steal-remove-start
+code to be removed at build
+//!steal-remove-end</code></pre>
+                <pre><code class="javascript">steal({
+    src: "app/table/table.js",
+    type: "js",
+    packaged: false,
+    unique: true,
+    ignore: false,
+    waits: false
+})</code></pre>
+            </section>
+            <section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Bonus Features</h2>
+                <br>
+                <ul>
+                    <li>grunt-contrib-*</li>
+                    <li>clean, copy, concat, compress...</li>
+                    <li>documentation, dependencies, conversion</li>
+                    <li>TDD, BDD, functional, headless envs...</li>
+                    <li>livereload</li>
+                    <li>Write your own: Grunt API</li>
+                </ul>
+            </section>
+        </section>
+		<section>
+            <section>
+                <h2>Production packaging</h2>
+                <!-- <img src="images\6a00e54fabf0ec8833010535dc9160970b-450wi.jpg"> -->
+                <img src="images\barack-obama-president-tote-bag.american-apparel-bull-denim-tote-bag.natural.w760h760.jpg" width="400" height="400">
+            </section>
+			<section>
+				<div class="steal-logo-wr">
+					Steal
+					<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+				</div>
+				<h2 class="steal-h2">
+					Production Packaging
+				</h2>
+				<pre><code class="javascript">project
+    jquery
+    steal
+    app
+        build-scripts</code></pre>
+				<div style="text-align: left">build_app.js</div>
+				<pre><code class="javascript">( function( args ) {
+    load( "steal/rhino/rhino.js" );
+    new steal.File( "Build" ).mkdir();
+    steal.build("index.html", { to: "Build", all: true });
+})();</code></pre>
+				<pre><code class="javascript">&gt; java -jar steal\rhino\js.jar -opt -1 app\build-scripts\build_app.js</code></pre>
+			</section>
+			<section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Production Packaging</h2>
+                    <div style="text-align: left;">Build</div>
+<pre><code class="javascript">grunt build</code></pre>
+                    <div style="text-align: left;">deploy &amp; publish</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="steal-logo-wr">
+					Steal
+					<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+				</div>
+				<h2 class="steal-h2">
+					PROS
+				</h2>
+
+				<br>
+				<ul>
+					<li>client-side-oriented</li>
+					<li>easy bootstrapping</li>
+					<li>encourage modularity</li>
+					<li>no additional build configuration</li>
+				</ul>
+			</section>
+			<section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Pros</h2>
+                <br>
+                <ul>
+                    <li>Versatility</li>
+                    <li>Extensibility</li>
+                    <li>Popularity</li>
+                </ul>
+			</section>
+             <section>
+                <h2>PROS</h2>
+                <img src="images\Obama_not_bad.jpg">
+            </section>
+		</section>
+		<section>
+			<section>
+				<div class="steal-logo-wr">
+					Steal
+					<div class="steal-logo">J</div><div class="steal-logo-space"></div><div class="steal-logo">S</div>
+				</div>
+				<h2 class="steal-h2">
+					CONS
+				</h2>
+				<ul>
+					<li>adding compiled langs support requires extra effort</li>
+					<li>templating interface is jQuery-dependent</li>
+					<li>current build process uses Rhino (Node.js coming) </li>
+					<li>quirks: LESS in IE dynamic style application, mandatory steal wrapper when calling steal</li>
+				</ul>
+			</section>
+			<section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Cons</h2>
+                <br>
+                <ul>
+                    <li>You have to install Node.js </li>
+                    <li>[and probably switch to a Unix-based OS]</li>
+                    <li>No guarantees about plugin quality</li>
+                </ul>
+			</section>
+            <section>
+                <h2><img src="images/grunt-logo.png" class="grunt-slide-logo">Evil Grunt Plugins</h2>
+                <br>
+                <img src="images/images.jpg"/>
+<pre><code class="javascript">options.use.forEach(function (e) {
+  var fnName = e.shift();
+  var fnArgs = e.map(function (arg) {
+    return JSON.stringify(arg);
+  }).join(', ');
+  css.use(eval(fnName + '(' + fnArgs + ')'));
+});</code></pre>
+
+            </section>
+             <section>
+                <h2>CONS</h2>
+                <img src="images\obama_facepalm-1.jpg">
+            </section>
+
+		</section>
+        <section>
+            <h2>That's it, folks</h2>
+            <img src="images\obama-thumbsx-large.jpg">
+        </section>
+	</div>
+
+
+	<script src="reveal/lib/js/head.min.js"></script>
+	<script src="reveal/js/reveal.min.js"></script>
+
+	<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'reveal/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+					]
+				});
+
+</script>
+</div>
+</body>
+</html>

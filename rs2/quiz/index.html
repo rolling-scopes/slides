@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FrontEnd Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="reveal/css/reveal.min.css">
+	<link rel="stylesheet" href="reveal/css/theme/default.css" id="theme">
+	<link rel="stylesheet" href="talk.css">
+
+	<style type="text/css">
+		.blink {
+		    -webkit-animation-duration: 1s;
+		    -webkit-animation-name: blink;
+		    -webkit-animation-iteration-count: infinite;
+		    -webkit-animation-direction: alternate;
+		    -webkit-animation-timing-function: ease-in-out;
+		}
+		@-webkit-keyframes blink {
+		    from {
+		        opacity: 1;
+		    }
+		    to {
+		        opacity: 0;
+		    }
+		}
+	</style>
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<h1 style="text-transform:none;">
+					The Weakest &lt;a&gt;
+				</h1>
+				<div>
+					<br>
+				</div>
+
+			</section>
+
+			<section>
+				<section>
+					<h2>WARM UP</h2>
+					<div>
+						<br>
+						What does console.log output?
+					</div>
+						<pre><code class="javascript">var zero = 0;
+console.log(zero == false);	</code></pre>
+				</section>
+				<section>
+					<div>
+						true
+					</div>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #1</h2>
+				<div>
+
+					<br>
+					What is <i>not</i> an HTML5 element?
+				</div>
+					<pre><code class="html">&lt;section&gt;
+&lt;header&gt;
+&lt;blink&gt;
+&lt;main&gt;
+</code></pre>
+				</section>
+				<section>
+					<div class="blink">
+						&lt;blink&gt;
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #2</h2>
+					<div>
+						<br>
+						What's the font size of div.child in pixels?
+						<pre><code class="html">&lt;div class="parent" style="font-size:20px;"&gt;
+    &lt;div class="child" style="font-size: 0.7em" &gt;hello&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+					</div>
+				</section>
+				<section>
+					<div>
+						14px
+					</div>
+				</section>
+			</section>			
+
+			<section>
+				<section>
+				<h2>Question #3</h2>
+				<div>
+					<br>
+					What's the name of the most popular vector graphics format for the Web?
+				</div>
+				</section>
+				<section>
+					<div>SVG</div>
+				</section>				
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #4</h2>
+				<div>
+					<br>
+					What does console.log output?
+				</div>
+					<pre><code class="javascript">console.log(0 === -0);
+</code></pre>
+				</section>
+				<section>
+					<div>true</div>
+				</section>
+			</section>			
+
+			<section>
+				<section>
+				<h2>Question #5</h2>
+				<div>
+					<br>
+					What does console.log output?
+				</div>
+					<pre><code class="javascript">console.log({}.toString())</code></pre>
+				</section>
+				<section>
+					<div>"[object Object]"</div>
+				</section>	
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #6</h2>
+				<div>
+					<br>
+					What HTML5 element is used for navigation link sections?
+				</div>
+				</section>
+				<section>
+					<div>&lt;nav&gt;</div>
+				</section>	
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #7</h2>
+				<div>
+					<br>
+					Rewrite the following code using the Selectors API
+					<pre><code class="javascript">var bigLinks = $('a.big');</code></pre>
+				</div>
+				</section>
+				<section>
+					<div>document.querySelectorAll('a.big')</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #8</h2>
+				<div>
+					<br>
+					How do you match just the 4th &lt;li&gt; element with a CSS selector?
+				</div>
+				<pre><code class="html">&lt;ul&gt;
+    &lt;li&gt;Robb&lt;/li&gt;
+    &lt;li&gt;Sansa&lt;/li&gt;
+    &lt;li&gt;Arya&lt;/li&gt;
+    &lt;li&gt;Brandon&lt;/li&gt;
+    &lt;li&gt;Rickon&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+				</section>
+				<section>
+					<div>li:nth-child(4)</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #9</h2>
+				<div>
+					<br>
+					What does console.log output?
+				</div>
+					<pre><code class="javascript">var result = "ten" * 2;
+console.log(result == NaN);
+</code></pre>
+				</section>
+				<section>
+					<div>false</div>
+				</section>
+			</section>			
+
+			<section>
+				<section>
+				<h2>Question #10</h2>
+				<div>
+					<br>
+					What does console.log output?
+				</div>
+					<pre><code class="javascript">var globalVar = "global";
+function test1() {
+	console.log(globalVar);
+	return;
+
+	var globalVar;
+}
+test1();
+</code></pre>
+			</section>
+			<section>
+				<div>undefined</div>
+			</section>
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #11</h2>
+				<div>
+					<br>
+					How do you match just the 4th &lt;p&gt; element with a CSS selector?
+				</div>
+				<pre><code class="html">&lt;div&gt;
+    &lt;p&gt;Robb&lt;/p&gt;
+    &lt;span&gt;Theon&lt;/span&gt;
+    &lt;p&gt;Sansa&lt;/p&gt;
+    &lt;p&gt;Arya&lt;/p&gt;
+    &lt;p&gt;Brandon&lt;/p&gt;
+    &lt;p&gt;Rickon&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+				</section>
+				<section>
+					<div>p:nth-of-type(4)</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #12</h2>
+				<div>
+					<br>
+					What does console.log output?
+				</div>
+					<pre><code class="javascript">typeof NaN</code></pre>
+				</section>
+				<section>
+					<div>"number"</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #13</h2>
+				<div>
+					<br>
+					How can you fix this code with one extra character so console.log outputs "2.00"?
+				</div>
+					<pre><code class="javascript">console.log(2.toFixed(2))</code></pre>
+				</section>
+				<section>
+					<div>add a space or a dot after 2</div>
+				</section>	
+			</section>
+
+			<section>
+				<section>
+				<h2>Question #14</h2>
+				<div>
+					<br>
+					What does console.log output?
+				</div>
+					<pre><code class="javascript">console.log(parseInt(1/0, 19))</code></pre>
+				</section>
+				<section>
+					<div>18</div>
+				</section>
+			</section>
+			
+			<section>
+				<section>
+				<h2>Question #15</h2>
+				<div>
+					<br>
+					How many questions are in this quiz?
+				</div>
+				</section>
+				<section>
+					<div>16</div>
+				</section>
+			</section>
+
+			<section>
+				<h2>THE END</h2>
+			</section>
+	</div>
+
+
+	<script src="reveal/lib/js/head.min.js"></script>
+	<script src="reveal/js/reveal.min.js"></script>
+
+	<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'reveal/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+					]
+				});
+
+</script>
+</div>
+</body>
+</html>
