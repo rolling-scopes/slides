@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Fast Websites</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<!--
+	To apply styles to the certain slides
+	set slide ID to get needed elements
+	-->
+	<style>
+		.cover h2 {
+			margin: 80px 0 0;
+			text-align: center;
+			font-size: 70px;
+		}
+		.cover p {
+			margin: 10px 0 0;
+			text-align: center;
+			font-style: italic;
+			font-size: 20px;
+		}
+
+		#cover h2 {
+			color: #FFF;
+		}
+		#cover p {
+			color: #FFF;
+		}
+
+		#rules h2 {
+			 color: #000;
+		}
+		#tools h2 {
+			color: #FFF;
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Fast Websites</h1>
+		<p>Евгений Лейченок, 21 мая 2013</p>
+	</header>
+	<section class="slide cover" id="cover"><div>
+		<h2>Fast Websites</h2>
+		<p>Евгений Лейченок, 21 мая 2013</p>
+		<img src="pictures/cover.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Задача</h2>
+		<ol>
+			<li>Пользователь должен тратить меньше времени на ожидание, чем сейчас</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>А зачем это нужно?</h2>
+		<ol>
+			<li>Чем быстрее пользователь начнёт работу - тем лучше</li>
+			<li class="next">Каждая секунда ожидания уменьшает потенциальные продажи <a href="http://www.svennerberg.com/2008/12/page-load-times-vs-conversion-rates/">[*]</a></li>
+			<li class="next">Google, скорость загрузки страниц и SEO <a href="http://blog.kissmetrics.com/speed-is-a-killer/">[*]</a></li>
+			<li class="next">Каждый запрос - DNS lookup + HTTP request + headers + 4J <a href="http://estelle.github.io/jsframeworks/">[*]</a></li>
+		</ol>
+		<p class="note"><a href="http://www.gomez.com/pdfs/wp_why_web_performance_matters.pdf">http://www.gomez.com/pdfs/wp_why_web_performance_matters.pdf</a></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>А чем мы можем помочь?</h2>
+		<figure>
+			<blockquote><p>80-90% of the end-user response time is spent on the frontend. Start there.</p></blockquote>
+			<figcaption>Steve Souders, <a href="http://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/">http://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/</a></figcaption>
+		</figure>
+	</div></section>
+	<section class="slide"><div>
+		<h2>А что почитать?</h2>
+		<ul>
+			<li><a href="http://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309">Steve Souders "High Performance Web Sites"</a></li>
+			<li><a href="http://www.amazon.com/Even-Faster-Web-Sites-Performance/dp/0596522304">Steve Souders "Even Faster Web Sites"</a></li>
+			<li><a href="http://www.amazon.com/Web-Performance-Daybook-Stoyan-Stefanov/dp/1449332919">Stoyan Stefanov "Web Performance Daybook Volume 2"</a></li>
+			<li><a href="http://www.amazon.com/Professional-Website-Performance-Optimizing-Front-End/dp/1118487524/">Peter Smith "Professional Website Performance"</a></li>
+			<li><a href="http://www.amazon.com/Performance-JavaScript-Faster-Application-Interfaces/dp/059680279X/ref=pd_sim_b_12">Nicholas Zakas "High Performance JavaScript"</a></li>
+		</ul>
+	</div></section>
+	<section class="slide cover" id="rules">
+		<h2>14 правил от Steve Souders</h2>
+		<p><a href="http://stevesouders.com/hpws/rules.php">http://stevesouders.com/hpws/rules.php</a></p>
+		<img src="pictures/rules.jpg" alt="">
+	</section>
+	<section class="slide"><div>
+		<h2>14 правил от Steve Souders...</h2>
+		<ol>
+			<li>Make Fewer HTTP Requests</li>
+			<li>Use a Content Delivery Network</li>
+			<li>Add an Expires Header</li>
+			<li>Gzip Components</li>
+			<li>Put Stylesheets at the Top</li>
+			<li>Put Scripts at the Bottom</li>
+			<li>Avoid CSS Expressions</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>...14 правил от Steve Souders</h2>
+		<ol type="1" start="7">
+			<li style="counter-increment: list 7 1;">Make JavaScript and CSS External</li>
+			<li>Reduce DNS Lookups</li>
+			<li>Minify JavaScript</li>
+			<li>Avoid Redirects</li>
+			<li>Remove Duplicated Scripts</li>
+			<li>Configure ETags</li>
+			<li>Make AJAX Cacheable</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Сжимаем JavaScript</h2>
+		<ul>
+			<li><a href="http://closure-compiler.appspot.com/home">Closure Compiler Service</a> (advanced mode)</li>
+			<li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a></li>
+			<li><a href="https://github.com/mishoo/UglifyJS">UglifyJS</a> (javascript)</li>
+			<li><a href="http://dean.edwards.name/packer/">/packer/</a></li>
+			<li><a href="http://requirejs.org/docs/optimization.html">r.js</a> (AMD)</li>
+		</ul>
+		<p>jQuery 1.9.1 - 240KB -> 91KB -> 33KB</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Сжимаем CSS</h2>
+		<ul>
+			<li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a></li>
+			<li><a href="http://requirejs.org/docs/optimization.html">r.js</a> (AMD)</li>
+			<li><a href="http://www.cssdrive.com/index.php/main/csscompressor/">CSS Compressor</a> (online)</li>
+			<li><a href="http://www.minifycss.com/css-compressor/">Minify CSS</a> (online)</li>
+			<li><a href="http://iceyboard.no-ip.org/projects/css_compressor">Robson CSS Compressor</a> (online)</li>
+			<li><a href="https://github.com/ded/sqwish">Sqwish</a> (node.js)</li>
+		</ul>
+		<p>Twitter Bootstrap 2.3.2 - 124KB -> 104KB -> 23KB</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Сжимаем графику</h2>
+		<ul>
+			<li><a href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a>, <a href="http://advsys.net/ken/util/pngout.htm">pngout</a>, <a href="http://optipng.sourceforge.net/">OptiPNG</a>, <a href="http://entropymine.com/imageworsener/">Image Worsener</a></li>
+			<li><a href="http://sylvana.net/jpegcrop/jpegtran/">jpegtran</a>, <a href="http://freecode.com/projects/jpegoptim">jpegoptim</a></li>
+			<li><a href="http://www.lcdf.org/gifsicle/">gifsicle</a></li>
+			<li><a href="http://www.smushit.com/ysmush.it/">Smush.it</a> (online)</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Сжимаем HTML</h2>
+		<ul>
+			<li><a href="https://code.google.com/p/htmlcompressor/">HtmlCompressor</a></li>
+			<li><a href="http://webmarkupmin.codeplex.com/">WebMarkupMin</a> (.NET)</li>
+			<li><a href="https://github.com/kangax/html-minifier">HTML Minifier</a></li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Сжимаем шрифты</h2>
+		<ul>
+			<li><a href="http://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel</a></li>
+		</ul>
+		<p>Komika Hand (ttf) - 54KB -> 10KB (10 символов)</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Сжали. Что дальше?</h2>
+		<ul>
+			<li>Lazy loading, contextual loading <a href="http://www.youtube.com/watch?v=Sx5GJo_14S8">[*]</a></li>
+			<li>Deferred parsing</li>
+			<li>COMET, Web Sockets</li>
+			<li>Web Workers</li>
+			<li>CSS images and fonts</li>
+			<li>Fast JavaScript & CSS <a href="http://dl.dropboxusercontent.com/u/39519/talks/cssperf/index.html">[*]</a></li>
+			<li>...</li>
+		</ul>
+	</div></section>
+	<section class="slide cover" id="tools">
+		<h2>Инструменты</h2>
+		<img src="pictures/tools.jpg" alt="">
+	</section>
+	<section class="slide"><div>
+		<h2>PageSpeed</h2>
+		<img src="pictures/pagespeed.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>YSlow</h2>
+		<img src="pictures/yslow.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Online-инструменты</h2>
+		<ul>
+			<li><a href="http://tools.pingdom.com/fpt/">Pingdom</a></li>
+			<li><a href="http://gtmetrix.com/">GTmetrix</a></li>
+			<li><a href="http://www.webpagetest.org/">WebPagetest</a></li>
+			<li>Google Analytics</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2><a href="http://httparchive.org/">HTTP Archive</a></h2>
+		<ul>
+			<li>Текущая статистика</li>
+			<li>История</li>
+			<li>Тренды</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Спасибо!</h2>
+		<ul>
+			<li>email: <a href="mailto:e.leychenok@gmail.com">e.leychenok@gmail.com</a></li>
+			<li>twitter: <a href="https://twitter.com/yleichanok">yleichanok</a></li>
+			<li>skype: <a href="callto:e.leychenok">e.leychenok</a></li>
+		</ul>
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2013 Yauheni Leichanok -->
+</body>
+</html>

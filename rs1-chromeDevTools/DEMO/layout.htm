@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+	<button onclick="add();">Add nodes</button>
+	<button onclick="add2();">Add nodes</button>
+	<div id="container"></div>
+
+	<script type="text/javascript">
+		var requiredNumberOfNodes = 1000;
+
+		function add() {
+			var containerNode = document.getElementById("container");
+			for (var i = 0; i < requiredNumberOfNodes; i++) {
+				var newNode = document.createElement("span");
+				newNode.appendChild(document.createTextNode(" span"));
+				containerNode.appendChild(newNode);
+			}
+		}
+
+		function add2() {
+			var containerNode = document.getElementById("container");
+			for (var i = 0; i < requiredNumberOfNodes; i++) {
+				var newNode = document.createElement("span");
+				newNode.appendChild(document.createTextNode(" " + containerNode.offsetWidth));
+				containerNode.appendChild(newNode);
+			}
+		//	alert(containerWidth);
+		}
+	</script>
+</body>
+</html>

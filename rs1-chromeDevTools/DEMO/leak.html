@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<button onclick="addNode();">add</button>
+<button onclick="removeNode();">remove</button>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+	var handler;
+	function addNode(){
+		handler = function(){
+			alert(myDiv.innerHTML);
+		}
+
+		var myDiv = document.createElement("div");
+		myDiv.innerHTML = "test node";
+
+		myDiv.onclick = handler;
+
+		document.getElementById("container").appendChild(myDiv);
+	}
+
+	function removeNode(){
+		document.getElementById("container").innerHTML = "";
+	}
+</script>
+</body>
+</html>
