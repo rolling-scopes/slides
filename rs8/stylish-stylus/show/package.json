@@ -1,0 +1,9 @@
+{
+	"name": "Stylish_Stylus",
+	"version": "1.0.0",
+	"devDependencies": {
+	"grunt": "~0.4.2",
+	"grunt-contrib-stylus": "0.13.0",
+	"canvas": "*"
+	}
+}

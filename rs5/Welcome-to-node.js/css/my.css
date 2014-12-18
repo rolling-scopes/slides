@@ -1,0 +1,19 @@
+.inline-image {
+    margin: 0px !important;
+    border: 0px !important;
+    box-shadow: none !important;
+	background: none !important;
+}
+.no-borders-image{
+	border: 0px !important;
+	box-shadow: none !important;
+	background: none !important;
+}
+#iframe {
+	overflow: hidden;
+	top:-412px;
+	left:-318px;
+	clip:rect(220px 600px 660px 0px);
+    /*zoom: 0.5;*/
+    /*-webkit-transform: scale(2);*/
+}

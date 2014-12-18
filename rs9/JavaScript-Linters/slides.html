@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+<style>
+  html { background-color: black; }
+  body { background-color: white; border-radius: 12px}
+  /* A section is a slide. It's size is 800x600, and this will never change */
+  section {
+      font-family: Arial, serif;
+      font-size: 20pt;
+    }
+  address, blockquote, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, ol, p, pre, table, ul, dl { padding: 10px 20px 10px 20px; }
+  h1, h2, h3 {
+    text-align: center;
+    margin: 10pt 10pt 20pt 10pt;
+  }
+  ul, ol {
+    margin: 10px 10px 10px 50px;
+  }
+  section.titleslide h1 { margin-top: 200px; }
+  h1.title { margin-top: 150px; }
+  h1 { font-size: 180%; }
+  h2 { font-size: 120%; }
+  h3 { font-size: 100%; }
+  q { quotes: "“" "”" "‘" "’"; }
+  blockquote { font-style: italic }
+  /* Figures are displayed full-page, with the caption on
+     top of the image/video */
+  figure {
+    background-color: black;
+  }
+  figcaption {
+    margin: 70px;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+  }
+
+  /* Transition effect */
+  /* Feel free to change the transition effect for original
+     animations. See here:
+     https://developer.mozilla.org/en/CSS/CSS_transitions
+     How to use CSS3 Transitions: */
+  section {
+      -moz-transition: left 400ms linear 0s;
+      -webkit-transition: left 400ms linear 0s;
+      -ms-transition: left 400ms linear 0s;
+      transition: left 400ms linear 0s;
+  }
+
+  /* Before */
+  section { left: -150%; }
+  /* Now */
+  section[aria-selected] { left: 0; }
+  /* After */
+  section[aria-selected] ~ section { left: +150%; }
+
+  /* Incremental elements */
+
+  /* By default, visible */
+  .incremental > * { opacity: 1; }
+
+  /* The current item */
+  .incremental > *[aria-selected] { color: red; opacity: 1; }
+
+  /* The items to-be-selected */
+  .incremental > *[aria-selected] ~ * { opacity: 0.2; }
+</style>
+</head>
+<body>
+<section id="javascript-linters" class="slide level1">
+<h1>JavaScript Linters</h1>
+</section>
+<section id="linting" class="slide level1">
+<h1>Linting</h1>
+<p>Syntax validation to eliminate suspicious code and violations of code style.</p>
+</section>
+<section class="slide level1">
+
+<figure>
+<img src="crock.png" />
+</figure>
+</section>
+<section id="suspicious-code-bugs-potentially" class="slide level1">
+<h1>Suspicious code (bugs potentially)</h1>
+<p>Undefined variables</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>() {
+    <span class="kw">return</span> foo;
+}</code></pre>
+</section>
+<section id="suspicious-code-bugs-potentially-1" class="slide level1">
+<h1>Suspicious code (bugs potentially)</h1>
+<p>Lack of brackets</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">if</span> (someVal)
+    someVal += otherVal;
+    someVal++;
+    <span class="kw">return</span> someVal;    </code></pre>
+</section>
+<section id="code-style" class="slide level1">
+<h1>Code Style</h1>
+<p>Invalid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">BAD_func</span> (b , c){ 
+      <span class="kw">var</span> a = <span class="dv">3333</span>
+    <span class="kw">return</span> a;
+  }</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">goodFunc</span>(b, c) { 
+    <span class="kw">var</span> a = <span class="dv">3333</span>;
+    <span class="kw">return</span> a;
+}</code></pre>
+</section>
+<section id="jslint" class="slide level1">
+<h1><a href="http://jslint.com/" title="JSLint">JSLint</a></h1>
+<ul>
+<li>http://jslint.com</li>
+<li>© Douglas Crockford, 2002</li>
+<li>enforcing &quot;The Good Parts&quot;</li>
+</ul>
+<figure>
+<img src="jslint.png" />
+</figure>
+</section>
+<section id="jshint" class="slide level1">
+<h1><a href="http://jshint.org/" title="JSHint">JSHint</a></h1>
+<ul>
+<li>http://jshint.org</li>
+<li>© Anton Kovalyov, 2010</li>
+<li>more configurable, less strict by default</li>
+</ul>
+<figure>
+<img src="jshint.png" />
+</figure>
+</section>
+<section id="how-to-use" class="slide level1">
+<h1>How to use</h1>
+<ul>
+<li>CLI application <code>jshint file.js</code></li>
+<li>config file <code>.jshintrc</code>, JSON with comments</li>
+</ul>
+</section>
+<section id="jshintrc" class="slide level1">
+<h1>.jshintrc</h1>
+<ul>
+<li>rules (boolean or string)</li>
+<li>environments (browser, node, etc.)</li>
+<li>globals</li>
+</ul>
+<pre class="sourceCode json"><code class="sourceCode json">{
+    <span class="dt">&quot;bitwise&quot;</span>       : <span class="dv">true</span>,
+    <span class="dt">&quot;camelcase&quot;</span>     : <span class="dv">true</span>, 
+    <span class="dt">&quot;quotmark&quot;</span>      : <span class="st">&quot;single&quot;</span>,
+
+    <span class="dt">&quot;node&quot;</span>: <span class="dv">true</span>,
+
+    <span class="dt">&quot;globals&quot;</span>: {
+        <span class="dt">&quot;foo&quot;</span>: <span class="dv">true</span>,
+        <span class="dt">&quot;bar&quot;</span>: <span class="dv">false</span> <span class="er">//</span> <span class="er">readonly</span>
+    }
+}</code></pre>
+</section>
+<section id="configuration-per-file" class="slide level1">
+<h1>Configuration per file</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">/*globals foo: false, baz: false */</span>
+<span class="co">/*jshint camelcase: false */</span>
+
+<span class="kw">var</span> bar = <span class="dv">444</span>;
+
+<span class="co">/* jshint ignore:start */</span>
+foo = <span class="dv">777</span>;
+<span class="kw">var</span> FooBar = <span class="dv">888</span>;
+<span class="co">/* jshint ignore:end */</span></code></pre>
+</section>
+<section id="output" class="slide level1">
+<h1>Output</h1>
+<ul>
+<li>list of errors</li>
+<li>line and position of error, description</li>
+<li>different formats (human readable, JSON, XML, etc.)</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> foo = <span class="kw">function</span>() {
+    <span class="kw">return</span> a;
+};</code></pre>
+<pre><code>jshint example.js</code></pre>
+<pre><code>example1.js: line 2, col 5, Missing &quot;use strict&quot; statement.
+example1.js: line 2, col 12, &#39;a&#39; is not defined.
+example1.js: line 1, col 8, &#39;foo&#39; is defined but never used.
+
+3 errors</code></pre>
+</section>
+<section id="favorite-rules" class="slide level1">
+<h1>Favorite rules</h1>
+</section>
+<section class="slide level1">
+
+<h3 id="undef-require-all-non-global-variables-to-be-declared-prevents-global-leaks"><code>undef</code> Require all non-global variables to be declared (prevents global leaks)</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>() {
+    <span class="kw">return</span> foo;
+}</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">good</span>() {
+    <span class="kw">var</span> foo;
+    <span class="kw">return</span> foo;
+}</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="unused-require-all-defined-variables-be-used"><code>unused</code> Require all defined variables be used</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>(baz) {
+    <span class="kw">var</span> foo = <span class="dv">5</span>;
+    <span class="kw">return</span> foo;
+}</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">good</span>() {
+    <span class="kw">var</span> foo = <span class="dv">5</span>;
+    <span class="kw">return</span> foo;
+}</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="asi-require-semicolons"><code>asi</code> Require semicolons</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>(baz) {
+    <span class="kw">var</span> foo = <span class="dv">5</span>
+    <span class="kw">return</span> foo
+}</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">good</span>() {
+    <span class="kw">var</span> foo = <span class="dv">5</span>;
+    <span class="kw">return</span> foo;
+}</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="curly-require-for-every-new-block-or-scope"><code>curly</code> Require {} for every new block or scope</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>(baz) {
+    <span class="kw">if</span> (baz &gt; <span class="dv">5</span>)
+        <span class="kw">return</span> baz;
+    <span class="kw">return</span> <span class="dv">10</span>;
+}</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">good</span>() {
+    <span class="kw">if</span> (baz &gt; <span class="dv">5</span>) {
+        <span class="kw">return</span> baz;
+    }
+    <span class="kw">return</span> <span class="dv">10</span>;
+}</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="newcap-require-capitalization-of-all-constructor-functions"><code>newcap</code> Require capitalization of all constructor functions</h3>
+<h3 id="camelcase-identifiers-must-be-in-camelcase"><code>camelcase</code> Identifiers must be in camelCase</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> my_bar = <span class="kw">new</span> <span class="fu">bar</span>();</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> myBar = <span class="kw">new</span> <span class="fu">Bar</span>();</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="indent-spaces-to-indent"><code>indent</code> Spaces to indent</h3>
+<h3 id="quotmark-quotation-mark"><code>quotmark</code> Quotation mark</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>(){
+<span class="kw">return</span> <span class="st">&#39;foo&#39;</span> + <span class="st">&quot;bar&quot;</span>;
+}</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">bad</span>(){
+    <span class="kw">return</span> <span class="st">&#39;foo&#39;</span> + <span class="st">&#39;bar&#39;</span>;
+}</code></pre>
+</section>
+<section id="under-the-trunk" class="slide level1">
+<h1>Under the trunk</h1>
+<ul>
+<li>tokenize JavaScript</li>
+</ul>
+</section>
+<section id="jshint-3.0" class="slide level1">
+<h1>JSHint 3.0</h1>
+<ul>
+<li>more modular</li>
+<li>user rules</li>
+<li>get rid of code style checking</li>
+</ul>
+</section>
+<section id="enter-esprima" class="slide level1">
+<h1>Enter <a href="http://esprima.org/" title="Esprima">Esprima</a></h1>
+</section>
+<section id="eslint" class="slide level1">
+<h1><a href="http://eslint.org/" title="ESLint">ESLint</a></h1>
+<ul>
+<li>http://eslint.org</li>
+<li>working with AST</li>
+<li>more sofisticated and complex rules</li>
+<li>more robust alert levels (ignore, warning or error)</li>
+<li>99% rules of <a href="http://jshint.org/" title="JSHint">JSHint</a></li>
+<li>each rule in separate file</li>
+<li>environments with globals and rules</li>
+<li>user can write own rules</li>
+</ul>
+<figure>
+<img src="eslint.png" />
+</figure>
+</section>
+<section id="same-configuration-as-jshint" class="slide level1">
+<h1>Same configuration as <a href="http://jshint.org/" title="JSHint">JSHint</a></h1>
+<ul>
+<li><code>.eslintrc</code> (JSON or YAML)</li>
+<li><code>/*eslint ... */</code></li>
+</ul>
+</section>
+<section id="favorite-rules-1" class="slide level1">
+<h1>Favorite rules</h1>
+</section>
+<section class="slide level1">
+
+<h3 id="no-dupe-keys-disallow-duplicate-keys"><code>no-dupe-keys</code> Disallow duplicate keys</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> foo = {
+    <span class="dt">bar</span>: <span class="st">&quot;baz&quot;</span>,
+    <span class="dt">bar</span>: <span class="st">&quot;qux&quot;</span>
+};</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> foo = {
+    <span class="dt">bar</span>: <span class="st">&quot;baz&quot;</span>
+};</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="block-scoped-vars-threat-var-as-block-scoped"><code>block-scoped-vars</code> Threat var as block scoped</h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">doSomething</span>(a) {
+    <span class="kw">if</span> (a) {
+        <span class="kw">var</span> build = <span class="kw">true</span>;
+    }
+    <span class="ot">console</span>.<span class="fu">log</span>(build);
+}</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">doSomething</span>(a) {
+    <span class="kw">var</span> build;
+    <span class="kw">if</span> (a) {
+        build = <span class="kw">true</span>;
+    }
+    <span class="ot">console</span>.<span class="fu">log</span>(build);
+}</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="consistent-this-require-consistent-this"><code>consistent-this</code> Require consistent <code>this</code></h3>
+<pre><code>&quot;consistent-this&quot;: [2, &quot;self&quot;]</code></pre>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> that = <span class="kw">this</span>;</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> self = <span class="kw">this</span>;</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="func-style-enforce-function-style"><code>func-style</code> Enforce function style</h3>
+<pre><code>&quot;func-style&quot;: [2, &quot;expression&quot;]</code></pre>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">foo</span>(){};</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> foo = <span class="kw">function</span>(){};</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="radix-require-radix-for-parseint"><code>radix</code> require radix for <code>parseInt</code></h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> a = <span class="fu">parseInt</span>(<span class="st">&quot;055&quot;</span>);</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> a = <span class="fu">parseInt</span>(<span class="st">&quot;055&quot;</span>, <span class="dv">10</span>);</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="semi-can-enforce-absent-of-semi"><code>semi</code> can enforce absent of semi</h3>
+<pre><code>semi: [2, &quot;never&quot;]</code></pre>
+</section>
+<section id="drawbacks" class="slide level1">
+<h1>Drawbacks</h1>
+<ul>
+<li>still in-dev</li>
+<li>does not support ES6+ (will be 0.5.0)</li>
+<li>a bit slow (5x <a href="http://jshint.org/" title="JSHint">JSHint</a>)</li>
+</ul>
+</section>
+<section id="jscs" class="slide level1">
+<h1><a href="https://github.com/mdevils/node-jscs" title="JSCS">JSCS</a></h1>
+<ul>
+<li>https://github.com/mdevils/node-jscs</li>
+<li>JavaScript Code Style checker</li>
+<li>based on Esprima</li>
+</ul>
+</section>
+<section id="favorite-rules-2" class="slide level1">
+<h1>Favorite rules</h1>
+</section>
+<section class="slide level1">
+
+<h3 id="disallowimplicittypeconversion"><code>disallowImplicitTypeConversion</code></h3>
+<p>Not valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> a = !!someVar;
+<span class="kw">var</span> b = +someInt;
+<span class="kw">var</span> c = <span class="st">&#39;&#39;</span> + someStr;</code></pre>
+<p>Valid</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> a = <span class="fu">Boolean</span>(someVar);
+<span class="kw">var</span> b = <span class="fu">Integer</span>(someInt);
+<span class="kw">var</span> c = <span class="fu">String</span>(someStr);</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="requirecurlybraces-requires-curly-braces-after-statements"><code>requireCurlyBraces</code> Requires curly braces after statements</h3>
+<pre class="sourceCode json"><code class="sourceCode json">{
+    <span class="dt">&quot;requireCurlyBraces&quot;</span>: [
+        <span class="st">&quot;if&quot;</span>,
+        <span class="st">&quot;else&quot;</span>,
+        <span class="st">&quot;for&quot;</span>,
+        <span class="st">&quot;while&quot;</span>,
+        <span class="st">&quot;do&quot;</span>,
+        <span class="st">&quot;try&quot;</span>,
+        <span class="st">&quot;catch&quot;</span>
+    ]
+}</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="requirespaceafterkeywords-disallowspaceafterkeywords"><code>requireSpaceAfterKeywords</code>, <code>disallowSpaceAfterKeywords</code></h3>
+<pre class="sourceCode json"><code class="sourceCode json">{
+    <span class="dt">&quot;requireSpaceAfterKeywords&quot;</span>: [
+        <span class="st">&quot;if&quot;</span>,
+        <span class="st">&quot;else&quot;</span>,
+        <span class="st">&quot;for&quot;</span>,
+        <span class="st">&quot;while&quot;</span>,
+        <span class="st">&quot;do&quot;</span>,
+        <span class="st">&quot;switch&quot;</span>,
+        <span class="st">&quot;return&quot;</span>,
+        <span class="st">&quot;try&quot;</span>,
+        <span class="st">&quot;catch&quot;</span>,
+        <span class="st">&quot;case&quot;</span>
+    ],
+    <span class="dt">&quot;disallowSpaceAfterKeywords&quot;</span>: [
+        <span class="st">&quot;default&quot;</span>
+    ]
+}</code></pre>
+</section>
+<section id="all-code-style" class="slide level1">
+<h1>All code style</h1>
+<ul>
+<li><code>validateLineBreaks</code></li>
+<li><code>validateQuoteMarks</code></li>
+<li><code>validateIndentation</code></li>
+<li><code>disallowMixedSpacesAndTabs</code></li>
+<li><code>disallowTrailingWhitespace</code></li>
+</ul>
+</section>
+<section id="integration-when-cli-is-not-enough" class="slide level1">
+<h1>Integration (when CLI is not enough)</h1>
+</section>
+<section id="editors" class="slide level1">
+<h1>Editors</h1>
+</section>
+<section id="sublimelinter" class="slide level1">
+<h1>SublimeLinter</h1>
+<figure>
+<img src="sublimelinter.png" />
+</figure>
+</section>
+<section id="and-all-other-editors" class="slide level1">
+<h1>...and all other editors</h1>
+</section>
+<section id="ci" class="slide level1">
+<h1>CI</h1>
+<ul>
+<li>before/after testing</li>
+<li>gulp, Grunt, etc.</li>
+</ul>
+</section>
+<section id="computer-fix-my-code" class="slide level1">
+<h1>Computer, fix my code</h1>
+<figure>
+<img src="fixit.jpg" />
+</figure>
+</section>
+<section id="editorconfig" class="slide level1">
+<h1><a href="http://editorconfig.org">EditorConfig</a></h1>
+<ul>
+<li>http://editorconfig.org</li>
+<li>simple format</li>
+<li>claims to become a standard</li>
+<li>file <code>.editorconfig</code> for project and plugins for almost all IDEs</li>
+</ul>
+<figure>
+<img src="editorconfig.png" />
+</figure>
+</section>
+<section id="favorite-options" class="slide level1">
+<h1>Favorite options</h1>
+<pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">root </span><span class="ot">=</span><span class="st"> </span><span class="kw">true</span>
+
+<span class="kw">[*]</span>
+<span class="dt">indent_style </span><span class="ot">=</span><span class="st"> space</span>
+<span class="dt">indent_size </span><span class="ot">=</span><span class="st"> </span><span class="dv">4</span>
+<span class="dt">end_of_line </span><span class="ot">=</span><span class="st"> lf</span>
+<span class="dt">charset </span><span class="ot">=</span><span class="st"> utf</span><span class="dv">-8</span>
+<span class="dt">trim_trailing_whitespace </span><span class="ot">=</span><span class="st"> </span><span class="kw">true</span>
+<span class="dt">insert_final_newline </span><span class="ot">=</span><span class="st"> </span><span class="kw">true</span>
+
+<span class="kw">[*.{md,jade}]</span>
+<span class="dt">trim_trailing_whitespace </span><span class="ot">=</span><span class="st"> </span><span class="kw">false</span></code></pre>
+</section>
+<section id="javascript-formatters" class="slide level1">
+<h1>JavaScript Formatters</h1>
+</section>
+<section id="js-beautifier" class="slide level1">
+<h1><a href="http://jsbeautifier.org">JS Beautifier</a></h1>
+<ul>
+<li>http://jsbeautifier.org</li>
+<li>whitespaces and newlines</li>
+<li>based on tokens</li>
+<li>stable, in general</li>
+<li>not very configurable :(</li>
+</ul>
+</section>
+<section id="favorite-rules-3" class="slide level1">
+<h1>Favorite rules</h1>
+<pre class="sourceCode json"><code class="sourceCode json">{    
+    <span class="dt">&quot;indent_size&quot;</span>: <span class="dv">4</span>,
+    <span class="dt">&quot;indent_char&quot;</span>: <span class="st">&quot; &quot;</span>,
+    <span class="dt">&quot;indent_level&quot;</span>: <span class="dv">0</span>,
+
+    <span class="dt">&quot;preserve_newlines&quot;</span>: <span class="dv">true</span>,
+    <span class="dt">&quot;max_preserve_newlines&quot;</span>: <span class="dv">2</span>,
+
+    <span class="dt">&quot;jslint_happy&quot;</span>: <span class="dv">false</span>,
+    <span class="dt">&quot;brace_style&quot;</span>: <span class="st">&quot;collapse&quot;</span>,
+
+    <span class="dt">&quot;keep_array_indentation&quot;</span>: <span class="dv">false</span>,
+    <span class="dt">&quot;keep_function_indentation&quot;</span>: <span class="dv">false</span>,
+    <span class="dt">&quot;space_before_conditional&quot;</span>: <span class="dv">true</span>,
+    <span class="dt">&quot;space_in_paren&quot;</span>: <span class="dv">false</span>,
+}</code></pre>
+</section>
+<section id="example" class="slide level1">
+<h1>Example</h1>
+<p>Before</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> a   = <span class="dv">33</span>;
+<span class="kw">var</span> obj = { <span class="dt">a </span>:  <span class="dv">33</span>,
+    <span class="dt">b</span>: <span class="st">&quot;bzzz&quot;</span>
+    };
+<span class="kw">if</span>(a&gt;<span class="dv">3</span>){<span class="ot">console</span>.<span class="fu">log</span>( a);}</code></pre>
+<p>After</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> a = <span class="dv">33</span>;
+<span class="kw">var</span> obj = {
+    <span class="dt">a</span>: <span class="dv">33</span>,
+    <span class="dt">b</span>: <span class="st">&quot;bzzz&quot;</span>
+};
+<span class="kw">if</span> (a &gt; <span class="dv">3</span>) {
+    <span class="ot">console</span>.<span class="fu">log</span>(a);
+}</code></pre>
+</section>
+<section id="esformatter" class="slide level1">
+<h1><a href="https://github.com/millermedeiros/esformatter">ESFormatter</a></h1>
+<ul>
+<li>https://github.com/millermedeiros/esformatter</li>
+<li>whitespaces and newlines (planning semicolons)</li>
+<li>based on Esprima</li>
+<li>seems configurable</li>
+<li>early and unstable :(</li>
+</ul>
+</section>
+<section id="rules" class="slide level1">
+<h1>Rules</h1>
+<pre class="sourceCode json"><code class="sourceCode json">{
+    <span class="dt">&quot;lineBreak&quot;</span>: {
+        <span class="dt">&quot;before&quot;</span>: {
+            <span class="dt">&quot;AssignmentExpression&quot;</span>: <span class="dv">1</span>,
+            <span class="dt">&quot;BlockStatement&quot;</span>: <span class="dv">0</span>
+            <span class="er">//</span> <span class="er">....</span>
+        },
+        <span class="dt">&quot;after&quot;</span>: {
+            <span class="dt">&quot;AssignmentExpression&quot;</span>: <span class="dv">1</span>,
+            <span class="dt">&quot;BlockStatement&quot;</span>: <span class="dv">1</span>
+            <span class="er">//</span> <span class="er">....</span>
+        }
+    },
+    <span class="dt">&quot;whitespace&quot;</span>: {
+        <span class="dt">&quot;before&quot;</span>: {
+            <span class="dt">&quot;ArrayExpressionOpening&quot;</span>: <span class="dv">0</span>,
+            <span class="dt">&quot;ArrayExpressionClosing&quot;</span>: <span class="dv">0</span>,
+            <span class="er">//</span> <span class="er">...</span>
+        },
+        <span class="dt">&quot;after&quot;</span>: {
+            <span class="dt">&quot;ArrayExpressionOpening&quot;</span>: <span class="dv">2</span>,
+            <span class="dt">&quot;ArrayExpressionClosing&quot;</span>: <span class="dv">0</span>,
+            <span class="er">//</span> <span class="er">...</span>
+        }
+    }
+}</code></pre>
+</section>
+<section id="example-1" class="slide level1">
+<h1>Example</h1>
+<p>Before</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">Q
+    .<span class="fu">when</span>(<span class="fu">doSomething</span>())
+    .<span class="fu">then</span>(<span class="kw">function</span>() {
+        <span class="kw">return</span> <span class="dv">333</span>;
+    });</code></pre>
+<p>After</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">Q
+    .<span class="fu">when</span>(<span class="fu">doSomething</span>())
+    .<span class="fu">then</span>(<span class="kw">function</span>() {
+    <span class="kw">return</span> <span class="dv">333</span>;
+});</code></pre>
+</section>
+<section id="integration" class="slide level1">
+<h1>Integration</h1>
+<ul>
+<li>same as linting</li>
+<li>but better diff than replace</li>
+</ul>
+</section>
+<section id="plan-to-follow" class="slide level1">
+<h1>Plan to follow</h1>
+<ol type="1">
+<li>Install <a href="http://editorconfig.org">EditorConfig</a></li>
+<li>Install your favorite linters and add them to your favorite editor</li>
+<li>Try to lint your existing code</li>
+<li>Play with settings</li>
+<li>Try to install and configure formatters</li>
+</ol>
+</section>
+<section id="quick-way" class="slide level1">
+<h1>Quick way</h1>
+<pre><code>$ npm install -g generator-linters</code></pre>
+</section>
+<section id="thank-you" class="slide level1">
+<h1>Thank you!</h1>
+</section>
+<!-- {{{{ dzslides core
+#
+#
+#     __  __  __       .  __   ___  __
+#    |  \  / /__` |    | |  \ |__  /__`
+#    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+#
+#
+# The following block of code is not supposed to be edited.
+# But if you want to change the behavior of these slides,
+# feel free to hack it!
+#
+-->
+
+<div id="progress-bar"></div>
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  details { display: none; }
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto; }
+  html { overflow: hidden; }
+  body { display: none; }
+  body.loaded { display: block; }
+  .incremental {visibility: hidden; }
+  .incremental[active] {visibility: visible; }
+  #progress-bar{
+    bottom: 0;
+    position: absolute;
+    -moz-transition: width 400ms linear 0s;
+    -webkit-transition: width 400ms linear 0s;
+    -ms-transition: width 400ms linear 0s;
+    transition: width 400ms linear 0s;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+  }
+  figure > * {
+    position: absolute;
+  }
+  figure > img, figure > video {
+    width: 100%; height: 100%;
+  }
+</style>
+
+<script>
+  var Dz = {
+    remoteWindows: [],
+    idx: -1,
+    step: 0,
+    slides: null,
+    progressBar : null,
+    params: {
+      autoplay: "1"
+    }
+  };
+
+  Dz.init = function() {
+    document.body.className = "loaded";
+    this.slides = $$("body > section");
+    this.progressBar = $("#progress-bar");
+    this.setupParams();
+    this.onhashchange();
+    this.setupTouchEvents();
+    this.onresize();
+  }
+  
+  Dz.setupParams = function() {
+    var p = window.location.search.substr(1).split('&');
+    p.forEach(function(e, i, a) {
+      var keyVal = e.split('=');
+      Dz.params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+    });
+  // Specific params handling
+    if (!+this.params.autoplay)
+      $$.forEach($$("video"), function(v){ v.controls = true });
+  }
+
+  Dz.onkeydown = function(aEvent) {
+    // Don't intercept keyboard shortcuts
+    if (aEvent.altKey
+      || aEvent.ctrlKey
+      || aEvent.metaKey
+      || aEvent.shiftKey) {
+      return;
+    }
+    if ( aEvent.keyCode == 37 // left arrow
+      || aEvent.keyCode == 38 // up arrow
+      || aEvent.keyCode == 33 // page up
+    ) {
+      aEvent.preventDefault();
+      this.back();
+    }
+    if ( aEvent.keyCode == 39 // right arrow
+      || aEvent.keyCode == 40 // down arrow
+      || aEvent.keyCode == 34 // page down
+    ) {
+      aEvent.preventDefault();
+      this.forward();
+    }
+    if (aEvent.keyCode == 35) { // end
+      aEvent.preventDefault();
+      this.goEnd();
+    }
+    if (aEvent.keyCode == 36) { // home
+      aEvent.preventDefault();
+      this.goStart();
+    }
+    if (aEvent.keyCode == 32) { // space
+      aEvent.preventDefault();
+      this.toggleContent();
+    }
+    if (aEvent.keyCode == 70) { // f
+      aEvent.preventDefault();
+      this.goFullscreen();
+    }
+  }
+
+  /* Touch Events */
+
+  Dz.setupTouchEvents = function() {
+    var orgX, newX;
+    var tracking = false;
+
+    var db = document.body;
+    db.addEventListener("touchstart", start.bind(this), false);
+    db.addEventListener("touchmove", move.bind(this), false);
+
+    function start(aEvent) {
+      aEvent.preventDefault();
+      tracking = true;
+      orgX = aEvent.changedTouches[0].pageX;
+    }
+
+    function move(aEvent) {
+      if (!tracking) return;
+      newX = aEvent.changedTouches[0].pageX;
+      if (orgX - newX > 100) {
+        tracking = false;
+        this.forward();
+      } else {
+        if (orgX - newX < -100) {
+          tracking = false;
+          this.back();
+        }
+      }
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  Dz.onresize = function() {
+    var db = document.body;
+    var sx = db.clientWidth / window.innerWidth;
+    var sy = db.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+
+    db.style.MozTransform = transform;
+    db.style.WebkitTransform = transform;
+    db.style.OTransform = transform;
+    db.style.msTransform = transform;
+    db.style.transform = transform;
+  }
+
+
+  Dz.getDetails = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var d = s.$("details");
+    return d ? d.innerHTML : "";
+  }
+
+  Dz.onmessage = function(aEvent) {
+    var argv = aEvent.data.split(" "), argc = argv.length;
+    argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
+    var win = aEvent.source;
+    if (argv[0] === "REGISTER" && argc === 1) {
+      this.remoteWindows.push(win);
+      this.postMsg(win, "REGISTERED", document.title, this.slides.length);
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+      return;
+    }
+    if (argv[0] === "BACK" && argc === 1)
+      this.back();
+    if (argv[0] === "FORWARD" && argc === 1)
+      this.forward();
+    if (argv[0] === "START" && argc === 1)
+      this.goStart();
+    if (argv[0] === "END" && argc === 1)
+      this.goEnd();
+    if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
+      this.toggleContent();
+    if (argv[0] === "SET_CURSOR" && argc === 2)
+      window.location.hash = "#" + argv[1];
+    if (argv[0] === "GET_CURSOR" && argc === 1)
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+    if (argv[0] === "GET_NOTES" && argc === 1)
+      this.postMsg(win, "NOTES", this.getDetails(this.idx));
+  }
+
+  Dz.toggleContent = function() {
+    // If a Video is present in this new slide, play it.
+    // If a Video is present in the previous slide, stop it.
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$("video");
+      if (video) {
+        if (video.ended || video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Dz.setCursor = function(aIdx, aStep) {
+    // If the user change the slide number in the URL bar, jump
+    // to this slide.
+    aStep = (aStep != 0 && typeof aStep !== "undefined") ? "." + aStep : ".0";
+    window.location.hash = "#" + aIdx + aStep;
+  }
+
+  Dz.onhashchange = function() {
+    var cursor = window.location.hash.split("#"),
+        newidx = 1,
+        newstep = 0;
+    if (cursor.length == 2) {
+      newidx = ~~cursor[1].split(".")[0];
+      newstep = ~~cursor[1].split(".")[1];
+      if (newstep > Dz.slides[newidx - 1].$$('.incremental > *').length) {
+        newstep = 0;
+        newidx++;
+      }
+    }
+    this.setProgress(newidx, newstep);
+    if (newidx != this.idx) {
+      this.setSlide(newidx);
+    }
+    if (newstep != this.step) {
+      this.setIncremental(newstep);
+    }
+    for (var i = 0; i < this.remoteWindows.length; i++) {
+      this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
+    }
+  }
+
+  Dz.back = function() {
+    if (this.idx == 1 && this.step == 0) {
+      return;
+    }
+    if (this.step == 0) {
+      this.setCursor(this.idx - 1,
+                     this.slides[this.idx - 2].$$('.incremental > *').length);
+    } else {
+      this.setCursor(this.idx, this.step - 1);
+    }
+  }
+
+  Dz.forward = function() {
+    if (this.idx >= this.slides.length &&
+        this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+        return;
+    }
+    if (this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+      this.setCursor(this.idx + 1, 0);
+    } else {
+      this.setCursor(this.idx, this.step + 1);
+    }
+  }
+
+  Dz.goStart = function() {
+    this.setCursor(1, 0);
+  }
+
+  Dz.goEnd = function() {
+    var lastIdx = this.slides.length;
+    var lastStep = this.slides[lastIdx - 1].$$('.incremental > *').length;
+    this.setCursor(lastIdx, lastStep);
+  }
+
+  Dz.setSlide = function(aIdx) {
+    this.idx = aIdx;
+    var old = $("section[aria-selected]");
+    var next = $("section:nth-of-type("+ this.idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.$("video");
+      if (video) {
+        video.pause();
+      }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.$("video");
+      if (video && !!+this.params.autoplay) {
+        video.play();
+      }
+    } else {
+      // That should not happen
+      this.idx = -1;
+      // console.warn("Slide doesn't exist.");
+    }
+  }
+
+  Dz.setIncremental = function(aStep) {
+    this.step = aStep;
+    var old = this.slides[this.idx - 1].$('.incremental > *[aria-selected]');
+    if (old) {
+      old.removeAttribute('aria-selected');
+    }
+    var incrementals = $$('.incremental');
+    if (this.step <= 0) {
+      $$.forEach(incrementals, function(aNode) {
+        aNode.removeAttribute('active');
+      });
+      return;
+    }
+    var next = this.slides[this.idx - 1].$$('.incremental > *')[this.step - 1];
+    if (next) {
+      next.setAttribute('aria-selected', true);
+      next.parentNode.setAttribute('active', true);
+      var found = false;
+      $$.forEach(incrementals, function(aNode) {
+        if (aNode != next.parentNode)
+          if (found)
+            aNode.removeAttribute('active');
+          else
+            aNode.setAttribute('active', true);
+        else
+          found = true;
+      });
+    } else {
+      setCursor(this.idx, 0);
+    }
+    return next;
+  }
+
+  Dz.goFullscreen = function() {
+    var html = $('html'),
+        requestFullscreen = html.requestFullscreen || html.requestFullScreen || html.mozRequestFullScreen || html.webkitRequestFullScreen;
+    if (requestFullscreen) {
+      requestFullscreen.apply(html);
+    }
+  }
+  
+  Dz.setProgress = function(aIdx, aStep) {
+    var slide = $("section:nth-of-type("+ aIdx +")");
+    if (!slide)
+      return;
+    var steps = slide.$$('.incremental > *').length + 1,
+        slideSize = 100 / (this.slides.length - 1),
+        stepSize = slideSize / steps;
+    this.progressBar.style.width = ((aIdx - 1) * slideSize + aStep * stepSize) + '%';
+  }
+  
+  Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
+    aMsg = [aMsg];
+    for (var i = 2; i < arguments.length; i++)
+      aMsg.push(encodeURIComponent(arguments[i]));
+    aWin.postMessage(aMsg.join(" "), "*");
+  }
+  
+  function init() {
+    Dz.init();
+    window.onkeydown = Dz.onkeydown.bind(Dz);
+    window.onresize = Dz.onresize.bind(Dz);
+    window.onhashchange = Dz.onhashchange.bind(Dz);
+    window.onmessage = Dz.onmessage.bind(Dz);
+  }
+
+  window.onload = init;
+</script>
+
+
+<script> // Helpers
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      // closest thing possible to the ECMAScript 5 internal IsCallable
+      // function 
+      if (typeof this !== "function")
+      throw new TypeError(
+        "Function.prototype.bind - what is trying to be fBound is not callable"
+      );
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply( this instanceof fNOP ? this : oThis || window,
+                   aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+  var $ = (HTMLElement.prototype.$ = function(aQuery) {
+    return this.querySelector(aQuery);
+  }).bind(document);
+
+  var $$ = (HTMLElement.prototype.$$ = function(aQuery) {
+    return this.querySelectorAll(aQuery);
+  }).bind(document);
+
+  $$.forEach = function(nodeList, fun) {
+    Array.prototype.forEach.call(nodeList, fun);
+  }
+
+</script>
+<!-- vim: set fdm=marker: }}} -->
+</body>
+</html>

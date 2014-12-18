@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Welcome to Node.js</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/my.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Welcome to NODE.JS</h1>
+					
+					<p>
+						<small>Created by Kirill Kukhovets, specially for RS#5</small>
+					</p>
+					<img class="no-borders-image" src="images/node-logo.png">
+				</section>
+
+				<section>
+					<h2>What is NODE.JS?</h2>
+					<img width="464" height="200" src="images/wtf.png" alt="WTF">
+					<ul>
+						<li>Chrome's JavaScript runtime</li>
+						<li>C/C++</li>
+						<li>special I/O libs(Sockets, filesystem etc.)</li>
+						<li>non-blocking I/O model</li>
+					</ul>
+					<br/>
+					<br/>
+					<p><i>"to provide a purely evented, non-blocking infrastructure to script highly concurrent programs"</i></p>
+					<br/>
+					<p><strong>Ryan Dahl</strong><p>
+				</section>
+				<section>
+					<h2>What is NODE.JS?</h2>
+					<img src="images/nodejs_architecture.jpg">
+				</section>
+				<section>
+					<h2>Q: JS on server? Why?</h2>
+					<h3>A: JavaScript is popular!</h3>
+					<img src="images/githubPopularLanguages.png">
+				</section>
+				<section>
+					<h2>Q: JS on server? Why?</h2>
+					<h3>A: V8 is very fast!</h3>
+					<img src="images/gepard.jpg">
+				</section>
+				<section>
+					<h2>Q: JS on server? Why?</h2>
+					<h3>A: Easy to bootstrap</h3>
+					<img src="images/rebenok.jpg">
+				</section>
+				<section>
+					<h2>Q: JS on server? Why?</h2>
+					<h3>A: Easy to bootstrap</h3>
+					<pre><code data-trim class="javascript">
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(8000);
+   </code></pre>
+   				</section>
+				<section>
+					<h2>OS support</h2>
+					<ul>
+						<li>Linux</li>
+						<li>OS X</li>
+						<li>Solaris</li>
+						<li style="color:red">Windows</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>NODE.JS basics</h1>
+				</section>
+
+				<section>
+					<h2>Simple Application</h2>
+					<span><img height="30" class="inline-image" src="images/file.png">helloworld.js</span>
+					<pre><code data-trim class="javascript">
+console.log("hello world!");
+    </code></pre>
+				
+				<span><img height="30" class="inline-image" src="images/terminal.png">terminal</span>
+					<pre><code data-trim class="javascript">
+> cd working_folder
+> node helloworld.js
+    </code></pre>
+    			</section>
+
+
+				<section>
+					<h2>Async</h2>
+					<img width="512" height="384" src="images/why-so-asynchronous.jpg">
+				</section>
+
+				<section>
+					<h2>Async vs Sync</h2>
+					<img height="250" src="images/SynchronousAsynchronous.gif">
+					<h3>Sync I/O</h3>
+<pre><code data-trim class="javascript">
+var data = file.readSync('filename');
+processFileData(data);
+    </code></pre>
+    				<h3>Async I/O</h3>
+<pre><code data-trim class="javascript">
+file.read('filename', function(data) {
+    processFileData(data);
+});
+    </code></pre>
+				</section>
+
+				<section>
+					<h2>Async: Callback Hell</h2>
+					<img src="images/callback_hell.jpg">
+				</section>
+
+				<section>
+					<h2>Async: Callback Hell</h2>
+					<pre><code data-trim class="javascript">
+var main = function (arg1, callback) {
+    read(arg1, function (err, arg2) {
+        if (err) {
+            callback(err);
+        } else {
+            update(arg2, function (err, arg3) {
+                if (err) {
+                    callback(err);
+                } else {
+                    save(arg3, function (err, arg3) {
+                        if (err) {
+                            callback(err);
+                        } else {
+                            callback(null, arg3);
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
+
+    </code></pre>
+				</section>
+				<section>
+					<h2>Async: module <strong>sync</strong> </h2>
+					<pre><code data-trim class="javascript">
+var main = function (arg1, callback) {
+    sync(function () {
+        var arg2 = read.sync(1,arg1);
+        var arg3 = update.sync(2,arg2)
+        var result = save.sync(3, arg3);
+        return result;
+    }, callback)
+}
+    </code></pre>
+				</section>
+				<section>
+					<h2>Async: module <strong>async</strong>(waterfall)</h2>
+					<pre><code data-trim class="javascript">
+var main = function (arg1, callback) {
+    var tasks = [function (callback) {
+        read(arg1, callback)
+    }, function (arg2, callback) {
+        update(arg2, callback)
+    }, function (arg3, callback) {
+        save(arg3, callback)
+    }];
+    async.waterfall(tasks, callback);
+}
+    </code></pre>
+				</section>
+				<section>
+					<h2>Async: module <strong>Q</strong>(promises)</h2>
+					<pre><code data-trim class="javascript">
+var main = function (arg1, callback) {
+    read(arg1)
+        .then(function (arg2) {
+            return update(arg2)
+        })
+        .then(function (arg3) {
+            return save(arg3)
+        })
+        .done(function (err, result) {
+            return callback(result);
+        })
+}    </code></pre>
+				</section>
+		<section>
+		<h2>Events</h2>
+					<pre><code data-trim class="javascript">
+var EventEmitter = require('events').EventEmitter;
+
+var helloWorld = new EventEmitter();
+
+helloWorld.on('hello', function(callback) {
+  console.log('hello'.rainbow);
+  callback();
+});
+
+worldCallback = function() { 
+  console.log('world'.rainbow);
+}
+
+helloWorld.emit('hello', worldCallback);
+   </code></pre>
+				</section>
+				<section>
+		<h2>Events: EventEmitter</h2>
+					<pre><code data-trim >
+emitter.addListener(event, listener)
+emitter.on(event, listener)
+emitter.once(event, listener)
+emitter.removeListener(event, listener)
+emitter.removeAllListeners([event])
+emitter.setMaxListeners(n)
+emitter.listeners(event)
+emitter.emit(event, [arg1], [arg2], [...])
+
+   </code></pre>
+				</section>
+				<section>
+		<h2>Modules: NPM</h2>
+		<!-- <img src="images/NPM.png"> -->
+		<iframe id="iframe"width="768" height="500" scrolling="no" src="https://npmjs.org/"></iframe>
+	</section>
+
+		<section>
+		<h2>Modules: NPM</h2>
+		<img src="images/velo.jpg">
+	</section>
+   </code></pre>
+				</section>
+				<section>
+		<h2>Modules: NPM</h2>
+		<pre><code data-trim class="javascript">
+module.exports = {
+    sleep: function(s) {
+      var e = new Date().getTime() + (s * 1000);
+      while (new Date().getTime() <= e) {
+        ;
+      }
+    },
+
+    usleep: function(s) {
+      var e = new Date().getTime() + (s / 1000);
+      while (new Date().getTime() <= e) {
+        ;
+      }
+    }
+  };
+   </code></pre>
+				</section>
+				<section>
+					<h2>Modules: CommonJS</h2>
+					<span><img height="30" class="inline-image" src="images/file.png">math.js</span>
+					<pre><code data-trim class="javascript">
+
+var PI = Math.PI; // ‘private’
+
+sqr = function(x) {
+  return x * x; // global scope
+}
+ 
+exports.area = function (r) {
+  return PI * r * r; // ‘pubic’
+};
+ 
+exports.circumference = function (r) {
+  return 2 * PI * r; // ’public’
+};
+
+   </code></pre>
+				</section>
+				<section>
+					<h2>Modules: Require</h2>
+					<span><img height="30" class="inline-image" src="images/file.png">main.js</span>
+					<pre><code data-trim class="javascript">
+var math = require("./math.js");
+console.log(math.area(10)); // 314.15926
+
+   </code></pre>
+				</section>
+				<section>
+					<h2>Modules: Installation</h2>
+					<pre><code data-trim class="javascript">
+> npm install module_name  //local folder node_modules
+
+> npm install module_name -g //global installation 
+			     //available for all local node.js apps(global tools)
+   </code></pre>
+				</section>
+				<section>
+					<h2>Modules: NPM COMMANDS</h2>
+					<pre><code data-trim class="bash">
+> npm install module_name
+> npm install module_name -g
+> npm publish 
+> npm search module_name
+> npm uninstall module_name 
+   </code></pre>
+				</section>
+				<section>
+					<h2>Modules: package.json</h2>
+					<pre><code data-trim class="json">
+{
+    "name": "best-practices",
+    "description": "A package using versioning best-practices",
+    "author": "ivan_ivanou@gmail.com",
+    "dependencies": {
+        "colors": "0.x.x",
+        "express": "2.3.x",
+        "optimist": "0.2.x",
+        "plates"   :  "https://github.com/flatiron/plates/master"
+    },
+    "devDependencies": {
+        “testLib": "0.5.x"
+    },
+    "engine": "node >= 0.4.1"
+}
+
+   </code></pre>
+				</section>
+				<section>
+					<h2>HTTP: SERVER</h2>
+					<pre><code data-trim class="javascript">
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(8000);
+   </code></pre>
+   				</section>
+   				<section>
+					<h2>HTTP: SERVER</h2>
+					<img src="images/eventloop.png">
+				</section>
+				<section>
+					<h2>HTTP: CLUSTER</h2>
+					<pre><code data-trim class="javascript">
+var cluster = require('cluster');
+var http = require('http');
+var numCPUs = require('os').cpus().length;
+if (cluster.isMaster) {
+  // Fork workers.
+  for (var i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
+  });
+} else {
+  http.createServer(function(req, res) {
+    res.writeHead(200);
+    res.end("hello world\n");
+  }).listen(8000);
+}
+   </code></pre>
+				</section>
+				<section>
+					<h2>DB: Support</h2>
+					<ul>
+						<li><strong>MySQL</strong> </li>
+						<li><strong>Oracle</strong>  </li>
+						<li><strong>MSSQL</strong> </li>
+						<li><strong>PostgreSQL</strong> </li>
+						<li><strong>Redis</strong> </li>
+						<li><strong>MongoDB</strong> </li>
+						<li>And others…</li>
+					</ul>
+				</section>
+				<section>
+					<h2>DB: ORM Define</h2>
+					<pre><code data-trim class="javascript">
+var Person = db.define("person", {
+    name      : String,
+    surname   : String,
+    age       : Number,
+    male      : Boolean,
+    continent : [ "Europe", "America", "Asia", "Africa", "Australia", "Antartica" ], // ENUM type
+    photo     : Buffer, // BLOB/BINARY
+    data      : Object // JSON encoded
+}, {
+    methods: {
+        fullName: function () {
+            return this.name + ' ' + this.surname;
+        }
+    },
+    validations: {
+        age: orm.enforce.ranges.number(18, undefined, "under-age")
+    }
+});
+   </code></pre>
+				</section>
+				<section>
+					<h2>DB: ORM Usage</h2>
+					<pre><code data-trim class="javascript">
+Person.find({ surname: "Doe" }, function (err, people) {
+    // SQL: "SELECT * FROM person WHERE surname = 'Doe'"
+
+    console.log("People found: %d", people.length);
+    console.log("First person: %s, age %d", 
+    	people[0].fullName(), people[0].age);
+
+    people[0].age = 16;
+    people[0].save(function (err) {
+        // err.msg == "under-age";
+    });
+});
+   </code></pre>
+				</section>
+				<section>
+					<h2>Node.js + Mongo DB = Love</h2>
+					<h3>What is Mongo DB?</h3>
+					<ul>
+						<li>Document-Oriented Storage</li>
+						<li>Full Index Support</li>
+						<li>Querying</li>
+						<li>GridFS</li>
+						<li>Commercial Support</li>
+
+					</ul>
+				</section>
+				<section>
+					<h2>Node.js + Mongo DB = Love</h2>
+					<h3>Example (mongodb module)</h3>
+					</code></pre>
+					<pre><code data-trim class="javascript">
+var databaseUrl = "mydb";
+var collections = ["users", "reports"]
+var db = require("mongojs")
+    .connect(databaseUrl, collections);
+ 
+db.users.find({sex: "female"}, function (err, users) {
+    if (err || !users)
+        console.log("No female users found");
+    else
+        users.forEach(function (femaleUser) {
+            console.log(femaleUser);
+        });
+});
+   </code></pre>
+				</section>
+				<section>
+					<h2>Node.js + Mongo DB = Love</h2>
+					<h3>Mongoose ODM Define</h3>
+					</code></pre>
+					<pre><code data-trim class="javascript">
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var UserSchema = new Schema({
+  sex:  String,
+  age: Number,
+  body:   String,
+  name: String,
+  surname: String
+});
+var User = mongoose.model('User', UserSchema);
+   </code></pre>
+				</section>
+				<section>
+					<h2>Node.js + Mongo DB = Love</h2>
+					<h3>Mongoose ODM Usage</h3>
+					</code></pre>
+					<pre><code data-trim class="javascript">
+User.find({sex: "female"}, function (err, users) {
+    if (err || !users)
+        console.log("No female users found");
+    else
+        users.forEach(function (femaleUser) {
+            console.log(femaleUser);
+        });
+});
+   </code></pre>
+				</section>
+				<section>
+					<h2>Node.js in industry</h2>
+					<img src="images/companies.png"/>
+				</section>
+				<section>
+					<h2>"Commercial" Node.js</h2>
+					<h3>Strong Loop</h3>
+					<img class="no-borders-image" height="100" src="images/strongloop.png"/>
+					<ul>
+						<li>production support for node.js</li>
+						<li>slnode</li>
+						<li>private npm registry</li>
+						<li>supported npm modules</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Thanks</h1>
+				</section>
+				<section>
+					<h1>Questions?</h1>
+					<div style="text-align: right;">
+				    <h3 style="margin-top: 40px;">Useful links</h3>
+					<div>
+					<a href="http://nodejs.org/" target="_blank">nodejs.org</a>
+				</div>
+					<div>
+				<a href="http://learn.javascript.ru/nodejs-screencast" target="_blank">node.js sreencast</a>
+				</div>
+
+				<h3 style="margin-top: 40px;">Contacts</h3>
+				<div>
+				<a href="mailto:kirill.kuhovets@gmail.com">kiryl.kuhovets@gmail.com</a>
+				</div>
+				</div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
