@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The Rolling Scopes #4 :: POPUPs - breaking the habits :: by Sergey Mihaylov</title>
+	<script src="iscroll.js"></script>
+	<style>
+		html, body {height: 100%;margin: 0;font-family: Calibri, Tahoma; overflow: hidden;cursor: none;}
+
+		#pointer {
+			position: absolute; z-index: 11;
+			height: 300px; width: 300px;
+			margin: -150px;
+			border-radius: 50%;
+			opacity: 0;
+			pointer-events: none;
+			-webkit-transition: opacity 300ms;
+
+			box-shadow: 0 0 250px 7px red, 0 0 0 10000px rgba(127,127,127,.4);
+		}
+		#pointer.active {
+			opacity: 1;
+		}
+
+		.preview {
+			position: absolute; z-index: 1;
+			top: 50%; left: 50%;
+			height: 768px; width: 1024px;
+			margin: -384px -512px;
+			overflow: hidden;
+		}
+
+		.slide {
+			position: absolute;
+			top: 50%; left: 50%;
+			height: 768px; width: 1024px;
+			margin: -384px -512px;
+			overflow: visible;
+			opacity: 0; pointer-events: none;
+			-webkit-transition: opacity .2s linear 0; 
+		}
+		.slide[id]:target {opacity: 1;}
+		.slide[id]:target:not(img) {pointer-events: all; cursor: default;}
+
+		.slide input {
+			position: absolute;
+			opacity: 0;
+			pointer-events: none;
+		}
+		.slide label:first-of-type {margin-top: 1em;}
+		.slide label {
+			position: relative; z-index: 3;
+			float: right; clear: right;
+			min-width: 110px;
+			padding: .2em .7em; margin-top: .1em;
+			font-size: 1.5em;
+			color: white;
+			background: black; border: 1px solid red;
+		}
+		.slide input:checked + label {
+			color: black;
+			background: red;
+		}
+		.slide iframe {
+			position: absolute; z-index: 2;
+			top: 50%; left: 50%;
+			height: 600px; width: 900px;
+			margin: -300px -450px;
+			background: white; border: none;
+		}
+		.slide label + iframe {
+			border: 1px solid black;
+			-webkit-transition: left 500ms;
+			box-shadow: 0 0 100px black, 0 0 200px red;
+		}
+		.slide label + iframe:not([data-special]) {
+			pointer-events: none;
+		}
+		.slide input:not(:checked) + label + iframe {
+			left: 200%;
+		}
+		.slide video {
+			position: absolute;
+			top: 50%; left: 50%;
+			width: 960px; height: 720px;
+			margin: -360px -480px;
+		}
+	</style>
+</head>
+<body>
+	<div id="pointer"></div>
+
+	<img draggable="false" src="level.jpg" alt="" id="congratulations" class="slide">
+
+	<img draggable="false" src="popups-breaking_the_habits.jpg" alt="" id="title" class="slide">
+
+	<div class="slide" id="popups">
+		<iframe src="_popups.html"></iframe>
+	</div>
+
+	<img draggable="false" src="separate.jpg" alt="" id="division" class="slide">
+	<img draggable="false" src="need.jpg" alt="" id="useful_popups" class="slide">
+	<img draggable="false" src="flight.jpg" alt="" id="useless_popups" class="slide">
+	<img draggable="false" src="friendship.jpg" alt="" id="integration" class="slide">
+	<img draggable="false" src="detailed-look.jpg" alt="" id="detailed_look" class="slide">
+	<img draggable="false" src="usability.jpg" alt="" id="usability" class="slide">
+	<img draggable="false" src="semantic.jpg" alt="" id="semantic" class="slide">
+	<img draggable="false" src="accessibility.jpg" alt="" id="accessibility" class="slide">
+	<img draggable="false" src="mobile.jpg" alt="" id="mobile" class="slide">
+	<img draggable="false" src="nojs.jpg" alt="" id="nojs" class="slide">
+	<div class="slide" id="nojs_popup">
+		<div class="preview">
+			<img draggable="false" src="nojs-popup.png" alt="">
+		</div>
+
+		<input type="checkbox" name="nojs_popup" id="nojs_popup_preview">
+ 		<label for="nojs_popup_preview">PREVIEW</label>
+		<iframe src="_nojs.html" data-special=""></iframe>
+
+	</div>
+
+	<img draggable="false" src="www.jpg" alt="" id="www" class="slide">
+	<img draggable="false" src="fresh-look.jpg" alt="" id="fresh_look" class="slide">
+	<img draggable="false" src="warmup.jpg" alt="" id="warm_up" class="slide">
+	<img draggable="false" src="overlay.jpg" alt="" id="overlay" class="slide">
+
+
+	<div class="slide" id="overlay_case1">
+		<div class="preview">
+			<img draggable="false" src="case1.png" alt="">
+		</div>
+
+		<input type="radio" name="overlay1" id="overlay1_code" checked="checked">
+ 		<label for="overlay1_code">CODE</label>
+
+		<input type="radio" name="overlay1" id="overlay1_case1">
+ 		<label for="overlay1_case1">DEMO 1</label>
+		<iframe src="_overlay_case1.html"></iframe>
+
+		<input type="radio" name="overlay1" id="overlay1_case2">
+ 		<label for="overlay1_case2">DEMO 2</label>
+		<iframe src="_overlay_case1_v2.html"></iframe>
+
+	</div>
+
+	<div class="slide" id="overlay_case2">
+		<div class="preview">
+			<img draggable="false" src="case2.png" alt="">
+		</div>
+
+		<input type="radio" name="overlay2" id="overlay2_code" checked="checked">
+ 		<label for="overlay2_code">CODE</label>
+
+		<input type="radio" name="overlay2" id="overlay2_case1">
+ 		<label for="overlay2_case1">DEMO</label>
+		<iframe src="_overlay_case2.html"></iframe>
+
+	</div>
+
+	<img draggable="false" src="zindex.jpg" alt="" id="zindex" class="slide">
+
+
+	<div class="slide" id="zindex_issue">
+		<div class="preview">
+			<img draggable="false" src="zindex-issue.png" alt="">
+		</div>
+
+		<input type="checkbox" name="zindex_issue" id="zindex_issue_preview">
+ 		<label for="zindex_issue_preview">PREVIEW</label>
+		<iframe src="_zindex-issue.html"></iframe>
+
+	</div>
+
+	<div class="slide" id="zindex_solution1">
+		<div class="preview">
+			<img draggable="false" src="zindex-solution1.png" alt="">
+		</div>
+
+		<input type="checkbox" name="zindex_issue" id="zindex_solution1_preview">
+ 		<label for="zindex_solution1_preview">PREVIEW</label>
+		<iframe src="_zindex-solution1.html"></iframe>
+
+	</div>
+	<div class="slide" id="zindex_solution2">
+		<div class="preview">
+			<img draggable="false" src="zindex-solution2.png" alt="">
+		</div>
+
+		<input type="checkbox" name="zindex_issue" id="zindex_solution2_preview">
+ 		<label for="zindex_solution2_preview">PREVIEW</label>
+		<iframe src="_zindex-solution2.html"></iframe>
+
+	</div>
+
+
+	<img draggable="false" src="focus.jpg" alt="" id="focus" class="slide">
+	<img draggable="false" src="overlay-variants.jpg" alt="" id="overlay_variants" class="slide">
+
+	<div class="slide" id="blur_filter">
+		<div class="preview">
+			<img draggable="false" src="blur.png" alt="">
+		</div>
+
+		<input type="radio" name="blur" id="blur_code" checked="checked">
+ 		<label for="blur_code">CODE</label>
+
+		<input type="radio" name="blur" id="blur_template1">
+ 		<label for="blur_template1">TEMPLATE</label>
+		<iframe src="_template.html" data-special=""></iframe>
+
+		<input type="radio" name="blur" id="blur_template2">
+ 		<label for="blur_template2">DEMO</label>
+		<iframe src="_template-filters.html" data-special=""></iframe>
+
+		<input type="radio" name="blur" id="blur_template3">
+ 		<label for="blur_template3">+GPU</label>
+		<iframe src="_template-filters2.html" data-special=""></iframe>
+
+	</div>
+
+	<img draggable="false" src="filters-support.png" alt="" id="filters_support" class="slide">
+	<img draggable="false" src="canvas.jpg" alt="" id="canvas" class="slide">
+
+	<div class="slide" id="canvas_solution">
+		<iframe src="_template-canvas.html"></iframe>
+	</div>
+
+	<img draggable="false" src="awards.jpg" alt="" id="awards" class="slide">
+
+	<div class="slide" id="google">
+		<div class="preview">
+			<img draggable="false" src="google.jpg" alt="" width="1024">
+		</div>
+	</div>
+
+	<img draggable="false" src="ios.jpg" alt="" id="ios" class="slide">
+
+	<img draggable="false" src="challenge.jpg" alt="" id="challenge" class="slide">
+	<img draggable="false" src="clone.jpg" alt="" id="clone" class="slide">
+	<img draggable="false" src="clip.jpg" alt="" id="clip" class="slide">
+
+	<div class="slide" id="example">
+		<iframe src="_example.html" style="width: 604px; height: 768px; margin: -364px -302px;"></iframe>
+	</div>
+
+	<img draggable="false" src="inspiration.jpg" alt="" id="inspiration" class="slide">
+
+
+	<!-- http://www.youtube.com/watch?v=QuCQAVbrL1k -->
+	<div class="slide" id="video">
+		<video controls>
+			<source src="popups.mp4" type="video/mp4">
+		</video>
+	</div>
+
+
+	<img draggable="false" src="questions.jpg" alt="" id="questions" class="slide">
+
+
+	<script>
+		var slides = document.querySelectorAll('.slide');
+		for (var i = 0, length = slides.length; i < length; i++) {
+			slides[i].next = slides[i+1] || slides[0];
+			slides[i].prev = slides[i-1] || slides[length-1];
+		};
+
+		var current = document.getElementById((window.location.hash || '#title').substr(1));
+
+		window.addEventListener('load', function(e) {
+			var previews = document.querySelectorAll('.preview');
+			for (var i = 0, length = previews.length; i < length; i++) {
+				previews[i].scroll = new iScroll(previews[i],  {hScrollbar: false, vScrollbar: false, zoom: true, lockDirection: false, wheelAction: 'zoom'});
+			};
+
+			window.addEventListener('keydown', function (e) {
+				if (e.keyCode === 39 || e.keyCode === 32) {
+					current = current.next;
+					return window.location.hash = current.id;
+				}
+				if (e.keyCode === 37) {
+					current = current.prev;
+					return window.location.hash = current.id;
+				}
+			}, false);
+
+			window.location.hash = current.id;
+		}, false);
+
+		var pointer = document.getElementById('pointer');
+		window.addEventListener('mousedown', function(e){
+			if (e.button === 2) {
+				pointer.className = 'active';
+			}
+		}, false);
+		window.addEventListener('mousemove', function(e){
+			pointer.style.left = e.pageX + 'px';
+			pointer.style.top = e.pageY + 'px';
+		}, false);
+		window.addEventListener('mouseup', function(e){
+			if (e.button === 2) pointer.className = '';
+		}, false);
+		window.addEventListener('contextmenu', function(e){
+			e.preventDefault();
+		}, false);
+
+	</script>	
+
+</body>
+</html>

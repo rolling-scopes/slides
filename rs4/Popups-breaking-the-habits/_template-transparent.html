@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Magazine 960 &mdash; Prototype</title>
+<link rel="stylesheet" type="text/css" media="all" href="template/reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="template/960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="template/custom.css" />
+	<script>
+		window.addEventListener('contextmenu', function(e){
+			e.preventDefault();
+		}, false);
+	</script>
+	<style>
+		body :not([data-special-parent]) {
+			visibility: hidden;
+		}
+		[data-special-parent] {
+			background: transparent!important;
+			border-color: transparent!important;
+			box-shadow: none!important;
+			color: transparent!important;
+			outline: none!important;
+
+			pointer-events: none!important;
+		}
+		* [data-special] :not(*) {
+		}
+/* 		img:not([data-special]), [data-special] :not(img),
+:not([data-special]):before, [data-special] :not(*):before,
+:not([data-special]):after, [data-special] :not(*):after
+{
+	visibility: hidden!important;
+
+	pointer-events: none!important;
+} */
+	</style>
+</head>
+<body>
+
+<div id="container" class="container_12"  data-special-parent="">
+	<!--Header Div -->
+	<div class="grid_12">
+		<a href="#"><img src="template/header.png" alt=""/></a>
+	</div>
+	<div class="clear">&nbsp;</div>
+	<!-- END HeaderDiv -->
+	
+	<!-- Navbar Div -->
+	<div class="grid_12" id="navbar">
+		<ul>
+			<li>Articles</li>
+			<li>Topics</li>
+			<li>About</li>
+			<li>Editors</li>
+			<li>Contact</li>
+		</ul>
+	</div>
+	<div class="clear">&nbsp;</div>
+	<!-- End Navbar Div-->
+	
+	<!--Top Section-->
+	<div class="grid_7 topSection">
+		<div><h1>Sample Article Title</h1>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. </p><p><a href="#"><strong>Finish Reading...</strong></a></p>
+		</div>
+	</div>
+	
+	<div class="grid_5 topSection">
+		<div>
+			<img src="template/poster.jpg" alt="" id="poster"/>
+		</div>
+	</div>
+	
+	<div class="clear">&nbsp;</div>
+	<!--End TopSection-->
+	
+	<!--Spacer-->
+	<div class="grid_12 spacer">
+	</div>
+	<div class="clear">&nbsp;</div>
+	<!--End Spacer-->
+	
+	<!-- Stories Area-->
+	<div class="grid_3">
+		<h2><a href="#">Sample Article Title</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+	</div>
+	
+	<div class="grid_3">
+		<h2><a href="#">Sample Article Title</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+	</div>
+	
+	<div data-special="" class="grid_3">
+		<h2><a href="#">Sample Article Title</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+	</div>
+	
+	<div class="grid_3">
+		<h2><a href="#">Sample Article Title</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+	</div>
+	<div class="clear">&nbsp;</div>
+	<!--End Stories Area-->
+	
+	<!--Spacer-->
+	<div class="grid_12 spacer">
+	</div>
+	<div class="clear">&nbsp;</div>
+	<!--End Spacer-->
+	
+	<!-- Footer -->
+	<div class="grid_12" id="footer">
+		<div class="grid_4 alpha">
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</p>
+		</div>
+	
+		<div class="grid_4">
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</p>
+		</div>
+	
+		<div class="grid_4 omega">
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</p>
+		</div>	
+	</div>
+
+	<div class="clear">&nbsp;</div>
+	<!--End Stories Area-->		
+</div>
+
+</body>
+</html>

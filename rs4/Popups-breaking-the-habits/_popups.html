@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Infinity</title>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			font-family: Calibri, Tahoma;
+			overflow: hidden;
+		}
+
+		/* Prevent unsightly highlighting on Android. */
+		* {
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			-webkit-user-select: none;  /* Chrome all / Safari all */
+			-moz-user-select: none;     /* Firefox all */
+			-ms-user-select: none;      /* IE 10+ */
+		}
+
+		div {
+			position: absolute;
+			top: 20%;
+			left: 10%;
+			bottom: 30%;
+			right: 10%;
+			background: rgb(220,220,220);
+
+			box-sizing: border-box;
+
+			border: 20px solid white;
+			border-top-width: 60px;
+			
+			box-shadow: 0 0 50px white;
+
+			z-index: 0;
+			opacity: 1;
+
+			color: white;
+
+			-webkit-transition: opacity 300ms;
+			-moz-transition: opacity 300ms;
+			-ms-transition: opacity 300ms;
+			-o-transition: opacity 300ms;
+			transition: opacity 300ms;
+		}
+		div:before {
+			content: 'Close me!';
+			z-index: 1;
+			position: absolute;
+			top: 40%;
+			left: 20px;
+			right: 20px;
+
+			font-size: 3em;
+
+			text-align: center;
+		}
+
+		.fade {
+			opacity: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<script>
+		var z = 0;
+		var popups = [];
+		var index = 0;
+		for (var i = 0; i < 100; i++) {
+			var element = document.createElement('div');
+			element.className = 'fade';
+			popups.push(element);
+			document.body.appendChild(element);
+		}
+
+		var id = 0;
+		function iteration() {
+			if (++index >= popups.length) index = 0;
+			popups[index].style.zIndex = ++z;
+			popups[index].className = '';
+
+			var rand;
+			rand = Math.random()*50+5;
+			popups[index].style.left = rand + '%';
+			rand = Math.random()*(100-rand-35) + 5;
+			popups[index].style.right = rand + '%';
+
+			rand = Math.random()*50+5;
+			popups[index].style.top = rand + '%';
+			rand = Math.random()*(100-rand-35) + 5;
+			popups[index].style.bottom = rand + '%';
+
+			popups[index].style.borderColor = 
+			popups[index].style.color = 
+			'rgb('+Math.round(Math.random()*170)+','+Math.round(Math.random()*170)+','+Math.round(Math.random()*170)+')';		
+
+			id = setTimeout(iteration, Math.random()*1000);
+		}
+		//iteration();
+
+		window.addEventListener('mouseover', function(e){
+			if (!id) iteration();
+
+		}, false);
+
+		window.addEventListener('mouseout', function(e){
+			clearTimeout(id);
+			id = null;
+		}, false);
+
+		window.addEventListener('contextmenu', function(e){
+			e.preventDefault();
+		}, false);
+
+	</script>	
+
+</body>
+</html>

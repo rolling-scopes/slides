@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>z-index issue - solution #2</title>
+	<style>
+		html, body {height: 100%; margin: 0; font-family: Calibri, Tahoma;}
+		#container {height: 100%; position: relative; z-index: 1;}
+		#popup {
+			position: fixed; z-index: 2;
+			top: 50%; left: 50%;
+			height: 300px; width: 400px;
+			margin: -150px -200px;
+			background: white; border: 1px solid black;
+			box-shadow: 0px 0px 80px black, 0 0 0 10000px rgba(0,0,0,.5);
+		}
+		.inner {
+			position: absolute;
+			top: 50%; left: 50%;
+			z-index: 2147483647;
+			font-size: 3em;
+		}
+	</style>
+	<script>
+		window.addEventListener('contextmenu', function(e){
+			e.preventDefault();
+		}, false);
+	</script>
+</head>
+<body>
+	<!-- Page content goes here -->
+	<div id="container">
+		<div class="inner">z-index issue is solved</div>
+	</div>
+	<div id="popup">
+		<!-- Popup content -->
+	<div>
+</body>
+</html>

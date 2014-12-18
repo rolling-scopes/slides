@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nojs popup</title>
+	<style>
+		html, body {height: 100%; margin: 0; font-family: Calibri, Tahoma;}
+		#popup {
+			position: fixed; display: none;
+			top: 50%; left: 50%;
+			height: 300px; width: 400px;
+			margin: -150px -200px;
+			background: white; border: 1px solid black;
+		}
+		label {
+			position: absolute;
+			top: 30%; left: 20%;
+			font-size: 3em;
+		}
+		input:after { content: 'unchecked'; font-size: 3em; }
+		input:checked:after { content: 'checked'; }
+		#popup_checkbox:checked + #popup { display: block; }
+	</style>
+	<script>
+		window.addEventListener('contextmenu', function(e){
+			e.preventDefault();
+		}, false);
+	</script>
+</head>
+<body>
+	<div id="container">
+		<label for="popup_checkbox">call popup</label>
+	</div>
+	<input type="checkbox" id="popup_checkbox" name="popup">
+	<div id="popup">
+		<label for="popup_checkbox">close</label>
+	<div>
+</body>
+</html>

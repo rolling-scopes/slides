@@ -1,0 +1,910 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Flexbox</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="index.css">
+
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Knock-knock Flexbox</h1>
+		<p>Stanislau Zibovich, EPAM</p>
+	</header>
+
+	<section class="slide cover"><div>
+		<img src="pictures/specs.png" alt="">
+	</div></section>
+
+	<section class="slide shout cover"><div>
+		<h2 style="font-size:150px; top: 50%; left:-25%; color: #fff;">~9 years</h2>
+		<img src="pictures/first-moon.jpg" style="width:100%" alt="">
+	</div></section>
+
+	<section class="slide shout cover"><div>
+		<h2 style="font-size:150px; top: 10%; left:10%; color: #fff;">~1 year</h2>
+		<img src="pictures/first-web.jpg" style="width:100%" alt="">
+	</div></section>
+
+	<section class="slide shout cover"><div>
+		<h2 style="font-size:150px; top: 450px; left:-50px; color: #fff;text-align: right;">CSS<br>~2 years</h2>
+		<!-- <img src="pictures/tablet.jpg" style="width:100%" alt=""> -->
+		<img src="pictures/css.png" style="width:100%" alt="">
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>"Layout is hard!"</h2>
+	</div></section>
+
+	<section class="slide shout cover"><div>
+		<img src="pictures/cur.jpg" style="width:100%" alt="">
+	</div></section>
+
+	<section class="slide cover" id="Cover"><div>
+		<h2 class="next">Knock Knock Flexbox!</h2>
+		<img src="pictures/specs.png" alt="">
+	</div></section>
+
+<!--
+	<section class="slide shout"><div>
+		<h2 style="font-size:90px">Первая система раскладки, которая не хак</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>prozrachniy.gif</h2>
+	</div></section>
+	
+	<section class="slide shout cover"><div>
+		<h2 style="font-size:150px; top: 10%; left:10%; color: #fff;">WAT</h2>
+		<img src="pictures/wat_zoil.jpg" style="width:100%" alt="">
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>&lt;br clear=all&gt;</h2>
+	</div></section>
+
+	<section class="slide shout cover"><div>
+		<h2 style="font-size:150px; top: 10%; left:10%; color: #fff;">WAT</h2>
+		<img src="pictures/stupid.gif" style="width:100%" alt="">
+	</div></section>
+-->
+	<section class="slide cover" id="opacity_play"><div>
+		<div class="container flex justifyCenter alignItemsCenter">
+			<div class="item item1"></div>
+			<div class="item item1"></div>
+			<div class="borderAndRadius"></div>
+			<div class="item item1"></div>
+			<div class="item item1"></div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex justifyCenter alignItemsCenter">
+			<div class="item item1"></div>
+			<div class="item item1"></div>
+			<div class="item item1"></div>
+			<div class="item item1"></div>
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Оси</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2><span style="border-bottom:solid 0.13em">Главная</span></h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2><span style="border-bottom:dotted 0.13em">Поперечная</span></h2>
+	</div></section>
+	
+	<section class="slide cover"><div>
+		<img src="pictures/axis-row.svg" alt="">
+	</div></section>
+
+	<section class="slide cover"><div>
+		<img src="pictures/axis-row-arrow.svg" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Что под капотом?</h2>
+		<pre>
+			<code>&lt;div class="<mark>container</mark>"&gt;</code>
+			<code>    &lt;div class="<mark>item</mark>"&gt;x&lt;/div&gt;</code>
+			<code>    &lt;div class="<mark>item</mark>"&gt;x&lt;/div&gt;</code>
+			<code>    &lt;div class="<mark>item</mark>"&gt;x&lt;/div&gt;</code>
+			<code>    &lt;div class="<mark>item</mark>"&gt;x&lt;/div&gt;</code>
+			<code>&lt;/div&gt;</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<pre>
+			<code><mark>.container</mark> {</code>
+			<code>    overflow:hidden;</code>
+			<code>    height:<mark>640px</mark>;</code>
+			<code>    }</code>
+			<code>    .container <mark>.item</mark> {</code>
+			<code>        float:left;</code>
+			<code>        }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container float">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Flexbox.On()</h2>
+		<pre class="next">			
+			<code>.container {</code>
+			<code>    <mark>display:flex;</mark></code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+	
+	<section class="slide cover"><div>
+		<div class="container flex flex_on">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex axis-right">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Дайте мне точку опоры</h2>
+		<pre>			
+			<code>.container {</code>
+			<code>    display:flex;</code>
+			<code>    flex-direction:<mark>row</mark>; <mark class="comment">/* по умолчанию */</mark></code>
+			<code>                  :<mark>row-reverse</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+<!--row-reverse-simulation-->
+	<section class="slide cover"><div>
+		<div class="container sim_row_reverse">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div><div class="axis-left next"></div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Повернем ось</h2>
+		<pre>			
+			<code>.container {</code>
+			<code>    display:flex;</code>
+			<code>    flex-direction:<mark>column</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container sim_column">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div><div class="axis-down next"></div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<img src="pictures/axis-column-arrow.svg" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Дайте мне точку опоры</h2>
+		<pre>			
+			<code>.container {</code>
+			<code>    display:flex;</code>
+			<code>    flex-direction:<mark>column-reverse</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover" id="trans1"><div>
+		<div class="container sim_column_reverse">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div><div class="axis-up next"></div>
+		<div class="trans"></div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex">
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+			<div class="item">x</div>
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Start/End</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Повыравниваем</h2>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>По ширине</h2>
+		<pre>			
+			<code>.container {</code>
+			<code>    justify-content:<mark>flex-start</mark>; <mark class="comment">/* по умолчанию */</mark></code>
+			<code>                    <mark>center</mark>;</code>
+			<code>                    <mark>flex-end</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container sim_justify_hor">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Равномерно:</h2>
+		<pre>			
+			<code>.container {</code>
+			<code>    justify-content:<mark>space-between</mark>;</code>
+			<code>                    <mark>space-around</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container sim_justify_around">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>По высоте</h2>
+		<pre>			
+			<code>.container {</code>
+			<code>    align-items:<mark>flex-start</mark>; <mark class="comment">/* по умолчанию */</mark></code>
+			<code>                <mark>flex-end</mark>;</code>
+			<code>                <mark>center</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<img src="pictures/axis-row-arrow.svg" alt="">
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex" style="padding-left: 200px;	">
+			<div class="item" style="height: 300px;margin-right: 46px;">×</div>
+			<div class="item" style="height: 300px;margin-right: 46px;">×</div>
+			<div class="item" style="height: 300px;margin-right: 46px;">×</div>
+			<div class="item" style="height: 300px;margin-right: 46px;">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover" id="trans2"><div>
+		<div class="container sim_align_items">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div><div class="trans"></div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Персонально</h2>
+		<pre>			
+			<code>.container <mark>.item</mark>:nth-child(<mark class="important">1</mark>) {</code>
+			<code>    align-self:<mark>flex-start</mark>;</code>
+			<code>    }</code>
+			<code>.container <mark>.item</mark>:nth-child(<mark class="important">4</mark>) {</code>
+			<code>    align-self:<mark>flex-end</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover" id="trans3"><div>
+		<div class="container sim_align_items_individual">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div><div class="trans"></div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex nigga width-height-play">
+			<div class="centered">OMG, I’m centered</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Как:</h2>
+		<pre  class="next">			
+			<code>.container {</code>
+			<code>    <mark>display</mark>:flex;</code>
+			<code>    }</code>
+		</pre>
+		<pre  class="next">	
+			<code>.item {</code>
+			<code>    <mark>margin</mark>:auto;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+	
+	<section class="slide shout"><div>
+		<h2>Flex</h2>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Порастягиваем</h2>
+		<pre>			<code>.container .item {</code>
+			<code>    <mark>flex-grow:1;</mark></code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex sim_grow width-play">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Персонально</h2>
+		<pre>			<code>.container div {</code>
+			<code>    <mark>flex-grow:1;</mark></code>
+			<code>    }</code>
+			<code>.container .item:nth-child(<mark class="important">1</mark>) {</code>
+			<code>    <mark>flex-grow:4;</mark></code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex sim_grow_1">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex grow grow-1st-4 width-play">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Посжимаем</h2>
+		<pre>			
+			<code>.container .item:nth-child(1) {</code>
+			<code>    <mark>flex-shrink:4;</mark></code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex sim_shrink">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex shrink width-play">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Похомячим</h2>
+		<pre>			<code>.container .item {</code>
+			<code>    <mark>flex-grow:1;</mark></code>
+			<code>    }</code>
+			<code>.container .item:nth-child(<mark class="important">1</mark>) {</code>
+			<code>    <mark>flex-basis:250px;</mark></code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex grow basis width-play">
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+			<div class="item">×</div>
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Попереставляем</h2>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex order justify-around">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Поменяем порядок:</h2>
+		<pre>			
+			<code>.container .item:nth-child(<mark class="important">2</mark>) {</code>
+			<code>    <mark>order:1;</mark></code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container sim_order sim_order_2_1">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container sim_order sim_order_mess">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<img src="pictures/doctor.png" alt="">
+	</div></section>
+
+
+	<section class="slide shout"><div>
+		<h2>Многострочный Flexbox</h2>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container float">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">bender</div>
+			<div class="item">smth</div>
+			<div class="item">anything</div>
+			<div class="item">google</div>
+			<div class="item">музыка&nbsp;скачать</div>
+			<div class="item">купить&nbsp;авто</div>
+			<div class="item">Rolling&nbsp;Scopes</div>
+			<div class="item">Facebook</div>
+			<div class="item">presentation</div>
+			<div class="item">pink</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">bender</div>
+			<div class="item">smth</div>
+			<div class="item">anything</div>
+			<div class="item">google</div>
+			<div class="item">музыка&nbsp;скачать</div>
+			<div class="item">купить&nbsp;авто</div>
+			<div class="item">Rolling&nbsp;Scopes</div>
+			<div class="item">Facebook</div>
+			<div class="item">presentation</div>
+			<div class="item">pink</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Попереносим</h2>
+		<pre>			<code>.container {</code>
+			<code>    display:flex;</code>
+			<code>    flex-wrap:<mark>nowrap</mark>; <mark class="comment">/* по умолчанию */</mark></code>
+			<code>             :<mark>wrap</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container sim_wrap">
+			<div class="sim_wrap_row">
+				<div class="item9 first">first</div>
+				<div class="item9">second</div>
+				<div class="item9">third</div>
+				<div class="item9">bender</div>
+				<div class="item9">smth</div>
+				<div class="item9">anything</div>
+				<div class="item9">google</div>
+			</div>
+			<div class="sim_wrap_row">
+				<div class="item9">музыка&nbsp;скачать</div>
+				<div class="item9">купить&nbsp;авто</div>
+				<div class="item9">Rolling&nbsp;Scopes</div>
+				<div class="item9">Facebook</div>
+				<div class="item9">presentation</div>
+			</div>
+			<div class="sim_wrap_row">
+				<div class="item9">pink</div>
+				<div class="item9 last">last.</div>
+			</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>А что если... все было наоборот?</h2>
+		<pre>			<code>.container {</code>
+			<code>    display:flex;</code>
+			<code>    flex-wrap:<mark>wrap-reverse</mark>;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+	
+	<section class="slide cover" id="trans4"><div>
+		<div class="container sim_wrap sim_wrap_play">
+			<div class="sim_wrap_row">
+				<div class="item9 first">first</div>
+				<div class="item9">second</div>
+				<div class="item9">third</div>
+				<div class="item9">bender</div>
+				<div class="item9">smth</div>
+				<div class="item9">anything</div>
+				<div class="item9">google</div>
+			</div>
+			<div class="sim_wrap_row">
+				<div class="item9">музыка&nbsp;скачать</div>
+				<div class="item9">купить&nbsp;авто</div>
+				<div class="item9">Rolling&nbsp;Scopes</div>
+				<div class="item9">Facebook</div>
+				<div class="item9">presentation</div>
+			</div>
+			<div class="sim_wrap_row">
+				<div class="item9">pink</div>
+				<div class="item9 last">last.</div>
+			</div>
+		</div><div class="trans"></div>
+	</div></section>
+	
+	<section class="slide cover"><div>
+		<div class="container flex grow wrap width-play-more">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">bender</div>
+			<div class="item">smth</div>
+			<div class="item">anything</div>
+			<div class="item">google</div>
+			<div class="item">музыка&nbsp;скачать</div>
+			<div class="item">купить&nbsp;авто</div>
+			<div class="item">Rolling&nbsp;Scopes</div>
+			<div class="item">Facebook</div>
+			<div class="item">presentation</div>
+			<div class="item">pink</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Поперек</h2>
+		<pre>			<code>.container {</code>
+			<code>    display:flex;</code>
+			<code>    align-content:<mark>stretch</mark>; <mark class="comment">/* по умолчанию */</mark></code>
+			<code>                 :<mark>center</mark>;</code>
+			<code>    }</code>
+		</pre>
+		<p class="note">Только для многострочных блоков!</p>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<div class="container flex grow wrap align-content-center">
+			<div class="item">first</div>
+			<div class="item">second</div>
+			<div class="item">third</div>
+			<div class="item">bender</div>
+			<div class="item">smth</div>
+			<div class="item">anything</div>
+			<div class="item">google</div>
+			<div class="item">музыка&nbsp;скачать</div>
+			<div class="item">купить&nbsp;авто</div>
+			<div class="item">Rolling&nbsp;Scopes</div>
+			<div class="item">Facebook</div>
+			<div class="item">presentation</div>
+			<div class="item">pink</div>
+			<div class="item">last.</div>
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2><span style="border-bottom:dotted 0.13em">Поперечная</span></h2>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<img src="pictures/axis-row-arrow.svg" alt="">
+	</div></section>
+
+	<section class="slide cover" id="trans5"><div>
+		<div class="container sim_wrap sim_align_content_play">
+			<div class="sim_wrap_row">
+				<div class="item9 first">first</div>
+				<div class="item9">second</div>
+				<div class="item9">third</div>
+				<div class="item9">bender</div>
+				<div class="item9">smth</div>
+				<div class="item9">anything</div>
+				<div class="item9">google</div>
+			</div>
+			<div class="sim_wrap_row">
+				<div class="item9">музыка&nbsp;скачать</div>
+				<div class="item9">купить&nbsp;авто</div>
+				<div class="item9">Rolling&nbsp;Scopes</div>
+				<div class="item9">Facebook</div>
+				<div class="item9">presentation</div>
+			</div>
+			<div class="sim_wrap_row">
+				<div class="item9">pink</div>
+				<div class="item9 last">last.</div>
+			</div>
+		</div><div class="trans"></div>
+	</div></section>
+
+	<section class="slide shout" id="Check"><div>
+		<h2><img src="pictures/check.svg" alt=""> 79.97%</h2>
+	</div></section>
+	<style>#Check img {width:115px;vertical-align: -4%;}</style>
+
+	<section class="slide shout"><div>
+		<h2 style="font-size:130px; margin-top:-200px;">
+			<a style="" href="http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/" target="_blank">09</a>&nbsp;‣&nbsp;
+			<a style="" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/" target="_blank">11</a>&nbsp;‣&nbsp;
+			<a style="" href="http://www.w3.org/TR/css3-flexbox/" target="_blank">12</a>
+		</h2>
+		<div class="browser-matrix">
+			<img src="pictures/br/chrome-logo.png" alt="">
+			<img src="pictures/br/firefox-logo.png" alt="">
+			<img src="pictures/br/ie-logo.png" alt="">
+			<img src="pictures/br/safari-logo.png" alt="">
+			<img src="pictures/br/opera-logo.png" alt="">
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2 style="font-size:130px; margin-top:-200px;">
+			<a style="" href="http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/" target="_blank">09</a>&nbsp;‣&nbsp;
+			<a style="color:gray;" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/" target="_blank">11</a>&nbsp;‣&nbsp;
+			<a style="color:gray;" href="http://www.w3.org/TR/css3-flexbox/" target="_blank">12</a>
+		</h2>
+		<div class="browser-matrix">
+			<img style="" src="pictures/br/chrome-logo.png" alt="">
+			<img style="" src="pictures/br/firefox-logo.png" alt="">
+			<img style="" src="pictures/br/safari-logo.png" alt="">
+			<img src="pictures/br/chropera-logo.png" alt="">
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2 style="font-size:130px; margin-top:-200px;">
+			<a style="" href="http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/" target="_blank">09</a>&nbsp;‣&nbsp;
+			<a style="color:gray;" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/" target="_blank">11</a>&nbsp;‣&nbsp;
+			<a style="color:gray;" href="http://www.w3.org/TR/css3-flexbox/" target="_blank">12</a>
+		</h2>
+		<div class="browser-matrix">
+			<img src="pictures/br/android-logo.png" alt="">
+			<img src="pictures/br/ios-logo.png" alt="">
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2 style="font-size:130px; margin-top:-200px;">
+			<a style="color:gray;" href="http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/" target="_blank">09</a>&nbsp;‣&nbsp;
+			<a style="" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/" target="_blank">11</a>&nbsp;‣&nbsp;
+			<a style="color:gray;" href="http://www.w3.org/TR/css3-flexbox/" target="_blank">12</a>
+		</h2>
+		<div class="browser-matrix">
+			<img src="pictures/br/ie-logo.png" alt="">
+			<img src="pictures/br/wp8-logo.png" alt="">
+		</div>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2 style="font-size:130px; margin-top:-200px;">
+			<a style="color:gray;" href="http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/" target="_blank">09</a>&nbsp;‣&nbsp;
+			<a style="color:gray;" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/" target="_blank">11</a>&nbsp;‣&nbsp;
+			<a style="" href="http://www.w3.org/TR/css3-flexbox/" target="_blank">12</a>
+		</h2>
+		<div class="browser-matrix">
+			<img src="pictures/br/chrome-logo.png" alt="">
+			<img src="pictures/br/firefox-logo.png" alt="">
+			<img src="pictures/br/safari-logo.png" alt="">
+			<img src="pictures/br/opera-logo.png" alt="">
+		</div>
+	</div></section>
+<!-- 
+	<section class="slide"><div>
+		<h2>Flexbox support</h2>
+		<div style="text-align: center; padding-top: 10%;">
+			<img src="pictures/br/chrome-logo.png" alt="">
+			<img src="pictures/br/firefox-logo.png" alt="">
+			<img src="pictures/br/ie-logo.png" alt="">
+			<img src="pictures/br/safari-logo.png" alt="">
+			<img src="pictures/br/opera-logo.png" alt="">
+		</div>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Flexbox 09</h2>
+		<div style="text-align: center; padding-top: 10%;">
+			<img style="" src="pictures/br/chrome-logo.png" alt="">
+			<img style="" src="pictures/br/firefox-logo.png" alt="">
+			<img style="" src="pictures/br/safari-logo.png" alt="">
+			<img src="pictures/br/chropera-logo.png" alt="">
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Flexbox 09</h2>
+		<div style="text-align: center; padding-top: 10%;">
+			<img src="pictures/br/android-logo.png" alt="">
+			<img src="pictures/br/ios-logo.png" alt="">
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Flexbox 11</h2>
+		<div style="text-align: center; padding-top: 10%;">
+			<img src="pictures/br/ie-logo.png" alt="">
+			<img src="pictures/br/wp8-logo.png" alt="">
+		</div>
+	</div></section>
+	
+	<section class="slide"><div>
+		<h2>Flexbox 12</h2>
+		<div style="text-align: center; padding-top: 10%;">
+			<img src="pictures/br/chrome-logo.png" alt="">
+			<img src="pictures/br/firefox-logo.png" alt="">
+			<img src="pictures/br/safari-logo.png" alt="">
+			<img src="pictures/br/opera-logo.png" alt="">
+		</div>
+	</div></section> -->
+
+	<section class="slide"><div>
+		<h2>Flexbox.On()</h2>
+		<pre>		
+			<code>E {</code>	
+			<code class="next">    display: -webkit-box;</code>
+			<code class="next">    display: -moz-box;</code>
+			<code class="next">    display: -ms-flexbox;</code>
+			<code class="next">    display: -webkit-flex;</code>
+			<code class="next">    display: flex;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Flexbox.Reverse()</h2>
+		<pre>		
+			<code>E {</code>	
+			<code>        -webkit-box-orient:vertical;</code>
+			<code>     -webkit-box-direction:reverse;</code>
+			<code>           -moz-box-orient:vertical;</code>
+			<code>        -moz-box-direction:reverse;</code>
+			<code>        -ms-flex-direction:column-reverse;</code>
+			<code>    -webkit-flex-direction:column-reverse;</code>
+			<code>            flex-direction:column-reverse;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>BackToBasic.Native()</h2>
+		<pre>		
+			<code>E {</code>	
+			<code >    display: table;</code>
+			<code>    }</code>
+		</pre>
+		<pre>		
+			<code>E .item {</code>	
+			<code >    display: table-cell;</code>
+			<code >    width: 50%;</code>
+			<code>    }</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="pictures/gotcha.gif" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Что почитать?</h2>
+		<ul>
+			<li><a href="#">caniuse.com</a></li>
+			<li><a href="#">css-tricks.com</a></li>
+			<li><a href="#">developer.mozilla.org</a></li>
+			<li><a href="#">msdn.microsoft.com</a></li>
+			<li><a href="#">Why Flexboxes Aren't Good for Page Layout</a></li>
+			<li>Google =)</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout cover" id="flexo"><div>
+		<h2>Questions?</h2>
+	</div></section>
+
+
+
+	<p class="badge"><a href="https://github.com/shower/shower">Powered by Shower</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

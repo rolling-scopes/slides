@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Test page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+Rolling scopes
+<button id="btn">Go!</button>
+<div id="test" style="width:100%;height:100%;border:solid 1px #000;"></div>
+<script>
+    $(function() {
+        var $target = $('#test');
+        var colors = {
+            0: 'white',
+            1: 'yellow',
+            2: 'blue'
+        };
+        var highload = function() {
+            var x = 0;
+            while (++x < 1000) {
+                var c = x % 3;
+                var clr = (colors[c] || 'gray');
+                $target.append('<div style="display:inline-block;width:10px;height:10px;font-size:1px;background-color:' + clr + ';">' + x + '</div>');
+            }
+        };
+
+        var i = 0;
+        $('#btn').on('click', function() {
+            highload();
+            $('#btn').text($('#btn').text() + ' # ' + (++i));
+        });
+    });
+</script>
+</body>
+</html>

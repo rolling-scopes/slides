@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>overlay - case #1_v2</title>
+	<style>
+		html, body {height: 100%; margin: 0; font-family: Calibri, Tahoma;}
+		.overlay {
+			position: fixed;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			/* background: black;
+			opacity: .5; */
+			background: url(semi-transparent-overlay_1x1.png);
+		}
+		.popup {
+			position: fixed;
+			top: 50%; left: 50%;
+			height: 300px; width: 400px;
+			margin: -150px -200px;
+			background: white;
+		}
+	</style>
+	<script>
+		window.addEventListener('contextmenu', function(e){
+			e.preventDefault();
+		}, false);
+	</script>
+</head>
+<body>
+	<!-- Page content goes here -->
+
+	<div class="overlay">
+		<div class="popup">
+			<!-- Popup content -->
+		<div>
+	<div>
+</body>
+</html>
