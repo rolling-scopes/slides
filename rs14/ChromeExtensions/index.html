@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Enhance your browser</h2>
+					<h3>Chrome Extensions</h3>
+					<p>
+						<small>Created by <a href="mailto:Mikalai_Ausiannikau@epam.com">Mikalai Ausiannikau</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What are extensions?</h2>
+					<p class="fragment">
+						Extensions are small software programs that can modify and enhance the functionality of the browser.
+					</p>
+					<br/>
+					<ul class="fragment">
+						<li>You can add functionality to the browser without diving deeply into native code</li>
+						<li>You can use core web technologies that you're already familiar with</li>
+						<li>Unlike ordinary web apps, extensions don't need to depend on content from the web</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Extension structure</h2>
+					<ul class="fragment">
+						<li>A <i>manifest</i> file</li>
+						<li><i>Optional</i>: One or more HTML files (unless the extension is a theme)</li>
+						<li><i>Optional</i>: One or more JavaScript files</li>
+						<li><i>Optional</i>: Any other files your extension needs (e.g., image files)</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>What is manifest?</h2>
+						<p class="fragment">The manifest file, called <i>manifest.json</i>, gives information about the extension, such as the most important files and the capabilities that the extension might use</p>
+					</section>
+					<section>
+						<h2>Manifest format</h2>
+						<pre>
+							<code data-trim class="javascript">
+{
+  // Required
+  "manifest_version": 2,
+  "name": "My Extension",
+  "version": "versionString",
+
+  // Recommended
+  "default_locale": "en", // must be absent if no _locales directory
+  "description": "A plain text",
+  "icons": { 
+  	"16": "icon16.png", 
+  	"48": "icon48.png", 
+  	"128": "icon128.png" 
+  },
+  ...
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Supported manifest fields</h2>					
+						<pre class="multicolumn three">
+  manifest_version
+  name
+  version
+  default_locale
+  description
+  icons
+  browser_action
+  page_action
+  author
+  automation
+  background
+  chrome_settings_overrides
+  chrome_ui_overrides
+  chrome_url_overrides
+  commands
+  content_pack
+  content_scripts
+  content_security_policy
+  converted_from_user_script
+  current_locale
+  devtools_page
+  externally_connectable
+  homepage_url
+  import
+  incognito
+  input_components
+  key
+  minimum_chrome_version
+  nacl_modules
+  oauth2
+  offline_enabled
+  omnibox
+  optional_permissions
+  options_page
+  options_ui
+  permissions
+  platforms
+  plugins
+  requirements
+  sandbox
+  script_badge
+  short_name
+  signature
+  spellcheck
+  storage
+  system_indicator
+  tts_engine
+  update_url
+  web_accessible_resources
+						</pre>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>chrome.* API</h2>
+						<p class="fragment">In addition to having access to all the APIs that web pages and apps can use, extensions can also use Chrome-only APIs (often called chrome.* APIs) that allow tight integration with the browser.</p>
+					</section>
+
+					<section>
+						<h2>Stable API</h2>					
+						<pre class="multicolumn three">
+  accessibilityFeatures
+  alarms
+  bookmarks
+  browserAction
+  browsingData
+  commands
+  contentSettings
+  contextMenus
+  cookies
+  debugger
+  declarativeContent
+  desktopCapture
+  devtools.inspectedWindow
+  devtools.network
+  devtools.panels
+  downloads
+  enterprise.platformKeys
+  events
+  extension
+  extensionTypes
+  fontSettings
+  gcm
+  history
+  i18n
+  identity
+  idle
+  input.ime
+  management
+  notifications
+  omnibox
+  pageAction
+  pageCapture
+  permissions
+  power
+  privacy
+  proxy
+  pushMessaging
+  runtime
+  sessions
+  storage
+  system.cpu
+  system.memory
+  system.storage
+  tabCapture
+  tabs
+  topSites
+  tts
+  ttsEngine
+  types
+  webNavigation
+  webRequest
+  webstore
+  windows
+						</pre>
+					</section>
+
+
+					<section>
+						<h2>Beta API</h2>					
+						<pre class="multicolumn two">
+  declarativeWebRequest
+						</pre>
+						<br/>
+						<h2>Dev API</h2>					
+						<pre class="multicolumn three">
+  automation
+  fileSystemProvider
+  infobars
+  location
+  processes
+  signedInDevices
+						</pre>
+						<br/>
+						<h2>Experimental API</h2>					
+						<pre class="multicolumn two">
+  experimental.devtools.audits
+  experimental.devtools.console
+						</pre>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Background page</h2>
+						<br/>
+						<p class="fragment">Invisible page that holds the main logic of the extension.</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "background": {    
+    "scripts": ["background.js"]	
+  },
+  ...
+}
+							</code>
+						</pre>
+						<p class="fragment">or</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "background": {    
+    "page": "background.html"
+  },
+  ...
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Types of background pages</h3>
+						<ul class="fragment">
+							<li class="fragment">Persistent Background Page</li>
+							<li class="fragment">Event Page</li>
+						</ul>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "background": {    
+    "persistent": false,
+	// "true" (by default) - Persistent Background Page 
+	// "false" - Event Page
+  	...
+  },
+  ...
+}
+							</code>
+						</pre>
+						<p class="fragment">If you need the browser to start up background page early</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "permissions": [ "background" ]
+  ...
+}
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Content scripts</h2>
+						<p class="fragment">It is some JavaScript that executes in the context of a page that's been loaded into the browser to interact with this page.</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "content_scripts": [{
+      "matches": ["http://www.google.com/*"], // Required.
+      "css": ["mystyles.css"], // Optional.
+      "js": ["jquery.js", "myscript.js"], // Optional.	  
+      // Optional. "document_start", "document_end", "document_idle".
+      "run_at": "document_idle"
+  }]
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Limitations</h2>
+						<p class="fragment">Content scripts are executed in a special environment called an <i>isolated world</i>. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Browser and Page actions</h2>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "browser_action": {
+	"default_title": "title",
+	"default_icon": {
+		"19": "images/icon19.png",
+		"38": "images/icon38.png"
+	},
+	"default_popup": "popup.html"
+  }
+}
+							</code>
+						</pre>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...
+  "page_action": {
+	"default_title": "title",
+	"default_icon": {
+		"19": "images/icon19.png",
+		"38": "images/icon38.png"
+	},
+	"default_popup": "popup.html"
+  }
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>What to choose?</h3>
+						<ul>
+							<li class="fragment">
+								<div><b>Browser action</b> - when the extension is relevant to most pages</div>
+								<img src="img/browser-action25.png" />
+							</li>
+							<li class="fragment">
+								<div><b>Page action</b> - when the extension's icon should appear or disappear, depending on the page</div>
+								<img src="img/page-action25.png" />
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Key points</h3>
+						<ul class="fragment">
+							<li>Each extension can have at most one browser action or page action.</li>
+							<li>The both browser and page actions can have an icon, a tooltip, and popup.</li>
+							<li>Browser action can also have a badge but page action can't have. In addition, page actions can appear and disappear.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>API</h2>
+						<br/>
+						<h3 class="fragment">chrome.browserAction.*</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+chrome.browserAction.set[get]Title(object details[, function callback]);
+chrome.browserAction.set[get]BadgeText(object details[, function callback]);
+chrome.browserAction.set[get]BadgeBackgroundColor(object details[, function callback]);
+chrome.browserAction.set[get]Popup(object details[, function callback]);
+chrome.browserAction.enable[disable](integer tabId);
+chrome.browserAction.setIcon(object details);
+
+chrome.browserAction.onClicked.addListener(function(tab) {...});
+							</code>
+						</pre>
+						<h3 class="fragment">chrome.pageAction.*</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+chrome.pageAction.set[get]Title(object details[, function callback]);
+chrome.pageAction.set[get]Popup(object details[, function callback]);
+chrome.pageAction.show[hide](integer tabId);
+chrome.pageAction.setIcon(object details);
+
+chrome.pageAction.onClicked.addListener(function(tab) {...});
+							</code>
+						</pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Communication between pages</h2>
+						<br/>
+						<ul class="fragment">
+							<li>Direct access</li>
+							<li>Simple one-time requests</li>
+							<li>Long-lived connections</li>
+							<li>Cross-extension messaging</li>
+							<li>Sending messages from web pages</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Direct access</h3>
+						<br/>
+						<p class="fragment">The extension pages can make direct function calls to each other since all of them are executed in same process on the same thread.</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+// returns the JavaScript 'window' object for the background page
+// running inside the current extension
+var bgp = chrome.extension.getBackgroundPage();
+
+// returns an array of the JavaScript 'window' objects for each of the pages
+// running inside the current extension
+var views = chrome.extension.getViews({ type: "popup" });
+							</code>
+						</pre>
+						<p class="fragment">Once a page has a reference to other pages within the extension, the first page can invoke functions on the other pages, and it can manipulate their DOMs.</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+// If the background page is an event page, 
+// the system will ensure it is loaded before calling the callback. 
+// If there is no background page, an error is set.
+chrome.runtime.getBackgroundPage(function(Window backgroundPage) {...});
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Simple one-time requests</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+// Send a request from a content script:
+chrome.runtime.sendMessage({greeting: "hello"}, function(response) { });
+
+// Send a request from background page to a content script:
+chrome.tabs.sendMessage(tabId, {greeting: "hello"}, function(response) { });
+
+// Listener to handle the message from both a content script / background page
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponseFn) { });
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h3>Long-lived connections</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+// connect inside extension page
+var port = chrome.runtime.connect({ name: "any_name" });
+
+// connect inside content script
+var port = chrome.tabs.connect(tabId: "tabId_value", { name: "any_name" })
+
+// handle incoming connections inside both extension page and content script
+chrome.runtime.onConnect.addListener(function(port) { });
+
+// manually call disconnect
+port.disconnect();
+port.onDisconnect.addListener(function() { });
+
+// send and receive messages
+port.postMessage({ greeting: "hello" });
+port.onMessage.addListener(function(msg) { });
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h3>Cross-extension messaging</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+// connect to another extension providing its extension ID
+var port = chrome.runtime.connect(extensionId, { name: "any_name" });
+
+// handle external incoming connections
+chrome.runtime.onConnectExternal.addListener(function(port) { });
+
+// send and receive messages for long-lived connections
+port.postMessage({ greeting: "hello" });
+port.onMessage.addListener(function(msg) { });
+
+// For simple requests:
+chrome.runtime.sendMessage(extensionId, {greeting: hello},
+  function(response) {});
+
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) { 
+});
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h3>Sending messages from web pages</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  "externally_connectable": {
+    // The IDs of extensions or apps that are allowed to connect.
+    // The wildcard "*" will allow all extensions and apps to connect.
+    "ids": [
+      "*"
+    ],
+    // The URL patterns for web pages that are allowed to connect. 
+    // If left empty or unspecified, no web pages can connect.
+    // The URL pattern must contain at least a second-level domain.
+    "matches": [ "*://*.google.com/*"]
+  }
+}
+							</code>
+						</pre>
+						<p class="fragment">If there is no <b>externally_connectable</b>, all extensions and apps can connect, but no webpages can connect.</p>
+						<p class="fragment">If you use <b>externally_connectable</b> and "ids": ["*"] is not specified then other extensions will lose the ability to connect to it.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Content Security Policy (CSP)</h2>
+						<p class="fragment">CSP introduces some fairly strict policies that will make extensions more secure by default, and provides you with the ability to create and enforce rules governing the types of content that can be loaded and executed by your extensions and applications.</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...,
+  "content_security_policy": "[POLICY STRING GOES HERE]"
+  ...
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Default Policy Restrictions</h2>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  ...,
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+  ...
+}
+							</code>
+						</pre>
+						<ul class="fragment">
+							<li>Eval and related functions are disabled</li>
+							<li>Inline JavaScript will not be executed</li>
+							<li>Only local script and and object resources are loaded</li>
+						</ul>
+						<br/><br/>
+						<p class="fragment">CSP applies to the <b>background pages</b> and <b>event pages</b> of the extension.</p>
+					</section>
+					<section>
+						<h2>Relaxing the default policy</h2>
+						<pre class="fragment" style="width:100%">
+							<code data-trim class="javascript">
+// Remote Script
+"content_security_policy": "script-src 'self' https://example.com; object-src 'self'"
+
+// Evaluated JavaScript
+"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+							</code>
+						</pre>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Permissions</h2>
+						<p class="fragment">To use most chrome.* APIs and extension capabilities, your extension must declare its intent in the manifest, often in the "permissions" field.</p>
+						<p class="fragment">Some of these declarations result in a warning when a user installs or autoupdate your extension.</p>
+						<img class="fragment" src="img/new_ext_warn.png" />
+					</section>
+					<section>
+						<h2>Required vs Optional Permissions</h2>
+						<ul class="fragment">
+							<li><b>required permissions</b> - use when they are needed for your extension's basic functionality</li>
+							<li><b>optional permissions</b> - use when they are needed for optional features in your extension</li>
+						</ul>
+						<br/><br/>
+						<h3 class="fragment">Declare permissions in the manifest</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+    ...
+    "permissions": [ "webRequest" ],
+
+    "optional_permissions": [ "tabs" ],
+    ...
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Autoupdate with new required permissions</h3>
+						<p class="fragment">When the extension autoupdates, the increased permissions cause the extension to be disabled until the user re-enables it.</p>
+						<img class="fragment" src="img/ext_new_perm_msg.png" />
+						<img class="fragment" style="float:right;" src="img/ext_new_perm_warn.png" />
+					</section>
+					<section>
+						<h3>Check current permissions</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+chrome.permissions.contains({
+    permissions: ['tabs']
+}, function(result) {
+    // The callback argument will be true if the extension has the permissions.
+});
+							</code>
+						</pre>
+						<p class="fragment">you can also get an array of all granted permissions</p>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+
+chrome.permissions.getAll(function(permissions) {
+    // The callback argument will be true if the extension has the permissions.
+})
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Request optional permissions</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+chrome.permissions.request({
+    permissions: ['tabs']
+}, function(granted) {
+    // The callback argument will be true if the user granted the permissions.
+});
+							</code>
+						</pre>
+						<p class="fragment"><b>IMPORTANT:</b> Permissions must be requested from inside a user gesture, like a button's click handler.</p> 
+						<br/>
+						<img class="fragment" src="img/perms_optional.png" />
+					</section>
+				</section>	
+				
+
+				<section>
+					<section>
+						<h2>Themes</h2>
+						<p class="fragment">A theme is a special kind of extension that changes the way the browser looks. Themes are packaged like regular extensions, but they don't contain JavaScript or HTML code.</p>
+						<img class="fragment" src="img/theme.png" />
+					</section>
+					<section>
+						<h3>Manifest for a theme</h3>
+						<pre class="fragment stretch">
+							<code data-trim class="javascript">
+{
+  "theme": {
+    "images" : {
+      "theme_frame" : "images/theme_frame_camo.png",
+      "theme_frame_overlay" : "images/theme_frame_stripe.png",
+      "theme_toolbar" : "images/theme_toolbar_camo.png",
+      "theme_ntp_background" : "images/theme_ntp_background_norepeat.png",
+      "theme_ntp_attribution" : "images/attribution.png"
+    },
+    "colors" : {
+      "frame" : [71, 105, 91],
+      "toolbar" : [207, 221, 192],
+      "ntp_text" : [20, 40, 0],
+      "ntp_link" : [36, 70, 0],
+      "ntp_section" : [207, 221, 192],
+      "button_background" : [255, 255, 255]
+    },
+    "tints" : {
+      "buttons" : [0.33, 0.5, 0.47]
+    },
+    "properties" : {
+      "ntp_background_alignment" : "bottom"
+    }
+  }
+}
+							</code>
+						</pre>
+					</section>
+				</section>	
+				
+				<section>
+					<section>
+						<h2>Packaging and distribution</h2>
+						<p class="fragment">Extensions are packaged as signed ZIP files with the file extension ".crx".</p>
+						<p class="fragment">When you package an extension, the extension is assigned a unique key pair. The extension's ID is based on a hash of the public key. The private key is used to sign each version of the extension and must be secured from public access.</p>
+						<br/>
+						<h3 class="fragment">How to publish</h3>
+						<ul class="fragment">
+							<li>Distribute a non-public version of the extension</li>
+							<li>Publish the extension using the Chrome Developer Dashboard</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Creating own package</h3>
+						<ul>
+							<li class="fragment">
+								<p>Via Chrome Extensions tab:</p>
+								<ol class="fragment">
+									<li>
+										Go to Settings->Extensions tab (chrome://extensions)
+									</li>
+									<li>
+										Enable "Developer mode" checkbox at the top.
+									</li>
+									<li>
+										Click the "Pack extension" button and specify the path to the extension dir (you don't need to specify the path to private key file for the first time).
+									</li>
+									<li>
+										Click "Package" button and two files (".crx" - extension and ".pem" - private key) will be created.
+									</li>
+									<br/>
+								</ol>
+							</li>
+							<li class="fragment">
+								<p>Via command line:</p>
+								<pre class="fragment">
+									<code data-trim class="">
+chrome.exe --pack-extension=C:\myext --pack-extension-key=C:\myext.pem
+									</code>
+								</pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Chrome Developer Dashboard</h3>
+						<ol class="fragment">
+							<li>
+								Create a ZIP archive of the root extension directory
+							</li>
+							<li>
+								Go to Chrome Developer Dashboard (https://chrome.google.com/webstore/developer/dashboard)
+							</li>
+							<li>
+								Click the "Add new item" button, choose created ZIP file and click "Upload"
+							</li>
+							<li>
+								Fill out the form about your extension and upload images.
+							</li>
+							<li>
+								Before you publish your first app, you must pay a one-time $5 developer signup fee.
+							</li>
+							<li>
+								Test the extencion and click the "Publish" link to publish your app's listing in the Chrome Web Store.
+							</li>
+						</ol>
+					</section>
+				</section>	
+				
+				<section>
+					<section>
+						<h3>Autoupdating</h3>
+						<ul class="fragment">
+							<li>
+								A manifest should contain an "update_url" field, pointing to a location for doing update checks.
+							</li>
+							<li>
+								The content returned by an update check is an update manifest XML document listing the latest version of an extension.
+							</li>
+						</ul>
+						<br/><br/>
+						<p class="fragment">The browser makes a request to that URL looking for an update manifest XML file every few hours. The newer version of the extension is downloaded and installed automatically.</p>
+					</section>
+					<section>
+						<h3>Update URL</h3>
+						<pre class="fragment">
+							<code data-trim class="javascript">
+{
+  "name": "My extension",
+  ...
+  "update_url": "http://myhost.com/myext.xml",
+  ...
+}
+							</code>
+						</pre>
+						<h3 class="fragment">Update manifest</h3>
+						<pre class="fragment">
+							<code data-trim class="XML">
+<?xml version='1.0' encoding='UTF-8'?>
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
+  <app appid='myExtId'>
+    <updatecheck codebase='http://myhost.com/myext.crx' version='2.0' />
+  </app>
+</gupdate>
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Check for updates</h3>
+						<ul>
+							<li class="fragment">
+								<p>Automatically by browser</p>
+								<pre class="fragment">
+									<code data-trim class="XML">
+chrome.exe --extensions-update-frequency=45
+									</code>
+								</pre>
+							</li>
+							<li class="fragment">
+								<p>Programmatically</p>
+								<pre class="fragment">
+									<code data-trim class="XML">
+chrome.runtime.requestUpdateCheck(function(status, details) {
+  if (status == "update_available") {
+    console.log("update pending...");
+  } else if (status == "no_update") {
+    console.log("no update found");
+  } else if (status == "throttled") {
+    console.log("Oops, I'm asking too frequently.");
+  }
+});
+									</code>
+								</pre>
+							</li>
+						</ul>
+					</section>
+
+				</section>	
+				
+				<section>
+					<h2>Links</h2>
+					<ul>
+						<li><a href="https://developer.chrome.com/extensions">https://developer.chrome.com/extensions</a></li>
+						<li><a href="https://developer.chrome.com/extensions/samples">https://developer.chrome.com/extensions/samples</a></li>
+						<li><a href="https://github.com/yeoman/generator-chrome-extension">https://github.com/yeoman/generator-chrome-extension</a></li>
+						<li><a href="https://developer.chrome.com/webstore/get_started_simple">https://developer.chrome.com/webstore/get_started_simple</a></li>						
+					</ul>
+				</section>
+
+				<section>
+					<h1>Questions?</h1>
+					<h3>BY Mikalai Ausiannikau</h3>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				//theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				//transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
