@@ -1,0 +1,32 @@
+.userpics {
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.userpics div {
+	position: relative;
+}
+
+.userpics div > div {
+	font-family: sans-serif;
+	text-align: center;
+	color: hsl(0, 100%, 100%);
+	background: hsl(0, 0%, 20%);
+	border-radius: 2rem;
+	width: 2.5rem;
+	line-height: 2.5rem;
+	height: 2.5rem;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.userpics canvas {
+	border-radius: 100px;
+	display: block;
+	margin: 20px;
+}

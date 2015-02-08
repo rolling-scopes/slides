@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Aperiodic tiling</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+		.reveal img.png {
+			border: 0;
+			box-shadow: none;
+			background: transparent;
+		}
+
+		.reveal .description {
+			padding: 1rem;
+			background: #222;
+		}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Aperiodic tiling</h1>
+					<p>
+						<small>by <a href="https://github.com/wontem">Kirill Demura</a></small>
+					</p>
+				</section>
+
+				<section>
+					<script src="attachments/demos/userpics/chance.min.js"></script>
+					<script src="attachments/demos/userpics/userpic-generator.js"></script>
+					<script src="attachments/demos/userpics/demo.js"></script>
+					<link rel="stylesheet" href="attachments/demos/userpics/style.css">
+					<div class="userpics"></div>
+				</section>
+
+				<section>
+					<script src="attachments/demos/userpics/dat.gui.min.js"></script>
+					<script src="attachments/demos/userpics/playground.js"></script>
+					<style>
+						.dg.main {
+							position: absolute;
+							right: 0;
+							top: 0;
+							font-size: 50%;
+						}
+
+						.userpic-playground {
+							width: 100%;
+							height: 100%;
+						}
+					</style>
+					<div class="userpic-playground"></div>
+				</section>
+
+				<section>
+					<section data-background="attachments/periodic.png">
+						<div class="description fragment fade-out" data-fragment-index="1">
+							<h3>Periodic tilings</h3>
+							<p>Have a repeating pattern</p>
+						</div>
+					</section>
+
+					<section>
+						<img src="attachments/periodic-paving-stone.jpg" height="600" width="625" alt="">
+					</section>
+
+					<section>
+						<img src="attachments/escher-lizard.jpg" height="600" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section data-background="attachments/non-periodic.png">
+						<div class="description fragment fade-out" data-fragment-index="1">
+							<h3>Nonperiodic tilings</h3>
+							<p>Tilings that lack a repeating pattern</p>
+						</div>
+					</section>
+
+					<section data-background="attachments/wang/tiling_texture.png">
+						<div class="description fragment fade-out" data-fragment-index="1">
+							<h3>Wang tiles</h3>
+						</div>
+					</section>
+
+					<section>
+						<img src="attachments/wang/atlas_grid.png" height="256" width="256" alt="">
+						<img src="attachments/wang/atlas_texture.png" height="256" width="256" alt="">
+						<img src="attachments/wang/atlas_texture_stroked.png" height="256" width="256" alt="">
+					</section>
+
+					<section data-background="attachments/wang/tiling_grid.png"></section>
+					<section data-background="attachments/wang/tiling_texture_stroked.png"></section>
+					<section data-background="attachments/wang/tiling_texture.png"></section>
+
+					<section data-background="white">
+						<h3>Aperiodic tileset</h3>
+						<img class="png" src="attachments/wang.jpg" height="500" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section data-background="attachments/aperiodic.png">
+						<div class="description fragment fade-out" data-fragment-index="1">
+							<h3>Aperiodic tilings</h3>
+							<p>Non-periodic tiling with the additional property that it does not contain arbitrarily large periodic patches</p>
+							<p>For example Penrose P3 tiling</p>
+						</div>
+					</section>
+
+					<section>
+						<h3>Penrose tiling rules</h3>
+						<img src="attachments/Penrose_rhombs_matching_rules.png" height="313" width="306" alt="" class="png">
+					</section>
+				</section>
+
+				<section>
+					<h3>Quasicrystal</h3>
+					<img src="attachments/quasicrystal.jpg" height="480" width="470" alt="">
+				</section>
+
+				<section>
+					<section data-background="attachments/multigrid.png">
+						<div class="description fragment fade-out" data-fragment-index="1">
+							<h3>De Bruijn multigrid method</h3>
+							<p>Generating quasiperiodic tilings</p>
+						</div>
+					</section>
+
+					<section>
+						<div class="description">
+							<p>Create n axes defined by their unit length</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/1.png">
+						<div class="description fragment">
+							<p>For each axes define normals</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/2.png">
+						<div class="description fragment">
+							<p>Shift normals by some distance</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/3.png">
+						<div class="description fragment">
+							<p>Build grids by shifting normals by unit vector</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/4.png">
+						<div class="description fragment">
+							<p>Multigrid is done</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/5.png">
+						<div class="description fragment">
+							<p>Find intersections of lines</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/6.png">
+						<div class="description fragment">
+							<p>For each intersection find multigrid coordinates of surrounding polygons. They will convert into vertices of tiles</p>
+						</div>
+					</section>
+					<section data-background="attachments/multigrid-method/7.png">
+					</section>
+					<section data-background="attachments/multigrid-method/8.png">
+						<div class="description fragment">
+							<p>Vertice in tiling is sum of n vectors, where each vector is determined by the angle of axis and its magnitude is coordinate on this axis</p>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="attachments/aperiodic.png">
+						<div class="description fragment fade-out">
+							<p>Result</p>
+						</div>
+					</section>
+					<section data-background="attachments/results/step1.png">
+						<div class="description fragment fade-out">
+							<p>Changing shift value</p>
+						</div>
+					</section>
+					<section data-background="attachments/results/step2.png"></section>
+					<section data-background="attachments/results/step3.png"></section>
+					<section data-background="attachments/results/step4.png"></section>
+
+					<section data-background="attachments/results/angle1.png">
+						<div class="description fragment fade-out">
+							<p>Changing angles of axes</p>
+						</div>
+					</section>
+					<section data-background="attachments/results/angle2.png"></section>
+					<section data-background="attachments/results/angle3.png"></section>
+					<section data-background="attachments/results/angle4.png"></section>
+
+					<section data-background="attachments/results/grids1.png">
+						<div class="description fragment fade-out">
+							<p>Changing number of grids</p>
+						</div>
+					</section>
+					<section data-background="attachments/results/grids2.png"></section>
+					<section data-background="attachments/results/grids3.png"></section>
+					<section data-background="attachments/results/grids4.png"></section>
+
+					<section data-background="attachments/results/circles1.png">
+						<div class="description fragment fade-out">
+							<p>Something else can take the place of rhombi. Circles, for example</p>
+						</div>
+					</section>
+					<section data-background="attachments/results/circles2.png"></section>
+					<section data-background="attachments/results/circles3.png"></section>
+					<section data-background="attachments/results/circles4.png"></section>
+				</section>
+
+				<section>
+					<section>
+						<p>A few words about angles in V8</p>
+						<img src="attachments/slow_angle.jpg" height="536" width="830" alt="">
+					</section>
+
+					<section>
+						<img src="attachments/jsperf0.jpg" height="647" width="1003" alt="">
+					</section>
+
+					<section>
+						<img src="attachments/jsperf.jpg" height="647" width="1003" alt="">
+					</section>
+				</section>
+
+				<section>
+					<h3>Hey, that's not all</h3>
+					<p><a href="http://wontem.github.io/demos/multigrid-tilings/">How about Game of Life on aperiodic tiling?</a></p>
+				</section>
+
+				<section>
+					<h3>Thank you!</h3>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
