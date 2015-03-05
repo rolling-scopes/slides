@@ -1,0 +1,66 @@
+html, body
+  height: 100%
+  //background: #111
+  overflow: hidden
+
+.wrapper
+  width: 100px
+  height: 100px
+  //padding-bottom: 100px
+  //padding-left: 100px
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  margin: auto
+  margin-top: auto
+
+.elem
+  position: absolute
+  width: 100px
+  height: 100px
+  border-radius: 100px
+  transform-origin: 50% 100%
+  background: hsla(340, 80%, 50%, .3)
+  transition: all 1s
+  transition-timing-function: ease-in-out
+
+  &:nth-child(1)
+    transition-delay: .4s
+  &:nth-child(2)
+    transition-delay: .3s
+  &:nth-child(3)
+    transition-delay: .2s
+  &:nth-child(4)
+    transition-delay: .4s
+  &:nth-child(5)
+    transition-delay: .0s
+
+    &::after, &::before
+      position: absolute
+      font-family: sans-serif
+      display: block
+      line-height: 100px
+      width: 100px
+      text-align: center
+      color: white
+      text-transform: uppercase
+      transition: 1s .4s
+    &::before
+      content: 'circle'
+      opacity: 1
+    &::after
+      content: 'square'
+      opacity: 0
+  
+  .wrapper:hover &
+    background: hsla(280, 100%, 50%, .3)
+    transform: rotateX(360deg) rotateZ(360deg)
+    transform-origin: -50% 00%
+    border-radius: 0
+    
+    &:nth-child(5)::before
+      opacity: 0
+    &:nth-child(5)::after
+      opacity: 1

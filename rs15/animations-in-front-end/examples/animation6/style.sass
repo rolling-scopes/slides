@@ -1,0 +1,20 @@
+tr
+  .elem
+    animation: move 2s linear infinite alternate paused
+  td:first-child::after
+    content: 'paused'
+    display: block
+    width: 8rem
+
+  &:hover
+    .elem
+      animation-play-state: running
+    td:first-child::after
+      content: 'running'
+
+
+@keyframes move
+  from
+    transform: translateX(-100%)
+  to
+    transform: translateX(0%)

@@ -1,0 +1,30 @@
+tr .elem {
+  -webkit-animation: move 2s linear infinite alternate paused;
+          animation: move 2s linear infinite alternate paused; }
+tr td:first-child::after {
+  content: "paused";
+  display: block;
+  width: 8rem; }
+tr:hover .elem {
+  -webkit-animation-play-state: running;
+          animation-play-state: running; }
+tr:hover td:first-child::after {
+  content: "running"; }
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  to {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%); } }
+
+@keyframes move {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  to {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%); } }
+
+/*# sourceMappingURL=style.css.map */

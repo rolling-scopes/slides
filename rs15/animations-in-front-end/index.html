@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Animations in frontend</title>
+
+		<meta name="author" content="Kirill Demura">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="libs/reveal.js/css/reveal.min.css">
+
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="theme/slides.css" id="theme">
+		<!-- <link rel="stylesheet" href="attachments/styles.css"> -->
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="theme/tomorrow-night-eighties.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'libs/reveal.js/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+
+				<section class="center">
+					<link rel="stylesheet" href="examples/spinner/style.css">
+					<div class="intro-wrapper" style="height: 200px;">
+						<div class="cont">
+							<div class="a"></div>
+							<div class="b"></div>
+						</div>
+						<div class="cont">
+							<div class="a"></div>
+							<div class="b"></div>
+						</div>
+
+						<div class="cont">
+							<div class="c"></div>
+							<div class="d"></div>
+						</div>
+						<div class="cont">
+							<div class="c"></div>
+							<div class="d"></div>
+						</div>
+					</div>
+					<h1>Animations</h1>
+					<p>
+						<a href="mailto:2wontem@gmail.com">Kirill Demura</a>
+					</p>
+				</section>
+
+
+
+
+				<section class="center">
+					<div class="cols">
+						<div>
+							<h2>CSS</h2>
+							<ul>
+								<li>transition</li>
+								<li>animation</li>
+							</ul>
+						</div>
+						<div class="fragment" data-fragment-index="1">
+							<h2>JS</h2>
+							<ul>
+								<li>events</li>
+								<li>requestAnimationFrame</li>
+								<li><a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36"><i class="fa fa-external-link"></i>&nbsp; Web animations (Blink only)</a></li>
+							</ul>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<h2>SVG</h2>
+							<ul>
+								<li><a href="http://css-tricks.com/guide-svg-animations-smil/"><i class="fa fa-external-link"></i>&nbsp; SMIL (!IE)</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<section>
+						<h2 class="shorthand">Transition</h2>
+						<p><a href="http://caniuse.com/#feat=css-transitions"><i class="fa fa-external-link"></i>&nbsp; Caniuse</a></p>
+						<table>
+							<thead>
+								<tr>
+									<td>property</td>
+									<td>values</td>
+									<td>default</td>
+								</tr>
+							</thead>
+							<tbody class="codestyle">
+								<tr>
+									<td>transition-property</td>
+									<td>none | all | IDENT</td>
+									<td>all</td>
+								</tr>
+								<tr>
+									<td>transition-duration</td>
+									<td>&lt;time&gt;</td>
+									<td>0s</td>
+								</tr>
+								<tr>
+									<td>transition-timing-function</td>
+									<td>&lt;timingfunction&gt;</td>
+									<td>ease</td>
+								</tr>
+								<tr>
+									<td>transition-delay</td>
+									<td>&lt;time&gt;</td>
+									<td>0s</td>
+								</tr>
+							</tbody>
+						</table>
+						<iframe src="examples/transitionExample/index.html" frameborder="0" height="300" width="600"></iframe>
+					</section>
+
+					<section>
+						<h2>How?</h2>
+						<pre><code class="css" data-trim>
+.elem {
+    transition: opacity 3s 1s;
+}
+.elem {
+    transition-property: opacity;
+    transition-duration: 3s;
+    transition-delay: 1s;
+}
+
+.elem {
+    transition: transform .3s, opacity 3s 1s;
+}
+.elem {
+    transition-property: transform, opacity;
+    transition-duration: .3s, 3s;
+    transition-delay: initial, 1s;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Timing Functions</h2>
+						<p>Cubic bezier curve</p>
+						<iframe src="examples/transition3/index.html" frameborder="0" height="400" width="800"></iframe>
+						<p>
+							<a href="http://codepen.io/wontem/full/CdyEG/"><i class="fa fa-external-link"></i>&nbsp; Cubic bezier</a><br>
+							<a href="http://cubic-bezier.com/"><i class="fa fa-external-link"></i>&nbsp; Cubic bezier by Lea Verou</a><br>
+							<a href="http://www.smashingmagazine.com/2014/04/15/understanding-css-timing-functions/"><i class="fa fa-external-link"></i>&nbsp; CSS Timing functions</a><br>
+						</p>
+					</section>
+
+					<section>
+						<img src="attachments/04-bezier-curve-ease.jpg" height="475" width="459" alt="">
+					</section>
+
+					<section>
+						<h2>Timing Functions</h2>
+						<p><a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function_tag"><i class="fa fa-external-link"></i>&nbsp; Presets</a></p>
+						<iframe src="examples/transition1/index.html" frameborder="0" height="500" width="600"></iframe>
+					</section>
+
+					<section data-background="#2f4f4f">
+						<h2>Timing Functions</h2>
+						<p>Steps</p>
+						<iframe src="examples/transition2/index.html" frameborder="0" height="500" width="600"></iframe>
+					</section>
+
+					<section data-background="#2f4f4f">
+						<img src="attachments/step.png">
+					</section>
+
+
+					<section data-background="#2f4f4f">
+						<h2>Timing Functions</h2>
+						<p>Steps</p>
+						<img src="examples/transition2-steps-sprite/man.png" alt="">
+						<iframe src="examples/transition2-steps-sprite/index.html" frameborder="0" height="200" width="400"></iframe>
+					</section>
+
+					<section>
+						<h2>Delay</h2>
+						<p class="align-left">Negative delay starts the animation at position corresponding absolute value of delay</p>
+						<iframe src="examples/transition4/index.html" frameborder="0" height="500" width="800"></iframe>
+					</section>
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2 class="shorthand">Animation</h2>
+						<a href="http://caniuse.com/#feat=css-animation"><i class="fa fa-external-link"></i>&nbsp; Caniuse</a>
+						<table>
+							<thead>
+								<tr>
+									<td>property</td>
+									<td>values</td>
+									<td>default</td>
+								</tr>
+							</thead>
+							<tbody class="codestyle">
+								<tr>
+									<td>animation-name</td>
+									<td>none | IDENT</td>
+									<td>none</td>
+								</tr>
+								<tr>
+									<td>animation-duration</td>
+									<td>&lt;time&gt;</td>
+									<td>0s</td>
+								</tr>
+								<tr>
+									<td>animation-timing-function</td>
+									<td>&lt;timingfunction&gt;</td>
+									<td>ease</td>
+								</tr>
+								<tr>
+									<td>animation-delay</td>
+									<td>&lt;time&gt;</td>
+									<td>0ms</td>
+								</tr>
+								<tr>
+									<td>animation-iteration-count</td>
+									<td>&lt;number&gt; | infinite</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>animation-direction</td>
+									<td>normal | alternate | reverse | alternate-reverse</td>
+									<td>normal</td>
+								</tr>
+								<tr>
+									<td>animation-fill-mode</td>
+									<td>none | forwards | backwards | both</td>
+									<td>none</td>
+								</tr>
+								<tr>
+									<td>animation-play-state</td>
+									<td>running | paused</td>
+									<td>running</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h2>How?</h2>
+						<pre><code class="css" data-trim>
+.elem {
+    animation: some-madness 3s infinite;
+}
+.elem {
+    animation-name: some-madness;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.elem {
+    animation: move .3s, hide 2s 1s;
+}
+.elem {
+    animation-name: move, hide;
+    animation-duration: .3s, 2s;
+    animation-delay: initial, 1s;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>@keyframes</h2>
+						<p class="align-left">@keyframes &lt;name&gt; rule defines scenario of animation</p>
+						<pre><code class="css" data-trim>
+@keyframes some-madness {
+    from {
+        left: 0px;
+        top: 200px;
+    }
+    40%, 60% {
+        left: 400px;
+        background: brown;
+    }
+    to {
+        left: 200px;
+        top: 0px;
+    }
+}
+
+.elem {
+    animation: some-madness 3s infinite;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Timing functions</h2>
+						<p class="align-left">For keyframed animations, the timing function applies between keyframes rather than over the entire animation</p>
+						<pre><code class="css" data-trim>
+tbody:hover .elem {
+  animation: move 2s ease 1; }
+
+@keyframes move {
+  0% {
+    transform: translateX(-100%); }
+  25% {
+    transform: translateX(-75%); }
+  50% {
+    transform: translateX(-50%); }
+  75% {
+    transform: translateX(-25%); }
+  100% {
+    transform: translateX(0%); } }
+						</code></pre>
+						<iframe src="examples/animation1/index.html" frameborder="0" height="200" width="800"></iframe>
+					</section>
+
+					<section>
+						<h2>Iteration count</h2>
+						<p class="align-left">Number of iterations. Infinite or float (for example 0.5 will play half of the animation cycle)</p>
+						<iframe src="examples/animation2/index.html" frameborder="0" height="400" width="800"></iframe>
+					</section>
+
+					<section>
+						<h2>Fill mode</h2>
+						<p class="align-left">Specifies how a CSS animation should apply styles to its target before and after it is executing.</p>
+						<pre><code class="css" data-trim>
+body:hover tr .elem {
+	-webkit-animation: move 2s linear 1s;
+			animation: move 2s linear 1s;
+}
+						</code></pre>
+						<iframe src="examples/animation4/index.html" frameborder="0" height="400" width="800"></iframe>
+					</section>
+
+					<section>
+						<h2>Fill mode example</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/MYGmWO/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/MYGmWO/'>MYGmWO</a> by wontem (<a href='http://codepen.io/wontem'>@wontem</a>) on <a href='http://codepen.io'>CodePen</a>.
+						</iframe>
+					</section>
+
+					<section>
+						<h2>Direction</h2>
+						<pre><code class="css" data-trim>
+tbody:hover tr .elem {
+	-webkit-animation: move 2s 2 ease-in
+			animation: move 2s 2 ease-in
+}
+						</code></pre>
+						<iframe src="examples/animation5/index.html" frameborder="0" height="400" width="800"></iframe>
+					</section>
+
+					<section>
+						<h2>Play state</h2>
+						<iframe src="examples/animation6/index.html" frameborder="0" height="400" width="800"></iframe>
+					</section>
+
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Debugging tools</h2>
+						<img src="attachments/animation_debug.jpeg" alt="" height="500">
+						<p>
+							<a href="https://www.youtube.com/watch?v=RCFQu0hK6bU"><i class="fa fa-external-link"></i>&nbsp; Paul Lewis - The Applied Science of Runtime Performance</a>
+						</p>
+					</section>
+
+					<section>
+						<video data-autoplay src="https://pbs.twimg.com/tweet_video/B-h6cUPIgAAoPZX.mp4"></video>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Performance</h2>
+						<img src="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/cheap-operations.jpg" height="250" alt="">
+						<!-- <img src="http://www.html5rocks.com/en/tutorials/speed/css-paint-times/figure2.jpg" height="250" alt=""> -->
+						<ul>
+							<li>Use translate() instead top/left positioning</li>
+							<li>Use translateZ(0) or translate3d(0, 0, 0) to force hardware acceleration</li>
+						</ul>
+						<p>
+							<a href="https://dev.opera.com/articles/css-will-change-property/"><i class="fa fa-external-link"></i>&nbsp; will-change property</a><br>
+							<a href="http://www.html5rocks.com/en/tutorials/speed/layers/"><i class="fa fa-external-link"></i>&nbsp; Accelerated Rendering in Chrome</a><br>
+							<a href="http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/"><i class="fa fa-external-link"></i>&nbsp; On translate3d and layer creation hacks</a><br>
+							<a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/"><i class="fa fa-external-link"></i>&nbsp; High Performance Animations</a><br>
+							<a href="http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/"><i class="fa fa-external-link"></i>&nbsp; Translate performanse</a>
+						</p>
+					</section>
+
+					<section>
+						<h2>Example</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/PwwEPX/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/PwwEPX/'><i class="fa fa-external-link"></i>&nbsp; Animation experiment</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Oops...</h2>
+						<p>Explanation of strange behavior and some tricks</p>
+						<a href="http://aerotwist.com/blog/some-gotchas-that-got-me/"><i class="fa fa-external-link"></i>&nbsp; Some Gotchas That Got Me</a>
+					</section>
+
+					<section>
+						<h2>Transform and containing block</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/azdgwQ/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/azdgwQ/'><i class="fa fa-external-link"></i>&nbsp; containing block</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+
+					<section>
+						<h2>Opacity stacking context</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/QwyXxq/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/QwyXxq/'><i class="fa fa-external-link"></i>&nbsp; opacity stacking context</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+
+					<section>
+						<h2>!important vs animation</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/jEWoKW/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/jEWoKW/'><i class="fa fa-external-link"></i>&nbsp; !important vs animation</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+
+					<section>
+						<h2>Moving an element along a circle</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/zxrVEm/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/zxrVEm/'><i class="fa fa-external-link"></i>&nbsp; circular rotation</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+
+					<section>
+						<h2>Gradient animation</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/ZYWLYJ/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/ZYWLYJ/'><i class="fa fa-external-link"></i>&nbsp; gradient animation</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="cols">
+							<div>
+								<h2><a href="https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent"><i class="fa fa-external-link"></i>&nbsp; TransitionEvent</a></h2>
+								<ul>
+									<li>transitionend</li>
+								</ul>
+							</div>
+							<div>
+								<h2><a href="https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent"><i class="fa fa-external-link"></i>&nbsp; AnimationEvent</a></h2>
+								<ul>
+									<li>animationend</li>
+									<li>animationiteration</li>
+									<li>animationstart</li>
+								</ul>
+							</div>
+						</div>
+						<br><br>
+						<p>Vendor prefix and camelCase may require. For example webkitAnimationEnd</p>
+					</section>
+					<section>
+						<h2>Example</h2>
+						<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/QwwKqy/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/QwwKqy/'><i class="fa fa-external-link"></i>&nbsp; Toasts example</a> by wontem (<a href='http://codepen.io/wontem'><i class="fa fa-external-link"></i>&nbsp; @wontem</a>) on <a href='http://codepen.io'><i class="fa fa-external-link"></i>&nbsp; CodePen</a>.
+						</iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Request animation frame</h2>
+						<p>Runs callback function with before the next repaint.</p>
+						<pre><code class="javascript" data-trim>
+var request;
+function step(timestamp) {
+    document.body.innerHTML = timestamp;
+    request = requestAnimationFrame(step);
+}
+request = requestAnimationFrame(step);
+
+setTimeout(function(){
+    cancelAnimationFrame(request);
+}, 1000);
+						</code></pre>
+						<p>
+							<a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/"><i class="fa fa-external-link"></i>&nbsp; requestAnimationFrame for Smart Animating</a>
+						</p>
+					</section>
+
+					<section>
+						<h2>Why?</h2>
+						<div>
+							<ul>
+								<li>60fps</li>
+								<li>Don't call unwanted repaint unlike setInterval</li>
+								<li>Running the animation loop in a tab that’s not visible, the browser won’t keep it running</li>
+							</ul>
+						</div>
+					</section>
+
+				</section>
+
+				<section class="center">
+					<h2>Web Animations API</h2>
+					<iframe height='350' scrolling='no' src='http://codepen.io/wontem/embed/emrrWg/' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/wontem/pen/emrrWg/'>emrrWg</a> by wontem (<a href='http://codepen.io/wontem'>@wontem</a>) on <a href='http://codepen.io'>CodePen</a>.
+					</iframe>
+				</section>
+
+				<section class="center">
+					<h2>Moar useful links</h2>
+					<a href="http://www.smashingmagazine.com/2014/11/18/the-state-of-animation-2014/"><i class="fa fa-external-link"></i>&nbsp; The state of animation 2014</a><br>
+					<a href="http://css-tricks.com/svg-animation-on-css-transforms/"><i class="fa fa-external-link"></i>&nbsp; SVG Animation and CSS Transforms</a>
+				</section>
+
+				<section class="center">
+					<h2>The end</h2>
+					<p>
+						<a href="http://codepen.io/wontem/"><i class="fa fa-codepen"></i>&nbsp; wontem</a>
+					</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="libs/reveal.js/lib/js/head.min.js"></script>
+		<script src="libs/reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+
+				transition: 'linear',
+				backgroundTransition: 'fade',
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'libs/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'libs/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'libs/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'libs/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'libs/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'libs/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

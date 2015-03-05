@@ -1,0 +1,19 @@
+table:hover .elem {
+  transform: translateX(0) translateZ(0); }
+
+div[anim="linear"] {
+  transition-timing-function: linear; }
+
+div[anim="ease"] {
+  transition-timing-function: ease; }
+
+div[anim="ease-in"] {
+  transition-timing-function: ease-in; }
+
+div[anim="ease-out"] {
+  transition-timing-function: ease-out; }
+
+div[anim="ease-in-out"] {
+  transition-timing-function: ease-in-out; }
+
+/*# sourceMappingURL=style.css.map */

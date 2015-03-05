@@ -1,0 +1,112 @@
+// Default mixins and settings -----------------
+@import "../libs/reveal.js/css/theme/template/mixins";
+@import "../libs/reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #1A1A1A;
+
+$mainFont: 'Open Sans', sans-serif;
+$linkColor: #8dd792;
+$linkColorHover: lighten( $linkColor, 20% );
+$headingFont: 'Roboto', Impact, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: 0.02em;
+$headingTextTransform: uppercase;
+$selectionBackgroundColor: #FF5E99;
+$mainFontSize: 30px;
+
+// Theme template ------------------------------
+@import "../libs/reveal.js/css/theme/template/theme";
+// ---------------------------------------------
+
+.reveal {
+	i {
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: inherit;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1 {
+		font-size: 1.6em;
+	}
+	h2 {
+		font-size: 1.4em;
+	}
+	h3 {
+		font-size: 1.2em;
+	}
+
+	pre {
+		box-shadow: none;
+
+		code {
+			padding: 15px 20px;
+			border-radius: 10px;
+		}
+	}
+
+	table {
+		width: 100%;
+		margin-top: 1.5rem;
+		border-collapse: collapse;
+
+	}
+
+	tbody {
+		&:hover tr {
+			opacity: .1;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	thead {
+		font-weight: bold;
+		background: darken( darkslateblue, 20% );
+		text-transform: uppercase;
+	}
+
+	tr {
+		transition: all .3s;
+	}
+
+	td {
+		text-align: left;
+		font-size: .8em;
+		padding: .2em .3em;
+		vertical-align: text-top;
+	}
+
+	tr:nth-child(2n) {
+		background: rgba( darkslateblue, .3 );
+	}
+}
+
+.cols {
+	display: flex;
+	justify-content: space-between;
+
+	div {
+		flex: 1 0 0;
+	}
+}
+
+.align-left {
+	text-align: left;
+}
+
+.codestyle {
+	font-family: monospace !important;
+}

@@ -1,0 +1,33 @@
+tbody:hover tr .elem {
+  -webkit-animation: move 2s 2 ease-in;
+          animation: move 2s 2 ease-in; }
+tbody:hover tr:nth-child(1) .elem {
+  -webkit-animation-direction: normal;
+          animation-direction: normal; }
+tbody:hover tr:nth-child(2) .elem {
+  -webkit-animation-direction: reverse;
+          animation-direction: reverse; }
+tbody:hover tr:nth-child(3) .elem {
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate; }
+tbody:hover tr:nth-child(4) .elem {
+  -webkit-animation-direction: alternate-reverse;
+          animation-direction: alternate-reverse; }
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); } }
+
+@keyframes move {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); } }
+
+/*# sourceMappingURL=style.css.map */

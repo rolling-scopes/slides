@@ -1,0 +1,7 @@
+include ../little-squares.jade
+	table
+		each val in ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
+			tr
+				td= val
+				td
+					.elem(anim = val)

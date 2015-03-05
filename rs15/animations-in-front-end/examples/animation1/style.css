@@ -1,0 +1,39 @@
+tbody:hover .elem {
+  -webkit-animation: move 2s ease 1;
+          animation: move 2s ease 1; }
+
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  25% {
+    -webkit-transform: translateX(-75%);
+            transform: translateX(-75%); }
+  50% {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  75% {
+    -webkit-transform: translateX(-25%);
+            transform: translateX(-25%); }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%); } }
+
+@keyframes move {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  25% {
+    -webkit-transform: translateX(-75%);
+            transform: translateX(-75%); }
+  50% {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  75% {
+    -webkit-transform: translateX(-25%);
+            transform: translateX(-25%); }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%); } }
+
+/*# sourceMappingURL=style.css.map */

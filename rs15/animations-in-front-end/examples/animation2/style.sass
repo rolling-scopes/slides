@@ -1,0 +1,15 @@
+tbody:hover tr
+  .elem
+    animation: move 2s linear
+  &:nth-child(1) .elem
+    animation-iteration-count: infinite
+  &:nth-child(2) .elem
+    animation-iteration-count: 2
+  &:nth-child(3) .elem
+    animation-iteration-count: 0.5
+
+@keyframes move
+  from
+    transform: translateX(-100%)
+  to
+    transform: translateX(0)

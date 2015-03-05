@@ -1,0 +1,9 @@
+$anims: 'step-start', 'step-end', 'steps(5, start)', 'steps(5, end)'
+
+body:hover .elem
+  transform: translateX(0) translateZ(0)
+
+@each $anim in $anims
+  div[anim = "#{$anim}"]
+    transition-timing-function: #{$anim}
+

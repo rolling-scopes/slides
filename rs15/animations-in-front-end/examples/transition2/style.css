@@ -1,0 +1,21 @@
+body:hover .elem {
+  -webkit-transform: translateX(0) translateZ(0);
+          transform: translateX(0) translateZ(0); }
+
+div[anim="step-start"] {
+  -webkit-transition-timing-function: step-start;
+          transition-timing-function: step-start; }
+
+div[anim="step-end"] {
+  -webkit-transition-timing-function: step-end;
+          transition-timing-function: step-end; }
+
+div[anim="steps(5, start)"] {
+  -webkit-transition-timing-function: steps(5, start);
+          transition-timing-function: steps(5, start); }
+
+div[anim="steps(5, end)"] {
+  -webkit-transition-timing-function: steps(5, end);
+          transition-timing-function: steps(5, end); }
+
+/*# sourceMappingURL=style.css.map */

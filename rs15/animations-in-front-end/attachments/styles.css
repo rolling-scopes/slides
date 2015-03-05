@@ -1,0 +1,10 @@
+.shorthand::before {
+	content: '';
+	background-image: url(shorthand.png);
+	width: 1em;
+	height: 1em;
+	background-size: contain;
+	display: inline-block;
+	margin-bottom: -0.1em;
+	margin-right: 1rem;
+}

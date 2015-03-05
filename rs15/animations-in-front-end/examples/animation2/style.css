@@ -1,0 +1,30 @@
+tbody:hover tr .elem {
+  -webkit-animation: move 2s linear;
+          animation: move 2s linear; }
+tbody:hover tr:nth-child(1) .elem {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite; }
+tbody:hover tr:nth-child(2) .elem {
+  -webkit-animation-iteration-count: 2;
+          animation-iteration-count: 2; }
+tbody:hover tr:nth-child(3) .elem {
+  -webkit-animation-iteration-count: 0.5;
+          animation-iteration-count: 0.5; }
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); } }
+
+@keyframes move {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); } }
+
+/*# sourceMappingURL=style.css.map */

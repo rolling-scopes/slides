@@ -1,0 +1,44 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-size: 1.5rem;
+  color: white;
+  font-family: monospace; }
+
+table {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+tr td {
+  margin-bottom: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 10px 20px; }
+  tr td:last-child {
+    width: 100%;
+    padding: 10px 50px 10px 0; }
+
+.elem {
+  width: 100%;
+  height: 40px;
+  left: 0;
+  -webkit-transform: translateX(-100%) translateZ(0);
+          transform: translateX(-100%) translateZ(0);
+  position: relative;
+  -webkit-transition: 1s all linear;
+          transition: 1s all linear;
+  display: inline-block; }
+  .elem::after {
+    content: "";
+    width: 40px;
+    height: 100%;
+    background: #19e680;
+    position: absolute;
+    left: 100%;
+    display: block; }
+
+/*# sourceMappingURL=little-squares.css.map */

@@ -1,0 +1,13 @@
+.elem {
+  transition-duration: 2s; }
+
+tr:nth-child(1) .elem {
+  transition-delay: -1s; }
+
+tr:nth-child(3) .elem {
+  transition-delay: 1s; }
+
+table:hover .elem {
+  transform: translateX(0) translateZ(0); }
+
+/*# sourceMappingURL=style.css.map */

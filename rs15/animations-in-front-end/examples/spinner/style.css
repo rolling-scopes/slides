@@ -1,0 +1,119 @@
+.intro-wrapper {
+  position: relative; }
+  .intro-wrapper .cont {
+    position: absolute;
+    width: 40px;
+    height: 140px;
+    margin: auto;
+    -webkit-animation: rotate 10s linear infinite;
+            animation: rotate 10s linear infinite;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+  .intro-wrapper .cont:nth-child(2) {
+    -webkit-animation: rotate 10s linear infinite;
+            animation: rotate 10s linear infinite;
+    -webkit-animation-delay: -5s;
+            animation-delay: -5s; }
+  .intro-wrapper .cont:nth-child(3) {
+    -webkit-animation: rotate 10s linear infinite;
+            animation: rotate 10s linear infinite;
+    -webkit-animation-delay: -2.5s;
+            animation-delay: -2.5s; }
+  .intro-wrapper .cont:nth-child(4) {
+    -webkit-animation: rotate 10s linear infinite;
+            animation: rotate 10s linear infinite;
+    -webkit-animation-delay: -7.5s;
+            animation-delay: -7.5s; }
+  .intro-wrapper .a, .intro-wrapper .b, .intro-wrapper .c, .intro-wrapper .d {
+    width: 40px;
+    height: 40px;
+    position: absolute; }
+  .intro-wrapper .a:after, .intro-wrapper .b:after, .intro-wrapper .c:after, .intro-wrapper .d:after {
+    display: block;
+    content: "";
+    -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+            transform: scale(0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 100%; }
+  .intro-wrapper .a {
+    -webkit-animation: move 2s ease-in-out infinite alternate, zIndex 4s ease-in-out infinite;
+            animation: move 2s ease-in-out infinite alternate, zIndex 4s ease-in-out infinite; }
+  .intro-wrapper .b {
+    -webkit-animation: move 2s ease-in-out infinite alternate-reverse, zIndex 4s ease-in-out infinite reverse;
+            animation: move 2s ease-in-out infinite alternate-reverse, zIndex 4s ease-in-out infinite reverse; }
+  .intro-wrapper .a:after {
+    background: #75c7f0;
+    -webkit-animation: zoom 2s ease-in-out infinite alternate;
+            animation: zoom 2s ease-in-out infinite alternate;
+    -webkit-animation-delay: -1s;
+            animation-delay: -1s; }
+  .intro-wrapper .b:after {
+    background: #8152e0;
+    -webkit-animation: zoom 2s ease-in-out infinite alternate-reverse;
+            animation: zoom 2s ease-in-out infinite alternate-reverse;
+    -webkit-animation-delay: -1s;
+            animation-delay: -1s; }
+  .intro-wrapper .c {
+    -webkit-animation: move 2s ease-in-out infinite alternate, zIndex 4s ease-in-out infinite;
+            animation: move 2s ease-in-out infinite alternate, zIndex 4s ease-in-out infinite;
+    -webkit-animation-delay: -1s, -1s;
+            animation-delay: -1s, -1s; }
+  .intro-wrapper .d {
+    -webkit-animation: move 2s ease-in-out infinite alternate-reverse, zIndex 4s ease-in-out infinite reverse;
+            animation: move 2s ease-in-out infinite alternate-reverse, zIndex 4s ease-in-out infinite reverse;
+    -webkit-animation-delay: -1s, -1s;
+            animation-delay: -1s, -1s; }
+  .intro-wrapper .c:after {
+    background: #e05252;
+    -webkit-animation: zoom 2s ease-in-out infinite alternate;
+            animation: zoom 2s ease-in-out infinite alternate;
+    -webkit-animation-delay: -2s;
+            animation-delay: -2s; }
+  .intro-wrapper .d:after {
+    background: #f0f075;
+    -webkit-animation: zoom 2s ease-in-out infinite alternate-reverse;
+            animation: zoom 2s ease-in-out infinite alternate-reverse;
+    -webkit-animation-delay: -2s;
+            animation-delay: -2s; }
+
+@-webkit-keyframes move {
+  100% {
+    -webkit-transform: translateY(250%);
+            transform: translateY(250%); } }
+
+@keyframes move {
+  100% {
+    -webkit-transform: translateY(250%);
+            transform: translateY(250%); } }
+@-webkit-keyframes zoom {
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+@keyframes zoom {
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+@-webkit-keyframes zIndex {
+  25% {
+    z-index: 1; }
+  75% {
+    z-index: -1; } }
+@keyframes zIndex {
+  25% {
+    z-index: 1; }
+  75% {
+    z-index: -1; } }
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg); } }
+@keyframes rotate {
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg); } }
+
+/*# sourceMappingURL=style.css.map */

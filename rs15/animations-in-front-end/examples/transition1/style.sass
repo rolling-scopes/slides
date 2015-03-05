@@ -1,0 +1,8 @@
+$anims: 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'
+
+table:hover .elem
+  transform: translateX(0) translateZ(0)
+
+@each $anim in $anims
+  div[anim = "#{$anim}"]
+    transition-timing-function: #{$anim}

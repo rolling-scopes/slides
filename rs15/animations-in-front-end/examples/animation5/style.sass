@@ -1,0 +1,17 @@
+tbody:hover tr
+  .elem
+    animation: move 2s 2 ease-in
+  &:nth-child(1) .elem
+    animation-direction: normal
+  &:nth-child(2) .elem
+    animation-direction: reverse
+  &:nth-child(3) .elem
+    animation-direction: alternate
+  &:nth-child(4) .elem
+    animation-direction: alternate-reverse
+
+@keyframes move
+  from
+    transform: translateX(-100%)
+  to
+    transform: translateX(0)
