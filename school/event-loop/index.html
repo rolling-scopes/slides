@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Event Loop</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+			h1, h2, h3, h4, h5, h6 {
+				text-transform: none !important;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Event Loop</h1>
+				</section>
+				<section
+					data-markdown="md/initial.md"
+					data-separator-vertical="\n\n\n">
+				</section>
+				<section>
+					<div style="display:inline-block; width: 50%;">
+						<h3>Code</h1>
+						<pre><code data-trim>
+function mul(a, b) {
+	return a * b;
+}
+
+function square(a) {
+	return mul(a, a);
+}
+
+function printSquare() {
+	console.log(square(42));
+}
+
+printSquare();
+							</code></pre>
+					</div>
+					<div style="display:inline-block; vertical-align: top">
+						<h3>Callstack</h3>
+						<ul>
+							<li class="fragment"><code>push printSquare</code></li>
+							<li class="fragment"><code>push square</code></li>
+							<li class="fragment"><code>push mul</code></li>
+							<li class="fragment"><code>pop &nbsp;mul</code></li>
+							<li class="fragment"><code>pop &nbsp;square</code></li>
+							<li class="fragment"><code>pop &nbsp;printSquare</code></li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h3>Blocking JS</h3>
+					<a href="./examples/blockingjs.html" target="_blank">example</a>
+				</section>
+				<section>
+					<section>
+						<h3>Solution? Asynchronous callbacks</h3>
+						<p>callback queue</p>
+					</section>
+					<section>
+						<div style="float: left; width: 50%;">
+							<h3>Code</h1>
+							<pre><code data-trim>
+function asyncJob() {
+  setTimeout(fucntion job() {
+    console.log("I'm done");
+  }, 5000);
+}
+
+asyncJob();
+								</code></pre>
+						</div>
+						<div style="float: right; width: 50%;">
+							<ul>
+								<li class="fragment"><code>push asyncJob</code></li>
+								<li class="fragment"><code>push setTimeout</code></li>
+								<li class="fragment"><code>push job to callback queue</code></li>
+								<li class="fragment"><code>pop &nbsp;setTimeout</code></li>
+								<li class="fragment"><code>pop &nbsp;asyncJob</code></li>
+								<li class="fragment">now WebAPI waits 5000ms</li>
+								<li class="fragment"><code>push job</code></li>
+								<li class="fragment"><code>pop &nbsp;job</code>
+							</ul>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Event Loop</h3>
+						<p class="fragment">calls functions from callback queue when stack is empty</p>
+					</section>
+					<section>
+						<pre><code data-trim>
+setInterval(function () {
+    // some code which takes 30ms to execute
+}, 16);
+							</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						Examples
+					</section>
+					<section><pre><code>alert('hello,');
+
+setTimeout(function () {
+   alert('!')
+}, 0);
+
+alert('world');</code></pre></section>
+					<section>
+						<pre><code>var start = Date.now();
+var c;
+
+console.log("start = " + new Date());
+
+setTimeout(function () {
+    console.log("timeout = " + new Date());
+}, 1000);
+
+while (start + 2000 > Date.now()) {
+    var c = 3 + 3 + 3;
+}
+
+console.log("end = " + new Date());
+</code></pre></section>
+					<section>
+						<pre><code>for (var i = 1; i <= 2; i++) {
+    setTimeout(function() { console.log('i =', i) }, 100);
+}</code></pre>
+<pre class="fragment"><code>for (var i = 1; i <= 2; i++) {
+    (function () {
+        var local = i;
+        setTimeout(function() { console.log('i =', local) }, 100);
+    })();
+}</code></pre>
+					</section>
+					<section>
+						<pre><code>var a = {
+    firstName: 'Mike',
+    sayName: function () {
+        setTimeout(function () {
+            console.log(this.firstName);
+        }, 1000);
+    }
+}
+
+a.sayName();</code></pre>
+<pre class="fragment"><code>var a = {
+    firstName: 'Mike',
+    sayName: function () {
+        setTimeout(function () {
+            console.log(this.firstName);
+        }.bind(this), 1000);
+    }
+}
+a.sayName();</code></pre>
+					</section>
+				</section>
+				<section>
+					<h3>Questions?</h3>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
