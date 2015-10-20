@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Russo+One&subset=latin,latin-ext,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);
+
+.reveal {
+	/*font-family: "Russo One";*/
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-family: "Russo One";
+}
+
+img {
+	border: none !important;
+	background: none !important;
+	box-shadow: none !important;
+	max-height: 90vh !important;
+}
+
+.circled {
+	border-radius: 100%;
+}
+
+code {
+	font-size: 28px !important;
+	line-height: 32px !important;
+	overflow: hidden !important;
+}
+
+pre {
+	box-shadow: none !important;
+}
+
+@-webkit-keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.cross {
+	-webkit-animation: fadein 2s ease-in alternate infinite;
+	-moz-animation: fadein 2s ease-in alternate infinite;
+	animation: fadein 2s ease-in alternate infinite;
+}
+
+.cross-line {
+	-webkit-animation: fadein 2s ease-in alternate infinite;
+	-moz-animation: fadein 2s ease-in alternate infinite;
+	animation: fadein 2s ease-in alternate infinite;
+}
+
+.cross-line:before {
+	position: absolute;
+	content: "";
+	left: 0;
+	right: 0;
+	height: 12px;
+	background-color: red;
+	top: 50%;
+	margin-top: -6px;
+}
+
+.reveal .white {
+	color: white;
+}
+
+.background-overlay:before {
+	z-index: -1;
+	position: absolute;
+	top: -10000px;
+	left: -10000px;
+	right: -10000px;
+	bottom: -10000px;
+	content: "";
+}
+
+.background-overlay-dark:before {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.background-overlay-darker:before {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.left-aligned {
+	text-align: left;
+}
+
+.container-to-align {
+	display: flex;
+    justify-content: center;
+}
