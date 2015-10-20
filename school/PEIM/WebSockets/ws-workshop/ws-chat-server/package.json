@@ -1,0 +1,14 @@
+{
+  "name": "frontendconfchat",
+  "subdomain": "frontendconfchat",
+  "scripts": {
+    "start": "frontendconfchat.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "dependencies": {
+    "websocket": "*"
+  },
+  "version": "0.0.0-4"
+}

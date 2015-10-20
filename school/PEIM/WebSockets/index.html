@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>PEIM-WS</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="../styles/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/WebS-People.jpg" >
+					<p>
+						<a href="http://karlovi.ch" target="_blank">
+							<img height="70px;" src="../images/karlovich-logo-white.svg">
+						</a>
+					</p>
+					<h2 class="white background-overlay background-overlay-darker"><img src="images/peim.png"></h2>
+					<p>
+						<h3 class="white">RealTime. WebSockets.</h3>
+					</p>
+					<p>
+						<a href="http://smartme.university" target="_blank">
+							<img height="200px;" src="../images/smartme-logo-white.svg">
+						</a>
+						<a href="http://rollingscopes.com" target="_blank">
+							<img height="200px;" src="../images/rs-logo-black.svg">
+						</a>
+					</p>
+				</section>
+				<section data-background="../images/jack-sparrow.jpg">
+					<h2 class="white background-overlay background-overlay-dark">Промедление смерти подобно</h2>
+					<br/>
+					<h2 class="white">Eng: Danger in delay</h2>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<h2>Agenda</h2>
+					<ol style="white-space: nowrap;">
+						<li>Применение realtime</li>
+						<li>Обзор технологий и инструментов</li>
+						<li>Подробнее о веб-сокетах</li>
+						<li>Live coding. Создание приложения на NodeJS</li>
+					</ol>
+				</section>
+				<section>
+					<section>
+						<h2>Биржевая и финансовая информация</h2>
+						<img src="images/fin-app.png">
+					</section>
+					<section>
+						<h2>Успех</h2>
+						<img src="images/cash.gif">
+					</section>
+					<section>
+						<h2>Односекундное промедление</h2>
+						<img src="images/beer-cat.gif">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Спортивные события, ставки онлайн</h2>
+						<img src="images/sport.jpg">
+					</section>
+					<section>
+						<h2>Реальная история</h2>
+						<img src="images/cheater.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Онлайн-игры</h2>
+						<img src="images/games.png">
+					</section>
+					<section>
+						<img src="images/croco-gena.jpg">
+					</section>
+					<section>
+						<h4>Крокодил онлайн</h4>
+						<img src="images/croco.jpg">
+					</section>
+				</section>
+				<section>
+					<h2>Соцсети, чаты</h2>
+					<img src="images/fb-chat.jpg">
+				</section>
+				<section>
+					<h2>Breaking news</h2>
+					<img src="images/r-news.jpg">
+				</section>
+				<section>
+					<section data-background="images/collaboration.jpg">
+						<h2 class="white background-overlay background-overlay-dark">Collaboration stuff</h2>
+					</section>
+					<section>
+						<h4>CSS Quickdraw</h4>
+						<img src="images/css-quiz.png">
+					</section>
+					<section data-background="images/challenge.jpg">
+						<h2 class="white background-overlay background-overlay-dark">WebSockets Challenge</h2>
+					</section>
+				</section>
+				<section data-background="images/din.jpg">
+					<h2 class="white background-overlay background-overlay-dark">Как было раньше?</h2>
+				</section>
+				<section>
+					<h4>Инструмент = Транспорт = HTTP</h4>
+					<img src="images/http.png">
+				</section>
+				<section>
+					<h2>Polling. 2013</h2>
+					<img src="images/polling.png">
+				</section>
+				<section>
+					<h2>Polling в жизни</h2>
+					<video class="stretch"  data-autoplay id="momVideo" src="Mom.mp4"></video>
+				</section>
+				<section>
+					<section>
+						<h2>COMET</h2>
+						<div class="fragment" style="position: relative">
+							<img src="images/comet.jpg"/>
+							<div id="comet-fragment" class="fragment cross" style="opacity: 0.7;position: absolute;top:0;bottom:0;right:0;left:0;">
+							<img height="100%" width="100%" src="images/cross.png"/>
+						</div>
+						</div>
+					</section>
+					<section>
+						<h2>COMET</h2>
+						<img src="images/comet-1.jpg"/>
+					</section>
+					<section>
+						<ul>
+							<li>Long Polling</li>
+							<li>Бесконечный фрейм</li>
+							<li>Http streaming</li>
+							<li>Flash-объекты</li>
+							<li>Java-апплеты</li>
+						</ol>
+					</section>
+				</section>
+				<section>
+					<section>
+						<span>1999 год. Самый первый способ передачи реалтайм-данных</span>
+						<h2 class="fragment">GIF-файл</h2>
+						<img class="fragment" src="images/wat.jpg">
+					</section>
+					<section>
+						<h2>Бесконечный GIF</h2>
+						<img src="images/indefinite-gif.gif"/>
+					</section>
+				</section>
+				<section>
+					<h2>Рубрика “No comments”</h2>
+					<pre>
+					<code>
+&lt;meta http-equiv=&quot;refresh&quot; content=&quot;60&quot;&gt;
+
+setInterval(function () {
+	location.reload();
+}, 6000);
+					</code></pre>
+				</section>
+				<section>
+					<img src="images/rake.jpg"/>
+				</section>
+				<section>
+					<section data-background="images/html5.jpg">
+						<h2 class="white background-overlay background-overlay-dark">Realtime in HTML5</h2>
+					</section>
+					<section data-background="images/WebRTC.png">
+						<h3 class="white background-overlay background-overlay-dark">Web RTC</h3>
+					</section>
+					<section data-background="images/html5-connectivity.png">
+						<h3 class="white background-overlay background-overlay-dark">Server-Sent Events</h3>
+					</section>
+					<section data-background="images/WebSocketsPower.png">
+						<h3 class="white background-overlay background-overlay-dark">WebSockets: protocol and API</h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>WebSocket API</h2>
+						<img src="images/webs-api-cover.jpg"/>
+					</section>
+					<section>
+						<h2>Basic Example</h2>
+						<img src="images/webs-api-2.png"/>
+					</section>
+					<section>
+						<h2>Receiving Binary Data</h2>
+						<img src="images/binary-data.png"/>
+					</section>
+					<section>
+						<h2>bufferedAmount</h2>
+						<img src="images/bufferedamount.png"/>
+					</section>
+<!-- 					<section>
+						<h2>Пример</h2>
+						<pre>
+						<code>
+var socket = new WebSocket('ws://tespapp.nodejitsu.com');
+socket.onopen = function () {
+	console.log('Соединение открыто.');
+	socket.send(JSON.stringify({ token: 'bVfr4' }));
+};
+						</code></pre>
+					</section>
+					<section>
+						<h2>onmessage</h2>
+						<pre>
+						<code>
+socket.onmessage = function (response) {
+	var data = JSON.parse(response.data);
+	switch (data.message) {
+		case "image":
+			painter.drawImage(data.data);
+			break;
+		case "draw":
+			painter.draw(data.data);
+			break;
+	}
+};
+						</code></pre>
+					</section>
+					<section>
+						<h2>send</h2>
+						<pre>
+						<code>
+painter.onDraw = function (data) {
+	socket.send(JSON.stringify({
+		message: "draw",
+		data: data
+	}));
+};
+						</code></pre>
+					</section> -->
+				</section>
+				<section>
+					<section>
+						<h3>WebSocket Protocol</h3>
+					</section>
+					<section>
+						<h3>WebSocket Protocol Request</h3>
+						<img src="images/webs-protocol-request.png"/>
+					</section>
+					<section>
+						<h3>WebSocket Protocol Response</h3>
+						<img src="images/webs-protocol-response.png"/>
+					</section>
+					<section>
+						<h3>WebSocket Framing Layer</h3>
+						<img src="images/framing-layer.png"/>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>2015</h2>
+						<img src="images/soccerstand-2015.png"/>
+					</section>
+					<section>
+						<h2>f12 - Dev Tools</h2>
+						<img src="images/dev-tools.jpg"/>
+					</section>
+					<section>
+						<h2>Frames</h2>
+						<img src="images/frames-f12.jpg"/>
+					</section>
+				</section>
+				<section>
+					<h2>Supported clients</h2>
+					<img src="images/can-i-use-webs.png"/>
+				</section>
+				<section>
+					<h2>Supported servers</h2>
+					<img src="images/servers.jpg"/>
+				</section>
+				<section>
+					<h2>Traffic Charts</h2>
+					<img src="images/traffic.jpg"/>
+				</section>
+				<section>
+					<img src="images/latency-http.jpg"/>
+				</section>
+				<section>
+					<img src="images/latency-webs.jpg"/>
+				</section>
+				<section data-background="../images/question-time.jpg">
+					<section>
+						<h2 class="fragment white background-overlay background-overlay-dark">FAQ</h2>
+						<p class="fragment white">Would it be able to handle 1,000,000 concurrent connections?</p>
+					</section>
+					<section>
+						<h4 class="white background-overlay background-overlay-darker">And the answer is...</h4>
+						<blockquote class="fragment white left-aligned">
+							“On today's systems, handling 1 million concurrent TCP connections is not an issue.<br/><br/>
+							I can affirm that based on our own tests (full disclosure: I am the CTO at Lightstreamer).”
+						</blockquote>
+					</section>
+				</section>
+				<section>
+					<img src="images/webs-logo.jpg"/>
+				</section>
+				<section data-background="images/AngularJS.jpg">
+					<h4 class="white background-overlay background-overlay-darker">AngularJS and WebSockets (from <a target="_blank" href="http://clintberry.com/2013/angular-js-websocket-service/">here</a>)</h4>
+					<blockquote class="white left-aligned">
+						“Angular comes bundled with some great tools to connect to REST servers, but it doesn’t come with anything to help you with real-time data (and it probably shouldn’t).”
+					</blockquote>
+				</section>
+				<section data-background="images/terminator-thumb-up.png">
+					<h2 class="white background-overlay background-overlay-dark">WebSockets pros:</h2>
+					<div class="white container-to-align">
+						<div class="left-aligned">
+							<p class="fragment">1 - Official web-standard</p>
+							<p class="fragment">2 - Native support of browsers and servers</p>
+							<p class="fragment">3 - Bidirectional communication</p>
+							<p class="fragment">4 - Low latency</p>
+							<p class="fragment">5 - Unlimited connections</p>
+							<p class="fragment">6 - Persistens connection</p>
+							<p class="fragment">7 - Binary data</p>
+							<p class="fragment">8 - String messages encoded via UTF8</p>
+							<p class="fragment">N - Blah blan blah</p>
+						</div>
+					</div>
+				</section>
+				<section data-background="images/thumb-down.png">
+					<h2 class="white background-overlay background-overlay-darker">WebSockets cons:</h2>
+					<div class="white container-to-align">
+						<div class="left-aligned">
+							<p class="fragment">TLS needed</p>
+							<p class="fragment">Fallback still needed in most cases</p>
+						</div>
+					</div>
+				</section>
+				<section data-background="images/webs-video.jpg">
+					<h3 class="white background-overlay background-overlay-dark">Рубрика "Удивительное рядом"</h3>
+					<p class="white">Video streaming via WebSockets + Canvas. Prof <a target="_blank" href="http://phoboslab.org/log/2013/09/html5-live-video-streaming-via-websockets">here</a> and <a target="_blank" href="http://badankles.com/?p=209">here</a>."</p>
+					<object type="application/x-shockwave-flash" width="640" height="330" data="http://www.flickr.com/apps/video/stewart.swf?v=109786" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="flashvars" value="intl_lang=en-us&amp;photo_secret=70bfccabd1&amp;photo_id=6324380039"><param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=109786"><param name="bgcolor" value="#000000"><param name="allowFullScreen" value="true"><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/video/stewart.swf?v=109786" bgcolor="#000000" allowfullscreen="true" flashvars="intl_lang=en-us&amp;photo_secret=70bfccabd1&amp;photo_id=6324380039" height="330" width="640"></object>
+				</section>
+				<section data-background="images/smartme-croco.png">
+					<h2 class="white background-overlay background-overlay-dark">Воркшоп: онлайн-крокодил</h2>
+				</section>
+				<section>
+					<h2>Начальные данные</h2>
+					<a target="_blank" href="http://karlovi.ch/shows/webs-smartme.zip">Sources: http://karlovi.ch/shows/webs-smartme.zip</a>
+					<br>
+					<p>
+						WS/WSS Server: <a target="_blank" href="http://frontendconf.jit.su">frontendconf.jit.su</a>
+					</p>
+					<p>
+						Entry point: "/client-side/views/index-todo.html"
+					</p>
+				</section>
+				<section>
+					<section data-background="images/nodejs-npm-i-errors.jpg">
+						<h2 class="white background-overlay background-overlay-dark">npm i</h2>
+						<img src="images/npm-i-folder.jpg"/>
+					</section>
+					<section data-background="images/how-to.jpg">
+						<a class="background-overlay background-overlay-darker" target="_blank" href="https://github.com/Automattic/node-canvas/wiki/Installation---Windows">How to install Node-Canvas</a>
+					</section>
+					<section data-background="images/buben.jpg">
+						<h3 class="white background-overlay background-overlay-dark">For Windows Required</h3>
+					</section>
+				</section>
+<!-- 				<section>
+				<section> -->
+				<section>
+					<h2>Спасибо за внимание</h2>
+				</section>
+			</div>
+		</div>
+		<audio id="audioElement"></audio>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<html>
+<head>
+    <link href="../css/reset.css" rel="Stylesheet" type="text/css" />
+    <link href="../css/frontendconf.css" rel="Stylesheet" type="text/css" />
+    <script src="../js/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/drawing-api.js" type="text/javascript"></script>
+    <script src="../js/chat-api.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="canvas-container">
+        <canvas width="800px" height="600px"></canvas>
+        <div class="painter-controls-container">
+            <input class="lineWidth" type="range" min="1" max="20" step="1" value="1" />
+            <br />
+            <input class="color-picker" type="color" value="#000" />
+            <input class="timer" type="button" value="Timer" />
+        </div>
+        <div class="loading">
+        </div>
+        <div class="chat-container">
+            <div class="chat-messages">
+            </div>
+            <div>
+                <input class="login-value" type="text" />
+                <input class="login-button" type="button" value="Логин" />
+            </div>
+            <div>
+                <input class="text-value" type="text" />
+                <input class="text-button" type="button" value="Сообщение" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var painter = new window.PainterComponent($('.canvas-container'));
+        // WS-Сервер посылает два вида сообщений - image & draw следующего вида
+        // 1.
+        //        {
+        //        message:"image",
+        //        data :{
+        //                "data:image/png;base64,iVBORw0KGg..."
+        //            }
+        //        }
+        // 2.
+        //        {
+        //        message:"image",
+        //        data :{
+        //                type: "line",
+        //                x1: self._startX,
+        //                y1: self._startY,
+        //                x2: coords.x,
+        //                y2: coords.y,
+        //                width: self._lineWidth,
+        //                color: self._color
+        //            }
+        //        }
+        // TO DO
+        // 1. Принять данные от сокета и передать их в соответствующий метод объекта painter
+        // 2. Принять данные от сокета и передать их в соответствующий метод объекта painter
+        //...
+        //-----------------------------------------------------------------------------
+        // WS-Server принимает один вид сообщений:
+        // Реализовать отправку данных на сервер вида
+        // {
+        //  message: "draw",
+        //  data: data
+        // }
+        // TO DO
+        // 3. Реализовать имплементацию коллбека painter.onDraw и отправить данные на WS-Сервер
+
+
+
+        // Сигнатура объекта painter
+        // painter.drawImage = function (data) {}
+        // painter.draw = function (data) {}
+        // painter.onDraw - callback when user draw something
+    </script>
+</body>
+</html>

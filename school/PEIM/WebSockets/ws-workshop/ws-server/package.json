@@ -1,0 +1,15 @@
+{
+  "name": "websworkshop",
+  "subdomain": "websworkshop",
+  "scripts": {
+    "start": "websworkshop.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "dependencies": {
+    "websocket": "*",
+    "canvas": "*"
+  },
+  "version": "0.0.0-10"
+}

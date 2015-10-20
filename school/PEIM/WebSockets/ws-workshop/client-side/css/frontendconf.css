@@ -1,0 +1,58 @@
+﻿body
+{
+	background-color: rgb(210, 210, 210);
+}
+
+canvas
+{
+	cursor: pointer;
+	border: 1px solid rgb(150, 150, 150);
+	background-color: white;
+	margin-top:60px;
+}
+
+.canvas-container
+{
+	margin: 0 auto;
+	width: 800px;
+	position: relative;
+}
+
+.painter-controls-container
+{
+	position: absolute;
+	top:0;
+}
+
+.loading 
+{
+	position: absolute;
+	top:60px;
+	left:0;
+	bottom:0;
+	right:0;
+	background: url(../images/flower-spinner.gif) no-repeat center center transparent;
+}
+
+.chat-container {
+	position:absolute;
+	right:0px;
+	top:0px;
+}
+
+.chat-messages {
+	position: absolute;
+	left: 105%;
+	width: 250px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	max-height:600px;
+}
+
+.chat-text 
+{
+}
+.chat-login 
+{
+	font-weight: bold;
+}
