@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>HTTP</title>
+
+		<meta name="description" content="Basics of HTTP">
+		<meta name="author" content="Alex Karlovich">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../../RevealJS/css/reveal.css">
+		<link rel="stylesheet" href="../../RevealJS/css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../../RevealJS/lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="../styles/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../RevealJS/css/print/pdf.css' : '../../RevealJS/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../../RevealJS/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/http-main-2.jpg">
+					<p>
+						<a href="http://karlovi.ch" target="_blank">
+							<img height="50px;" src="../../images/logo/Karlovich/karlovich-logo-white.svg">
+						</a>
+					</p>
+					<h1 class="white background-overlay background-overlay-dark">Basics of HTTP</h1>
+					<p>
+						<a href="http://epam.com" target="_blank">
+							<img height="100px;" src="../../images/logo/EPAM/EPAM_LOGO_white.png">
+						</a>
+						<a href="http://rollingscopes.com" target="_blank">
+							<img height="100px;" src="../../images/logo/RS/rs-logo-white.svg">
+						</a>
+					</p>
+				</section>
+				<section>
+					<section data-background="images/CERN.jpg">
+						<h2 class="fragment white background-overlay background-overlay-dark">CERN</h2>
+					</section>
+					<section  data-background="images/collaider.jpg">
+						<h2 class="white background-overlay background-overlay-dark">90s, Creator of WWW</h2>
+						<div class="fragment">
+							<h4>Sir Timothy John «Tim» Berners-Lee</h4>
+							<img src="images/berners-lee-1.jpg"/>
+						</div>
+					</section>
+					<section  data-background="images/berners-lee-1.jpg">
+						<p>Creator of URL, <b style="color:red;">HTTP</b>, HTML and whole WWW </p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Brief History</h2>
+					</section>
+					<section>
+						<h4>1970s - OSI (Open System Interconnection, finally standardized in 1984)</h4>
+						<img src="images/osi-1.jpg" alt="Open System Interconnection"/>
+					</section>
+					<section>
+						<h4>1970s - TCP/IP (standardized in 1982)</h4>
+						<img src="images/tcp-ip-1.png" alt="TCP/IP"/>
+					</section>
+					<section>
+						<h4>HTTP</h4>
+						<ul>
+							<li class="fragment">
+								1992 - HTTP/0.9
+							</li>
+							<li class="fragment">
+								1996 - HTTP/1.0
+							</li>
+							<li class="fragment">
+								1999 - HTTP/1.1
+							</li>
+							<li class="fragment">
+								201? - HTTP 2.0 (<a href="http://tools.ietf.org/html/draft-ietf-httpbis-http2-04" target="_blank">draft version</a>)
+							</li>
+						</ul>
+					</section>
+				</section>
+ 				<section>
+					<section>
+						<h2>TCP/IP</h2>
+						<img src="images/tcp-ip-1.png"/>
+					</section>
+					<section>
+						<h2>Triple Handshake</h2>
+						<img style="height: 600px;" src="images/triple-handshake.jpg"/>
+					</section>
+					<section>
+						<h2> Three-way handshake</h2>
+						<img src="images/tcp-handshake.png"/>
+					</section>
+					<section>
+						<h2>Latency</h2>
+						<img src="images/latency.png"/>
+					</section>
+					<section>
+						<h2>RTT (round-trip time)</h2>
+						<img src="images/signal-latency.png"/>
+					</section>
+				</section>
+				<section>
+					<section data-background="images/DNS.png">
+						<h2 class="white background-overlay background-overlay-darker">DNS (Domain Name System)</h2>
+						<p>
+							www.example.com -> 93.184.216.119
+						</p>
+					</section>
+					<section>
+						<h2>DNS Lookup</h2>
+						<img src="images/dns_main.png"/>
+					</section>
+					<section>
+						<h2>DNS Lookup Time</h2>
+						<img src="images/dns-lookup-time.png"/>
+					</section>
+					<section>
+						<h2>host.config file</h2>
+						<pre><code>"c:\Windows\System32\drivers\etc\hosts"</code></pre>
+					</section>
+					<section data-background="images/chrome-dns.jpg">
+						<h2 class="white background-overlay background-overlay-darker">DNS Statistics</h2>
+						<p>chrome://dns/</p>
+						<p>chrome://net-internals/#dns</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>HTTP</h2>
+						<blockquote>
+							The Hypertext Transfer Protocol (HTTP) is an application-level protocol for distributed, collaborative, hypermedia information systems.
+						</blockquote>
+						T. Berners-Lee, <a target="_blank" href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">rfc2616</a>
+					</section>
+					<section>
+						<img src="images/http-workflow.jpg" alt=" HTTP Workflow">
+					</section>
+					<section>
+						<img src="images/http-workflow-2.jpg" alt=" HTTP Workflow 2">
+					</section>
+				</section>
+				<section>
+					<section data-background="images/evolution.jpg">
+						<h2 class="white background-overlay background-overlay-dark">HTTP Evolution</h2>
+					</section>
+					<section>
+						<h2>HTTP 0.9</h2>
+						<img src="images/http-0.9.png">
+					</section>
+					<section>
+						<h2>HTTP 1.0</h2>
+						<img src="images/http-1.0.png">
+					</section>
+					<section>
+						<h2>HTTP 1.1</h2>
+						<img src="images/http-1.1.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2 class="white background-overlay background-overlay-dark">Connection: keep-alive</h2>
+					</section>
+					<section data-background="images/http-separate-tcp-con.png">
+						<h2 class="fragment white background-overlay background-overlay-dark">HTTP 1.0: Separate TCP connections</h2>
+					</section>
+					<section>
+						<h2>Keep-alive connection</h2>
+						<img src="images/http-tcp-con-keep-alive.png">
+					</section>
+					<section>
+						<h2>HTTP Pipelining</h2>
+						<img src="images/HTTP-Pipelining.png">
+					</section>
+				</section>
+				<section>
+					<h2>Six-connection limit per origin</h2>
+					<img src="images/tcp-6.png">
+				</section>
+				<section>
+					<h2>HTTP 1.1 Features</h2>
+					<ul>
+						<li class="fragment">
+							Pull protocol
+						</li>
+						<li class="fragment">
+							Stateless
+						</li>
+						<li class="fragment">
+							Scaleable
+						</li>
+						<li class="fragment">
+							Simple
+						</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>HTTP Request Headers</h2>
+						<ol>
+							<li class="fragment">
+								<b class="http-blue">Content-Length:</b> number-of-bytes 
+							</li>
+							<li class="fragment">
+								<b class="http-blue">Referer:</b> referer-URL
+							</li>
+							<li class="fragment">
+								<b class="http-blue">User-Agent:</b> browser-type 
+							</li>
+							<li class="fragment">
+								<b class="http-blue">Accept-Encoding:</b> encoding-method-1, encoding-method-2, ... 
+							</li>
+							<li class="fragment">
+								<b class="http-blue">Cookie:</b> cookie-name-1=cookie-value-1, cookie-name-2=cookie-value-2, ...
+							</li>
+						</ol>
+					</section>
+					<section>
+					<h2>HTTP Response Headers</h2>
+					<ol>
+						<li class="fragment">
+							<b class="http-blue">Cache-Control:</b> max-age=3600, public
+						</li>
+						<li class="fragment">
+							<b class="http-blue">Content-Encoding:</b>gzip
+						</li>
+						<li class="fragment">
+							<b class="http-blue">Content-Type:</b>text/html; charset: utf-8
+						</li>
+						<li class="fragment">
+							<b class="http-blue">Content-Length:</b> 10000
+						</li>
+						<li class="fragment">
+							<b class="http-blue">Connection:</b> Keep-Alive
+						</li>
+					</ol>
+					</section>
+					<section>
+						<h2>Content-Encoding:gzip. Profit</h2>
+						<img src="images/gzip-encoding-effect.jpg"/>
+					</section>
+				</section>
+				<section>
+					<section>
+					<h2>HTTP Methods</h2>
+					<ol>
+						<li class="fragment">
+							"OPTIONS"
+						</li>
+						<li class="fragment">
+							"GET"
+						</li>
+						<li class="fragment">
+							"HEAD"
+						</li>
+						<li class="fragment">
+							"POST"
+						</li>
+						<li class="fragment">
+							"PUT"
+						</li>
+						<li class="fragment">
+							"DELETE"
+						</li>
+						<li class="fragment">
+							"TRACE"
+						</li>
+						<li class="fragment">
+							"CONNECT"
+						</li>
+					</ol>
+					</section>
+					<section>
+						<h2>POST</h2>
+						<pre><code>
+&lt;html&gt;
+&lt;body&gt;
+ &lt;form action=&quot;login&quot; method=&quot;POST&quot;&gt;
+   User Name: &lt;input name=&quot;user&quot; type=&quot;text&quot; /&gt;
+&lt;input name=&quot;password&quot; type=&quot;password&quot; /&gt;
+   &lt;input type=&quot;submit&quot; /&gt;
+ &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+					<h2>Status Code Definitions</h2>
+						<ol>
+							<li class="fragment">
+								"Informational 1xx"
+							</li>
+							<li class="fragment">
+								"Successful 2xx"
+							</li>
+							<li class="fragment">
+								"Redirection 3xx"
+							</li>
+							<li class="fragment">
+								"Client Error 4xx"
+							</li>
+							<li class="fragment">
+								"Server Error 5xx"
+							</li>
+						</ol>
+					</section>
+					<section>
+						<h2>500 - Bad practices</h2>
+						<img src="images/bad-500.jpg"/>
+					</section>
+					<section>
+						<h2>500 - Best practices</h2>
+						<img src="images/code-500.jpg"/>
+					</section>
+					<section>
+						<h2>404 - Bad practices</h2>
+						<img src="images/bad-404.jpg"/>
+					</section>
+					<section>
+						<h2>404 - Best practices</h2>
+						<img src="images/champ-404.jpg"/>
+					</section>
+					<section data-background="#030399">
+						<img src="images/question-time-1.jpg" alt="Question Time">
+					</section>
+					<section data-background="#030399">
+						<h2>301 Moved Permanently</h2>
+						<ul style="list-style:none;">
+							<li class="fragment">
+								<h4>Request</h4>
+								<pre>
+									<code>
+									"GET /index.php HTTP/1.1
+									Host: www.example.org"
+									</code>
+								</pre>
+							</li>
+							<li class="fragment">
+								<h4>Response</h4>
+								<pre>
+									<code>
+									"HTTP/1.1 301 Moved Permanently
+									Location: http://www.example.org/index.html"
+									</code>
+								</pre>
+							</li>
+							<li class="fragment">
+								What is the most common usage of this status code?
+							</li>
+						</ul>
+					</section>
+					<section data-background="#030399">
+						<h2>Tip</h2>
+						<b>https://facebook.com/</b></br>
+							vs</br>
+						<b>https://<span style="color:red;">www.</span>facebook.com/</b>
+					</section>
+					<section data-background="#030399">
+						<h2>Answer</h2>
+					</section>
+					<section data-background="#030399">
+						<h2>SEO optimization</h2>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Cookies</h2>
+						<img src="images/cookies-1.jpg" alt="Cookies">
+					</section>
+					<section>
+						<h2>Cookies</h2>
+						<ul style="list-style:none;">
+							<li class="fragment">
+								Session cookie
+							</li>
+							<li class="fragment">
+								Persistent cookie
+							</li>
+							<li class="fragment">
+								Secure cookie
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Chrome Dev Tools - Cookies Tab</h2>
+						<img style="height: 600px;" src="images/cookies-sports.jpg" alt="Cookies SPORTS.RU">
+					</section>
+					<section>
+						<h2>Ways to set cookies</h2>
+						<ol>
+							<li class="fragment">
+								Javascript
+								<pre><code>document.cookie</code></pre>
+							</li>
+							<li class="fragment">
+								Response
+								<pre><code>
+HTTP/1.1 200 OK
+Content-type: text/html
+Set-Cookie: name=value
+									</code></pre>
+							</li>
+							<li class="fragment">
+								Plugins, E.G <a href="https://addons.mozilla.org/ru/firefox/addon/cookies-manager-plus/">Firefox Cookies Manager</a>
+							</li>
+							<li class="fragment">
+								Manually
+								<pre><code style="word-wrap: break-word;">
+C:\Users\&lt;username&gt;\AppData\Roaming\Microsoft\Windows\Cookies
+								</code></pre>
+							</li>
+						</ol>
+					</section>
+					<section data-background="#030399">
+						<img src="images/question-time-1.jpg" alt="Question Time">
+					</section>
+					<section data-background="#030399">
+						The fifth way to set cookie is...
+					</section>
+					<section data-background="#030399">
+						<h2>Tip</h2>
+						<h3 class="http-blue">Directly in HTML</h3>
+					</section>
+					<section data-background="#030399">
+						<h1>Answer</h1>
+					</section>
+					<section data-background="#030399">
+						<h2>Meta Tag</h2>
+						<pre><code>&lt;head&gt;
+	&lt;meta http-equiv=&quot;set-cookie&quot; content=&quot;name=;expires=; domain=;path=;secure&quot;&gt;
+&lt;/head&gt;
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Demo: vk.com analyze</h2>
+					<img src="images/vk-1.jpg" alt="VK">
+				</section>
+				<section>
+					<h2>Web servers</h2>
+					<img src="images/servers.jpg" alt="Web Servers">
+				</section>
+				<section>
+					<h2>Session</h2>
+					<img src="images/session.png" alt="Session">
+				</section>
+				<section data-background="#030399">
+					<section>
+						<img src="images/question-time-1.jpg" alt="Question Time">
+					</section>
+					<section>
+						<h1>Let's imagine...</h1>
+						<img src="images/qt-1.jpg" alt="Question Time">
+						<ul style="list-style:none;">
+							<li class="fragment">
+								<img src="images/qt-cat.jpg" alt="Question Time" style="position: absolute; top: 250px; left: 120px; width:200px;">
+							</li>
+							<li class="fragment">
+								<img src="images/qt-bank.jpg" alt="Question Time" style="position: absolute; top: 220px; left: 620px; width:200px;">
+							</li>
+							<li class="fragment">
+								<img src="images/qt-request-response.jpg" alt="Question Time" style="position: absolute; top: 325px; left: 380px; width: 200px;">
+							</li>
+							<li class="fragment">
+								<img src="images/qt-anonymous-2.jpg" alt="Question Time" style="position: absolute; top: 155px; left: 410px; width:125px;">
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>How to protect the connection between client and server?</h3>
+					</section>
+					<section>
+						<h2>Tip 1</h2>
+						Use public/private keys 
+					</section>
+					<section>
+						<h2>Tip 2</h2>
+						<img src="images/ssl-1.png"/>
+					</section>
+					<section>
+						<h1>Answer</h1>
+					</section>
+					<section>
+						<h3>Third party needed - Certification Center</h3>
+					</section>
+				</section>
+				<section>
+					<h2>TLS(SSL) layer</h2>
+					<img src="images/TLS.png" alt="TLS">	
+				</section>
+				<section>
+					<section>
+						<h2>REST</h2>
+						<img style="height: 600px;" src="images/rest-1.jpg" alt="REST">
+					</section>
+					<section>
+						<h2>Web-Services</h2>
+						<ul>
+							<li class="fragment">
+								1998 - XML-RPC (Extensible Markup Language Remote Procedure Call)
+							</li>
+							<li class="fragment">
+								1999 - SOAP (Simple Object Access Protocol)
+							</li>
+							<li class="fragment">
+								2000 - REST (Representational State Transfer)
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>RPC-XML</h2>
+						Request
+						<pre><code>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;methodCall&gt;
+  &lt;methodName&gt;examples.getStateName&lt;/methodName&gt;
+  &lt;params&gt;
+    &lt;param&gt;
+        &lt;value&gt;&lt;i4&gt;40&lt;/i4&gt;&lt;/value&gt;
+    &lt;/param&gt;
+  &lt;/params&gt;
+&lt;/methodCall&gt;
+						</code></pre>
+						Response
+						<pre><code>
+ &lt;?xml version=&quot;1.0&quot;?&gt;
+ &lt;methodResponse&gt;
+   &lt;params&gt;
+     &lt;param&gt;
+         &lt;value&gt;&lt;string&gt;South Dakota&lt;/string&gt;&lt;/value&gt;
+     &lt;/param&gt;
+   &lt;/params&gt;
+ &lt;/methodResponse&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h2>SOAP</h2>
+						Request
+						<pre><code>
+&lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+   &lt;soap:Body&gt;
+     &lt;getProductDetails xmlns=&quot;http://warehouse.example.com/ws&quot;&gt;
+       &lt;productID&gt;12345&lt;/productID&gt;
+     &lt;/getProductDetails&gt;
+   &lt;/soap:Body&gt;
+ &lt;/soap:Envelope&gt;
+						</code></pre>
+						Response
+						<pre><code>
+&lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+   &lt;soap:Body&gt;
+     &lt;getProductDetailsResponse xmlns=&quot;http://warehouse.example.com/ws&quot;&gt;
+       &lt;getProductDetailsResult&gt;
+         &lt;productID&gt;12345&lt;/productID&gt;
+         &lt;productName&gt;Ñòàêàí ãðàíåíûé&lt;/productName&gt;
+         &lt;description&gt;Ñòàêàí ãðàíåíûé. 250 ìë.&lt;/description&gt;
+         &lt;price&gt;9.95&lt;/price&gt;
+         &lt;currency&gt;
+             &lt;code&gt;840&lt;/code&gt;
+             &lt;alpha3&gt;USD&lt;/alpha3&gt;
+             &lt;sign&gt;$&lt;/sign&gt;
+             &lt;name&gt;US dollar&lt;/name&gt;
+             &lt;accuracy&gt;2&lt;/accuracy&gt;
+         &lt;/currency&gt;
+         &lt;inStock&gt;true&lt;/inStock&gt;
+       &lt;/getProductDetailsResult&gt;
+     &lt;/getProductDetailsResponse&gt;
+   &lt;/soap:Body&gt;
+ &lt;/soap:Envelope&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h2>REST</h2>
+						Request
+						<pre>
+						<code>
+GET http://example.com/states/40 HTTP 1/1
+						</code></pre>
+						Response
+						<pre><code>
+&lt;state&gt;
+&lt;name&gt;South Dakota&lt;/name&gt;
+&lt;/state&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h2>REST</h2>
+						<ul>
+							<li class="fragment">
+								HTTP-based (GET, PUT, POST, DELETE)
+							</li>
+							<li class="fragment">
+								Client-server oriented
+							</li>
+							<li class="fragment">
+								Stateless
+							</li>
+							<li class="fragment">
+								Cacheable
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>REST vs SOAP</h2>
+						<img src="images/rest-vs-soap.png">
+					</section>
+					<section>
+						<h2>XML vs JSON</h2>
+						<img src="images/xml-vs-json.png">
+					</section>
+					<section>
+						<img src="images/rest-plus-json.jpg">
+					</section>
+				</section>
+				<section>
+					<h2>REST: Idempotent and safe methods</h2>
+					<p class="fragment">
+						An idempotent HTTP method is a HTTP method that can be called many times without different outcomes
+					</p>
+					<p class="fragment">
+						Safe methods are methods that can be cached, prefetched without any repercussions to the resource.
+					</p>
+				</section>
+				<section>
+					<h2>Network tools & analyzers</h2>
+					<ul>
+						<li><a href="http://fiddler2.com/get-fiddler" target="_blank">Fiddler</a></li>
+						<li><a href="http://www.wireshark.org/about.html" target="_blank">Wireshark</a></li>
+						<li><a href="http://netcat.sourceforge.net/download.php" target="_blank">NetCat</a></li>
+						<li><a href="http://www.xakep.ru/post/10365/" target="_blank">Telnet</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Most useful commands</h2>
+					<ol>
+						<li class="fragment">
+							<pre><code>ping www.ya.ru</code></pre>
+						</li>
+						<li class="fragment">
+							<pre><code>tracert www.ya.ru</code></pre>
+						</li>
+						<li class="fragment">
+							<pre><code>ipconfig (/all)</code></pre>
+						</li>
+						<li class="fragment">
+							<pre><code>netstat -an</code></pre>
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Useful materials</h2>
+					<a href="http://www3.ntu.edu.sg/home/ehchua/programming/webprogramming/http_basics.html" target="_blank"> HTTP Basics</a></br>
+					<a href="http://books.msspace.net/mirrorbooks/httppocketreference/httppr_toc.html" target="_blank"> HTTP Pocket Reference Book</a></br>
+					<a href="http://www.opennet.ru/docs/RUS/tcpip/" target="_blank">TCP/IP</a>
+				</section>
+				<section>
+					<img src="images/the-end.jpg"/>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../../RevealJS/lib/js/head.min.js"></script>
+		<script src="../../RevealJS/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../../RevealJS/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../RevealJS/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../RevealJS/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../RevealJS/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../RevealJS/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../RevealJS/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
