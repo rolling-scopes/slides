@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/slides.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                    <h2>Testing JavaScript Applications</h2>
+                    <p>
+                        <small><font class="orange">by Dmitrey Gerasimov</font></small>
+                    </p>
+                </section>
+                <section>
+                    <h4 class="orange">"Any feature without a test doesn’t exist"</h4>
+                    <div style="width:80%; text-align:right; font-size:22px">Steve Loughran HP Laboratories</div>
+                </section>
+                <section>
+                    <section>
+                        <h2>Tests</h2>
+                        <p class="orange">Make <del>code</del> life better.</p>
+                    </section>
+                    <section>
+                        <h2>Our sponsors for today</h2>
+                        <ul>
+                            <li>Jasmine</li>
+                            <li>Mocha <font class='orange'>['mɔkə]</font></li>
+                            <li>Chai</li>
+                            <li>Sinon</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Suites &amp; Specs</h2>
+                        <p><font class="blue" style="font-size: 26px">Not suits</font></p>
+                        <pre style="width: 100%; font-size: 0.7em"><code class="javascript">// Suite
+describe("&lt;unit or class name here&gt;", function() {
+  // Some variables and hooks* for test suite
+
+  describe("#&lt;method or test item name here&gt", function() {
+    // Spec (your test)
+    it("&lt;behavior and result here&gt;", function() {
+      /*
+      Initalization
+      Actions
+      Assertion
+      */
+    });
+  });
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>common test</h2>
+                        <pre style="width: 100%; font-size: 0.7em"><code class="javascript">describe('Array', function(){
+  describe('#indexOf()', function(){
+    it('should return -1 when the value is not present', function(){
+      [1,2,3].indexOf(5).should.equal(-1);
+    })
+  })
+})</code></pre>
+                    </section>
+                    <section>
+                        <h2>Assertions</h2>
+                        <p class="orange" style="font-size: 26px">What? Where? How many?</p>
+                    </section>
+                    <section>
+                        <h2>assert</h2>
+                        <p class="orange" style="font-size: 26px">Classic</p>
+                        <pre style="width: 100%; font-size: 0.9em"><code class="javascript">var assert = chai.assert;
+
+assert.typeOf(foo, 'string');
+assert.equal(foo, 'bar');
+assert.lengthOf(foo, 3)
+assert.property(tea, 'flavors');
+assert.lengthOf(tea.flavors, 3);</code></pre>
+                    </section>
+                    <section>
+                        <h2>expect</h2>
+                        <p class="orange" style="font-size: 26px">BDD like</p>
+                        <pre style="width: 100%; font-size: 0.9em"><code class="javascript">var expect = chai.expect;
+
+expect(foo).to.be.a('string');
+expect(foo).to.equal('bar');
+expect(foo).to.have.length(3);
+expect(tea).to.have.property('flavors').with.length(3);</code></pre>
+                    </section>
+                    <section>
+                        <h2>should</h2>
+                        <p class="orange" style="font-size: 26px">more BDD</p>
+                        <pre style="width: 100%; font-size: 0.9em"><code class="javascript">chai.should();
+
+foo.should.be.a('string');
+foo.should.equal('bar');
+foo.should.have.length(3);
+tea.should.have.property('flavors').with.length(3);</code></pre>
+                    </section>
+                    <section>
+                        <h2>hooks</h2>
+                        <p class="orange" style="font-size: 26px">before(), after(), beforeEach(), afterEach()</p>
+                        <pre style="width: 100%; font-size: 0.9em"><code class="javascript">beforeEach(function(done){
+    db.clear(function(err){
+        if (err) return done(err);
+        db.save([tobi, loki, jane], done);
+    });
+})</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <img class='nodecorations' src="./img/flower.png"/>
+                    </section>
+                    <section>
+                        <img class='nodecorations' src="./img/jasmine.png"/>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <p class="orange">matchers</p>
+                        <pre style="width: 100%; font-size: 0.9em"><code class="javascript">expect(x).toEqual(y);
+expect(x).toBe(y);
+expect(x).toMatch(pattern);
+expect(x).toBeDefined();
+expect(x).toBeUndefined();
+expect(x).toBeNull();
+expect(x).toBeTruthy();
+expect(x).toBeFalsy();
+expect(x).toContain(y);
+expect(x).toBeLessThan(y);
+expect(x).toBeGreaterThan(y);
+expect(function(){fn();}).toThrow(e);</code></pre>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <p class="orange">custom matchers</p>
+                        <pre style="width: 100%; font-size: 0.6em"><code class="javascript">var customMatchers = {
+    toBeGoofy: function(util, customEqualityTesters) {
+        return {
+            compare: function(actual, expected) {
+                var result = {};
+
+                if (expected === undefined) { expected = ''; }
+                result.pass = util.equals(actual.hyuk, "gawrsh" + expected, customEqualityTesters);
+
+                if (result.pass) {
+                    result.message = "Expected " + actual + " not to be quite so goofy";
+                } else {
+                    result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
+                }
+
+                return result;
+            }
+        };
+    }
+};</code></pre>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <p class="orange">custom matchers</p>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">beforeEach(function() {
+    jasmine.addMatchers(customMatchers);
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <p class="orange">Spies</p>
+                        <pre style="width: 100%; font-size: 0.8em"><code>spyOn(obj, 'method');
+expect(obj.method).toHaveBeenCalled();
+expect(obj.method).toHaveBeenCalledWith('foo', 'bar')
+obj.method.callCount
+obj.method.mostRecentCall.args
+obj.method.reset()
+spyOn(obj, 'method').andCallThrough()
+obj.method.argsForCall
+spyOn(obj, 'method').andReturn('Pow!')</code></pre>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <p class="orange">Any</p>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">describe("jasmine.any", function() {
+  it("matches any value", function() {
+    expect({}).toEqual(jasmine.any(Object));
+    expect(12).toEqual(jasmine.any(Number));
+  });
+});</code></font></pre>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <p class="orange">Clock</p>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">beforeEach(function() {
+    timerCallback = jasmine.createSpy("timerCallback"); //create spy
+    jasmine.Clock.useMock(); //use wrapper of system timer
+});
+
+it("causes a timeout to be called synchronously", function() {
+    setTimeout(function() {
+      timerCallback();
+    }, 100);
+
+    expect(timerCallback).not.toHaveBeenCalled();
+    jasmine.Clock.tick(101); //make time go
+    expect(timerCallback).toHaveBeenCalled();
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Jasmine</h2>
+                        <img src="./img/jasmine-spec-runner.png" alt="">
+                    </section>
+                    <section>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">describe("Jasmine", function() {
+  it("makes testing JavaScript awesome!", function() {
+    expect (yourCode).toBeLotsBetter();
+  });
+});
+</code></pre>
+                </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Mocha</h2>
+                        <p class="orange" style="font-size: 26px">['mɔkə]</p>
+                    </section>
+                    <section>
+                        <h2>Mocha</h2>
+                        <ul>
+                            <li>Supports TDD assertions and BDD should/expect</li>
+                            <li>Reporting &amp; CI integration</li>
+                            <li>JavaScript API</li>
+                            <li>Browser Test Runner</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Mocha</h2>
+                        <p class="orange" style="font-size: 26px">syntax</p>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">describe('Array', function(){
+  describe('#indexOf()', function(){
+    it('should return -1 when the value is not present', function(){
+      [1,2,3].indexOf(5).should.equal(-1);
+    })
+  })
+})
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Mocha</h2>
+                        <p class="orange" style="font-size: 26px">async</p>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">describe('User', function(){
+  describe('#save()', function(){
+    it('should save without error', function(done){
+      var user = new User('Luna');
+      user.save(function(err){
+        if (err) throw err;
+        done();
+      });
+    })
+  })
+})
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Mocha</h2>
+                        <p class="orange" style="font-size: 26px">hooks: before(), after(), beforeEach(), afterEach() </p>
+                        <pre style="width: 100%; font-size: 0.8em"><code class="javascript">beforeEach(function(done){
+    db.clear(function(err){
+        if (err) return done(err);
+        db.save([tobi, loki, jane], done);
+    });
+})</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Mocha</h2>
+                        <img src="img/Screen Shot 2012-03-01 at 2.31.31 PM.png" alt="">
+                    </section>
+
+                    <section>
+                        <h2>Mocha</h2>
+                        <img src="img/reporter-spec-duration.png" alt="">
+                    </section>
+
+                    <section>
+                        <h2>Mocha</h2>
+                        <img src="img/reporter-html.png" alt="">
+                    </section>
+
+                    <section>
+                        <h2>Mocha</h2>
+                        <img src="img/Screen Shot 2012-08-22 at 3.59.08 PM.png" alt="">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Chai</h2>
+                        <img class='nodecorations' src="img/chai-logo-small.png" alt="">
+                    </section>
+
+                    <section>
+                        <h2>Chai</h2>
+                        <p class="orange" style="font-size: 26px">Assert, expect/should</p>
+                        <pre  style="width: 100%; font-size: 0.8em"><code class="javascript">chai.should();
+foo.should.be.a('string');
+foo.should.equal('bar');
+foo.should.have.length(3);
+tea.should.have.property('flavors').with.length(3);</code></pre>
+                    </section>
+
+                    <section data-background="gold" style="color:black;">
+                        <h1>Question Time!</h1>
+                        <p>How would you test an RNG?</p>
+                    </section>
+
+                    <section>
+                        <h2>Chai</h2>
+                        <p>Plugins</p>
+                        <a href="http://chaijs.com/plugins/">here</a>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Standalone test spies, stubs and mocks for JavaScript.</p>
+                        <p class="orange" style="font-size: 26px">No dependencies, works with any unit testing framework.</p>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Spies</p>
+                        <pre  style="width: 100%; font-size: 0.8em"><code class="javascript">it("calls original function with right this and args", function () {
+    var callback = sinon.spy();
+    var proxy = once(callback);
+    var obj = {};
+
+    proxy.call(obj, 1, 2, 3);
+
+    assert(callback.calledOn(obj));
+    assert(callback.calledWith(1, 2, 3));
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Stubs</p>
+                        <pre  style="width: 100%; font-size: 0.8em"><code class="javascript">it("returns the value from the original function", function () {
+    var callback = sinon.stub().returns(42);
+    var proxy = once(callback);
+
+    assert.equals(proxy(), 42);
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Testing ajax</p>
+                        <pre  style="width: 100%; font-size: 0.8em"><code class="javascript">function getTodos(listId, callback) {
+    jQuery.ajax({
+        url: "/todo/" + listId + "/items",
+        success: function (data) {
+            // Node-style CPS: callback(err, data)
+            callback(null, data);
+        }
+    });
+}</code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Testing ajax</p>
+                        <pre  style="width: 100%; font-size: 0.8em"><code class="javascript">after(function () {
+    // When the test either fails or passes, restore the original
+    // jQuery ajax function (Sinon.JS also provides tools to help
+    // test frameworks automate clean-up like this)
+    jQuery.ajax.restore();
+});
+
+it("makes a GET request for todo items", function () {
+    sinon.stub(jQuery, "ajax");
+    getTodos(42, sinon.spy());
+
+    assert(jQuery.ajax.calledWithMatch({ url: "/todo/42/items" }));
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Fake XMLHttpRequest</p>
+                        <pre  style="width: 100%; font-size: 0.6em"><code class="javascript">var xhr, requests;
+
+before(function () {
+    xhr = sinon.useFakeXMLHttpRequest();
+    requests = [];
+    xhr.onCreate = function (req) { requests.push(req); };
+});
+
+after(function () {
+    // Like before we must clean up when tampering with globals.
+    xhr.restore();
+});
+
+it("makes a GET request for todo items", function () {
+    getTodos(42, sinon.spy());
+
+    assert.equals(requests.length, 1);
+    assert.match(requests[0].url, "/todo/42/items");
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Fake server</p>
+                        <pre  style="width: 100%; font-size: 0.6em"><code class="javascript">var server;
+
+before(function () { server = sinon.fakeServer.create(); });
+after(function () { server.restore(); });
+
+it("calls callback with deserialized data", function () {
+    var callback = sinon.spy();
+    getTodos(42, callback);
+
+    // This is part of the FakeXMLHttpRequest API
+    server.requests[0].respond(
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify([{ id: 1, text: "Provide examples", done: true }])
+    );
+
+    assert(callback.calledOnce);
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Fake time</p>
+                        <pre  style="width: 100%; font-size: 0.8em"><code class="javascript">
+function throttle(callback) {
+    var timer;
+    return function () {
+        clearTimeout(timer);
+        var args = [].slice.call(arguments);
+        timer = setTimeout(function () {
+            callback.apply(this, args);
+        }, 100);
+    };
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Sinon.js</h2>
+                        <p class="orange" style="font-size: 26px">Fake time</p>
+                        <pre style="width: 100%; font-size: 0.65em"><code class="javascript">var clock;
+
+before(function () { clock = sinon.useFakeTimers(); });
+after(function () { clock.restore(); });
+
+it("calls callback after 100ms", function () {
+    var callback = sinon.spy();
+    var throttled = throttle(callback);
+
+    throttled();
+
+    clock.tick(99);
+    assert(callback.notCalled);
+
+    clock.tick(1);
+    assert(callback.calledOnce);
+}</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>CasperJS</h2>
+                        <p><a href="http://phantomjs.org/">PhantomJS</a></p>
+                        <p><a href="http://docs.casperjs.org/en/latest/quickstart.html#a-minimal-scraping-script">API</a></p>
+                        <p><a href="http://slimerjs.org/">SlimerJS</a></p>
+                        <p><a href="https://github.com/WaterfallEngineering/SpookyJS">SpookyJS</a></p>
+                    </section>
+                    <section>
+                        <h2>CasperJS</h2>
+                        <pre style="width: 100%; font-size: 0.9em"><code class="javascript">var casper = require('casper').create();
+
+casper.start('http://domain.tld/page.html', function() {
+    if (this.exists('h1.page-title')) {
+        this.echo('the heading exists');
+    }
+});
+
+casper.run();</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Istanbul</h2>
+                    <ul>
+                        <li>Statement, branch, and function coverage</li>
+                        <li>Test running tools</li>
+                        <li>HTML &amp; LCOV reporting</li>
+                        <li>esprima-based</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Testing + CI = &#x2764;</h2>
+                        <ul>
+                            <li>fail builds</li>
+                            <li>statistics &amp; reporting</li>
+                            <li>Github is integration paradise</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Github is integration paradise</h2>
+                        <img src="img/github.png" alt="">
+                    </section>
+                </section>
+
+                <section>
+                    <h2>IRL, 100% coverage is a lie</h2>
+                    <ul>
+                        <li>legacy &amp; untestable code</li>
+                        <li>permissive tests</li>
+                        <li>not applicable to functional testing</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Mutation testing</h2>
+                    <ul>
+                        <li>Who tests tests?</li>
+                        <li>Coverage is paramount! (it isn't)</li>
+                        <li>Mutations: remove lines, alter operators, rename identifiers</li>
+                        <li>The Future of Unit Testing</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="orange">Examples</h2>
+                </section>
+                <section>
+                    <h2>
+                        the end
+                    </h2>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
