@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>PEIM-HTTP2</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../../RevealJS/css/reveal.css">
+		<link rel="stylesheet" href="../../RevealJS/css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../../RevealJS/lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="../../styles/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../RevealJS/css/print/pdf.css' : '../../RevealJS/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="../../school/PEIM/HTTP2/images/http2-cover.jpg" >
+					<p>
+						<a href="http://karlovi.ch" target="_blank">
+							<img height="70px;" src="../images/karlovich-logo-white.svg">
+						</a>
+					</p>
+					<h2 class="white background-overlay background-overlay-darker"><img src="images/peim.png"></h2>
+					<p>
+						<h3 class="white">HTTP2</h3>
+					</p>
+					<p>
+						<a href="http://smartme.university" target="_blank">
+							<img height="200px;" src="../images/smartme-logo-white.svg">
+						</a>
+						<a href="http://rollingscopes.com" target="_blank">
+							<img height="200px;" src="../images/rs-logo-black.svg">
+						</a>
+					</p>
+				</section>
+				<section data-background="images/saving.gif">
+					<h2 class="white background-overlay background-overlay-dark">Промедление смерти подобно</h2>
+					<br/>
+					<h2 class="white">Eng: Danger in delay</h2>
+				</section>
+				<section data-background="#fff">
+					<img src="images/angry-1.png"/>
+					<img class="fragment" style="height: 300px;" src="images/loading-angry.gif"/>
+					<img class="fragment" style="height: 300px; position: absolute; left: 100px;" src="images/red-eyes.jpg"/>
+					<img class="fragment" style="height: 300px; position: absolute; left: 100px;" src="images/rage-face.jpg"/>
+					<img class="fragment" style="height: 300px; position: absolute; left: 100px;" src="images/angry-desk.png"/>
+					<img class="fragment" style="height: 300px; position: absolute; left: 100px;" src="images/pulp-fiction.png"/>
+					<img class="fragment" style="width: 400px; position: absolute; right: 100px;" src="images/angry-cat.jpg"/>
+					<img class="fragment" style="height: 300px; position: absolute; left: 100px;" src="images/happy-smile.jpg"/>
+					<img class="fragment" style="height: 300px; position: absolute; left: 100px;" src="images/rage-guy-teeth-smile.jpg"/>
+				</section>
+				<section>
+					<h3>1991</h3>
+					<img src="images/bernerslee-1991.jpg"/>
+				</section>
+				<section>
+					<h2>Тим Бернерс Ли, 2014</h2>
+					<img src="images/Sir_Tim_Berners-Lee-2014.jpg"/>
+				</section>
+				<section data-background="images/bottleneck.jpg">
+					<h3 class="white background-overlay background-overlay-dark">LATENCY as perf. Bottleneck</h3>
+					<img src="images/latency-performance-bottleneck.png">
+				</section>
+				<section>
+					<section>
+						<p>
+							Restriction: Six TCP streams per host
+						</p>
+						<img src="images/tcp-six-connections.png"/>
+					</section>
+					<section>
+						<h5>Domain sharding as a result</h5>
+						<img src="images/domain-sharding.jpg"/>
+					</section>
+					<section data-background="images/vk-sharding.jpg">
+						<h5 class="white fragment background-overlay background-overlay-dark">vk: sharding</h5>
+					</section>
+					<section data-background="images/vk-no-sharding.jpg">
+						<h5 class="white fragment background-overlay background-overlay-dark">vk: no sharding</h5>
+					</section>
+					<section data-background="images/NzCYP5e16CY.jpg" data-background-repeat="repeat" background-size="100px">
+						<h5 class="white background-overlay background-overlay-dark">Images are the same</h5>
+						<p>
+							<img src="http://cs605522.vk.me/v605522098/7a5a/NzCYP5e16CY.jpg"> and <img src="https://pp.vk.me/c605522/v605522098/7a5a/NzCYP5e16CY.jpg">
+						</p>
+					</section>
+					<section data-background="../images/question-time.jpg">
+						<h3 class="white background-overlay background-overlay-dark">But what the difference?</h3>
+					</section>
+				</section>
+				<section>
+					<h3>TCP Slow Start</h3>
+					<img src="images/tcp-slow-start.png"/>
+				</section>
+				<section data-background="images/upgrade.jpg">
+					<h3 class="white background-overlay background-overlay-dark">Seems we need an upgrade</h3>
+				</section>
+				<section id="changes-slide" data-background="images/changes-tsoi.jpg">
+				</section>
+				<section>
+					<h3>2012: Google starts to experment with HTTP</h3>
+					<img src="images/laboratory.jpg"/>
+				</section>
+				<section data-background="images/speedy-gonzales.jpg">
+					<h3 class="white background-overlay background-overlay-dark">SPeeDY</h3>
+					<img class="fragment" src="images/spdy-protocol.png"/>
+				</section>
+				<section>
+					<h3>http://caniuse.com/#feat=spdy</h3>
+					<img src="images/spdy-caniuse.jpg"/>
+				</section>
+				<section>
+					<section>
+						<h3>spdy live demo</h3>
+					</section>
+					<section>
+						<p>chrome://net-internals/#events&q=type:SPDY_SESSION%20is:active</p>
+						<p>chrome://net-internals/#spdy</p>
+						<img src="images/spdy-live.jpg"/></a>
+					</section>
+					<section data-background="images/trololo.jpg">
+					</section>
+				</section>
+				<section>
+					<img src="images/rip-spdy.jpg"/>
+				</section>
+				<section>
+					<img src="images/switch-on.png"/>
+				</section>
+				<section>
+					<section data-background="../images/question-time.jpg">
+						<h3 class="white background-overlay background-overlay-dark">How to switch to the new protocol?</h3>
+					</section>
+					<section data-background="images/sweden.jpg">
+						<h3 class="white background-overlay background-overlay-dark">Объявить всемирный день смены ссылок в интернете?</h3>
+						<h3 >http<span class="fragment" style="color:red;">2</span>://www.рогаикопыта.com</h3>
+						<h3 class="fragment">spdy://www.рогаикопыта.com</h3>
+						<div id="cross-http" class="fragment cross" style="position: absolute; top: -100px; left: -100px; right: -100px; bottom: -100px; opacity: 0.7;">
+							<img style="width: 100%; height: 100%;" src="images/cross.png"/>
+						</div>
+					</section>
+					<section>
+						<h3 class="white background-overlay background-overlay-dark">Семантика HTTP2 протокола остается та же (urls, methods, headers, status codes, etc).</h3>
+						<h4 class="white background-overlay background-overlay-dark">Оптимизируется только транспортный уровень.</h4>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>HTTP2 live demo</h3>
+					</section>
+					<section>
+						<p>chrome://net-internals/#events&q=type:HTTP2_SESSION%20is:active</p>
+						<p>chrome://net-internals/#http2</p>
+						<img src="images/http2-active-sessions.png"/></a>
+					</section>
+					<section>
+						<div>HTTP2_SESSION www.google.com:443</div>
+						<div class="fragment">HTTP2_SESSION www.twitter.com:443</div>
+						<div class="fragment">HTTP2_SESSION vk.com:443</div>
+						<div class="fragment">HTTP2_SESSION www.facebook.com:443</div>
+						<div class="fragment" style="position: relative;">HTTP2_SESSION www.odnoklassniki.ru
+							<div id="beep-fragment" class="fragment cross-line">
+							</div>
+						</div>
+					</section>
+				</section>
+				<section data-background="images/details.JPG">
+					<h3 class="white background-overlay background-overlay-dark">Let's look into the details</h3>
+				</section>
+				<section>
+					<section>
+						<h3>OSI model</h3>
+						<img src="images/osi-1.jpg"/>
+					</section>
+					<section>
+						<h3>TCP/IP</h3>
+						<img src="images/tcp-ip.png"/>
+					</section>
+					<section>
+						<h3>New Binary Framing Layer</h3>
+						<img src="images/http2-osi.jpg"/>
+					</section>
+					<section>
+						<img src="images/framing-layer.png"/>
+					</section>
+					<section data-background="images/awesome.jpg">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Request and Response Multiplexing </h3>
+					</section>
+					<section>
+						<h3>Sprites</h3>
+						<img src="images/sprite-sprite.jpg"/>
+					</section>
+					<section>
+						<h3>Sprites</h3>
+						<img src="images/sprite-flags.png"/>
+					</section>
+					<section>
+						<h3>Multiplexing</h3>
+						<img src="images/multiplexing.png"/>
+					</section>
+				</section>
+				<section>
+					<h3>Request Prioritization</h3>
+				</section>
+				<section>
+					<h3>SERVER PUSH</h3>
+					<img src="images/server-push.png"/>
+				</section>
+				<section>
+					<section>
+						<h3>HTTP Headers</h3>
+						<h5>size is ~1kb</h5>
+						<img src="images/http-headers.jpg"/>
+					</section>
+					<section>
+						<h3 style="position:relative">
+							<div>HTTP: Headers are GZIPped</div>
+							<div id="beep-fragment" class="fragment cross-line">
+							</div>
+						</h3>
+						<h3 class="fragment">HTTP2: Headers are GZIPped - YES</h3>
+					</section>
+				</section>
+				<section>
+					<h3>HTTP2 advantages</h3>
+					<p class="fragment">Semantics compatible with HTTP</p>
+					<p class="fragment">Get rid of sharding</p>
+					<p class="fragment">Get rid of inlining</p>
+					<p class="fragment">Get rid of spriting</p>
+					<p class="fragment">Get rid of concatenating</p>
+					<p class="fragment">Better compression</p>
+					<p class="fragment">Low latency</p>
+					<p class="fragment">Low resources (at client and at server)</p>
+				</section>
+				<section>
+					<section>
+						<h3>More faster MPEG-DASH video streaming</h3>
+						<img src="images/film_netlifx.gif"/>
+					</section>
+					<section data-background="images/grumpy-surprise.jpg">
+						<h3 class="white background-overlay background-overlay-dark">Surprise time!</h3>
+						<p class="white fragment">
+							Google starts develop new protocol - <a target="_blank" href="https://www.bitmovin.com/blog/2015/06/advanced-transport-options-dash-quic-http2/">QUCK (Quick UDP Internet Connections)</a>.
+						</p>
+						<p class="white fragment">
+							“But that is another story and shall be told another time.”
+						</p>
+					</section>
+				</section>
+				<section data-background="../images/question-time.jpg">
+					<h3 class="white background-overlay background-overlay-dark">How to switch on SPDY</h3>
+					<img class="fragment" src="images/ssl.png"/>
+					<h4 class="white fragment">+ Web Server plugin/extension/addon</h4>
+				</section>
+				<section data-background="../images/question-time.jpg">
+					<h3 class="white background-overlay background-overlay-dark">How to switch on HTTP2?</h3>
+					<h4 class="white fragment">Web Server plugin/extension/addon</h4>
+				</section>
+				<section data-background="images/facebook-servers.jpg">
+					<h3 class="white background-overlay background-overlay-dark">SPDY: Servers</h3>
+					<div class="white container-to-align">
+						<div class="left-aligned">
+							<p class="white fragment">
+								Nginx
+							</p>
+							<p class="white fragment">
+								Apache
+							</p>
+							<p class="white fragment">
+								Node.js by <a target="_blank" href="https://github.com/indutny/node-spdy">indutny</a>
+							</p>
+							<p class="white fragment">
+								And many others. Full list <a target="_blank" href="https://www.chromium.org/spdy">here</a>
+							</p>
+							<p class="white fragment">
+								Except IIS :(
+							</p>
+						</div>
+					</div>
+				</section>
+				<section data-background="images/facebook-servers.jpg">
+					<h3 class="white background-overlay background-overlay-dark">HTTP2: Servers</h3>
+					<div class="white container-to-align">
+						<div class="left-aligned">
+							<p class="white fragment">
+								Nginx
+							</p>
+							<p class="white fragment">
+								Apache
+							</p>
+							<p class="white fragment">
+								Node.js
+							</p>
+							<p class="white fragment">
+								And many others. Full list <a target="_blank" href="https://github.com/http2/http2-spec/wiki/Implementations">here</a>
+							</p>
+							<p class="white fragment">
+								And even IIS 10 (under Windows 10 only)
+							</p>
+						</div>
+					</div>
+				</section>
+				<section data-background="../images/ilya-grigorik.jpg">
+					<h4 class="white fragment background-overlay background-overlay-dark">Ilya Grigorik</h4>
+					<img class="fragment" style="height: 350px;" src="images/hpbncover.jpg"/><br/>
+					<a class="fragment" href="http://chimera.labs.oreilly.com/books/1230000000545/index.html" target="_blank"/>Free Online version</a>
+					<p class="white fragment">
+						Twitter: <a target="_blank" href="http://twitter.com/igrigorik">@igrigorik</a>
+					</p>
+				</section>
+				<section data-background="../images/links.jpg">
+					<h3 class="white background-overlay background-overlay-dark">Links</h3>
+					<div class="white container-to-align">
+						<div class="left-aligned">
+							<a target="_blank" href="https://http2.github.io">Specs</a>
+							<br/>
+							<a target="_blank" href="https://http2.github.io/faq/">HTTP2 FAQ</a>
+						</div>
+					</div>
+				</section>
+				<section data-background="images/thanks-hangover.gif">
+					<h2 class="white">THANKS</h2>
+				</section>
+			</div>
+		</div>
+		<audio id="audioElement"></audio>
+		<script src="../../RevealJS/lib/js/head.min.js"></script>
+		<script src="../../RevealJS/js/reveal.js"></script>
+		<script src="../../RevealJS/js/main.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../../RevealJS/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../RevealJS/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../RevealJS/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../RevealJS/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../RevealJS/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../RevealJS/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
