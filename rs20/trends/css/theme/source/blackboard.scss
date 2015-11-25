@@ -1,0 +1,108 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+
+// ---------------------------------------------
+
+// Include theme-specific fonts
+//@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #222 url("../../../images-git/blackboard-bg.jpg") no-repeat center;
+
+$mainColor: #fff;
+$headingColor: #f5f9ad;
+
+$mainFontSize: 38px;
+//$mainFont: 'Walter Turncoat', Helvetica, sans-serif;
+//$headingFont: 'Walter Turncoat', Helvetica, sans-serif;
+
+$mainFont: 'Neucha', cursive;
+$headingFont: 'Neucha', cursive;
+
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #ed7777;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 2.8em;
+$heading2Size: 2em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+  &, h1, h2, h3, h4, h5, h6 {
+    color: #222;
+  }
+}
+
+.reveal section pre {
+  font-size: .8em;
+}
+
+.reveal section h2 {
+  color: #AAE3DA;
+}
+
+.reveal section h5 {
+  font-size: $heading2Size;
+  color: #fff;
+  text-transform: none;
+}
+
+.reveal section .rs-logo {
+  max-width: none;
+  max-height: none;
+  opacity: 0.08;
+  width: 500px;
+  position: absolute;
+  top: 0;
+  border: none;
+}
+
+.reveal section.min-pre pre {
+  margin: 10px 0;
+}
+
+.reveal table.snapshot-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+  tr {
+
+    th {
+      border: 0;
+      background: #555;
+      text-align: left;
+    }
+    td {
+      border: 0;
+      color: #fff;
+
+      strong {
+        color: #f5f9ad;
+      }
+    }
+
+    &.accent td {
+      color: #f2a3bd;
+    }
+
+  }
+}
+
+.top-section {
+  top: 0 !important;
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
